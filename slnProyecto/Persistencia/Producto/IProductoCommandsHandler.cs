@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Producto
 {
-    public interface IProductoQueryHandler
+    public interface IProductoCommandsHandler
     {
+
         Task<IEnumerable<ProductoItem>> GET();
+        Task<int> UPDATE(ProductoItem product);
+        Task<int> ADD(ProductoItem product);
     }
 }

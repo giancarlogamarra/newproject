@@ -29,7 +29,7 @@ namespace Presentacion
             container = new Container();
 
             // Register your types, for instance:
-            container.Register<IProductoQueryHandler, ProductoQueryHandler>(Lifestyle.Singleton);
+            container.Register<IProductoCommandsHandler, ProductoCommandsHandler>(Lifestyle.Singleton);
             //container.Register<IProveedorQueryHandler, frm_AdminProveedor>();
             // container.Register<frm_AdminProveedor>();
 

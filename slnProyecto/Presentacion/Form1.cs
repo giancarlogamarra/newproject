@@ -20,10 +20,16 @@ namespace Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-          
             var BL=Program.container.GetInstance<frmAdminProducto>();
             
+            BL.Show();
+        }
+
+        private void MenuItemProducto_Click(object sender, EventArgs e)
+        {
+            var BL = Program.container.GetInstance<frmAdminProducto>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();
         }
     }
