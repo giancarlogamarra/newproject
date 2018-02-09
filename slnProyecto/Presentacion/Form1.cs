@@ -1,4 +1,4 @@
-﻿using Presentacion.Proveedor;
+﻿using Presentacion.Producto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +22,7 @@ namespace Presentacion
         {
 
           
-            var BL=Program.container.GetInstance<frm_AdminProveedor>();
+            var BL=Program.container.GetInstance<frmAdminProducto>();
             
             BL.Show();
         }

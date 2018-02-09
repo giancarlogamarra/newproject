@@ -1,6 +1,6 @@
-﻿namespace Presentacion.Proveedor
+﻿namespace Presentacion.Producto
 {
-    partial class frm_AdminProveedor
+    partial class frmAdminProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // frm_AdminProveedor
+            // frmAdminProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Name = "frm_AdminProveedor";
-            this.Text = "frm_AdminProveedor";
-            this.Load += new System.EventHandler(this.frm_AdminProveedor_Load);
+            this.Name = "frmAdminProducto";
+            this.Text = "frmAdminProducto";
+            this.Load += new System.EventHandler(this.frmAdminProducto_Load);
             this.ResumeLayout(false);
 
         }

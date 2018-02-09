@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimpleInjector;
-using Persistencia.Proveedor;
-using Presentacion.Proveedor;
-using System.Data.SqlClient;
+using Persistencia.Producto;
 
 namespace Presentacion
 {
@@ -31,7 +29,7 @@ namespace Presentacion
             container = new Container();
 
             // Register your types, for instance:
-            container.Register<IProveedorQueryHandler, ProveedorQueryHandler>(Lifestyle.Singleton);
+            container.Register<IProductoQueryHandler, ProductoQueryHandler>(Lifestyle.Singleton);
             //container.Register<IProveedorQueryHandler, frm_AdminProveedor>();
             // container.Register<frm_AdminProveedor>();
 
