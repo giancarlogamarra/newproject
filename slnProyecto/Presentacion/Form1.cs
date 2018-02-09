@@ -20,6 +20,8 @@ namespace Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+          
             var BL=Program.container.GetInstance<frm_AdminProveedor>();
             
             BL.Show();

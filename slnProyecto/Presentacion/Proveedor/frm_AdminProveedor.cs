@@ -13,14 +13,16 @@ namespace Presentacion.Proveedor
 {
     public partial class frm_AdminProveedor : Form
     {
+        IProveedorQueryHandler _queries;
         public frm_AdminProveedor(IProveedorQueryHandler query)
         {
+            this._queries = query;
             string result= query.GET();
             InitializeComponent();
         }
         private void frm_AdminProveedor_Load(object sender, EventArgs e)
-            {
-
+         {
+            this._queries.GET();
         }
     }
 }
