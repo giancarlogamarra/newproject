@@ -12,5 +12,6 @@ namespace DTOs.Proveedor
         public string CODIGO { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
+        public string CODIGO_PROVEEDOR { get; set; }
     }
 }

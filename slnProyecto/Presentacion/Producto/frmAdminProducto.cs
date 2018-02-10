@@ -29,7 +29,7 @@ namespace Presentacion.Producto
         public async void GetProductos()
         {
            dgvProductos.AutoGenerateColumns = false;
-           dgvProductos.DataSource= await _commands.GET();
+           dgvProductos.DataSource= _commands.GET();
            dgvProductos.ClearSelection();
 
         }
@@ -58,7 +58,8 @@ namespace Presentacion.Producto
                 ID = Guid.NewGuid(),
                 CODIGO = txtCodigo.Text,
                 NOMBRE = txtNombre.Text.ToUpper(),
-                DESCRIPCION=txtDescripcion.Text
+                DESCRIPCION=txtDescripcion.Text,
+                CODIGO_PROVEEDOR=txtCodigoProveedor.Text
             };
             if (this.obj_Toupdate == null)
             {
@@ -67,7 +68,7 @@ namespace Presentacion.Producto
             else
             {
                 p.ID = this.obj_Toupdate.ID;
-                var result = this._commands.UPDATE(p);
+                this._commands.UPDATE(p);
             }
            GetProductos();
            cleanControls();
@@ -79,6 +80,7 @@ namespace Presentacion.Producto
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
+            txtCodigoProveedor.Text = string.Empty;
         }
 
        
@@ -87,6 +89,7 @@ namespace Presentacion.Producto
             txtCodigo.Text = p.CODIGO;
             txtNombre.Text = p.NOMBRE;
             txtDescripcion.Text = p.DESCRIPCION;
+            txtCodigoProveedor.Text = p.CODIGO_PROVEEDOR;
             InformacionGeneralPanel.Enabled = true;
         }
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -130,6 +133,20 @@ namespace Presentacion.Producto
             this.obj_Toupdate = null;
         }
 
-        
+        private void MenuItem_Delete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("¿Estas seguro de eliminar este producto?",
+                                     ".:: Mensaje del Sistema ::.",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this._commands.DELETE(this.obj_Toupdate.ID);
+                this.cleanControls();
+                this.obj_Toupdate = null;
+                MenuItem_Save.Enabled = false;
+                MenuItem_Delete.Enabled = false;
+                this.GetProductos();
+            }            
+        }
     }
 }

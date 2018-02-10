@@ -11,17 +11,18 @@ namespace Persistencia.Producto
 {
     public class ProductoCommandsHandler : IProductoCommandsHandler
     {
-        SqlConnection conn;
+       
         public ProductoCommandsHandler() { }
 
-        public async Task<IEnumerable<ProductoItem>> GET()
+        public IEnumerable<ProductoItem> GET()
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
-                var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION]
+                var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
+                                [CODIGO_PROVEEDOR]
                            FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] ";
 
-                var listquery = await conn.QueryAsync<ProductoItem>(query);
+                var listquery = conn.Query<ProductoItem>(query);
                 return listquery;
             }
         }
@@ -32,20 +33,23 @@ namespace Persistencia.Producto
             {
                 await conn.OpenAsync();
                 var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.TPRODUCTOS]
-                                ([ID]
-                                ,[CODIGO]
-                                ,[NOMBRE]
-                                ,[DESCRIPCION])
+                                ([ID],
+                                [CODIGO],
+                                [NOMBRE],
+                                [DESCRIPCION],
+                                [CODIGO_PROVEEDOR])
                                 VALUES
                                 (@ID
                                 ,@CODIGO
                                 ,@NOMBRE
-                                ,@DESCRIPCION)";
+                                ,@DESCRIPCION
+                                ,@CODIGO_PROVEEDOR)";
                 var c = new SqlCommand(query, conn);
                 c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
                 c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
                 c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                 c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
+                c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
 
                 return await c.ExecuteNonQueryAsync();
             }
@@ -53,25 +57,46 @@ namespace Persistencia.Producto
 
         public async Task<int> UPDATE(ProductoItem product)
         {
+            try
+            {
+                using (var conn = new SqlConnection(Connection.ConectionString))
+                {
+                    await conn.OpenAsync();
+                    var query = $@"UPDATE [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                           SET [CODIGO] = @CODIGO
+                              ,[NOMBRE] = @NOMBRE
+                              ,[DESCRIPCION] = @DESCRIPCION
+                              ,[CODIGO_PROVEEDOR] = @CODIGO_PROVEEDOR
+                         WHERE [ID]='{product.ID}'";
+                    var c = new SqlCommand(query, conn);
+
+                    c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
+                    c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
+                    c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
+                    c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
+
+                    return await c.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex) {
+                string mmm = ex.Message;
+                return 0;
+            }
+        }
+
+        public async Task<int> DELETE(Guid ID)
+        {
 
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 await conn.OpenAsync();
-                var query = $@"UPDATE [solucionsmart_ggamarra].[sport.TPRODUCTOS]
-                           SET [CODIGO] = @CODIGO
-                              ,[NOMBRE] = @NOMBRE
-                              ,[DESCRIPCION] = @DESCRIPCION
-                         WHERE [ID]='{product.ID}'";
+                var query = $@"DELETE FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                                 WHERE ID = '{ID}'";
                 var c = new SqlCommand(query, conn);
-
-                c.Parameters.Add("@CODIGO", SqlDbType.VarChar,200).Value = product.CODIGO;
-                c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
-                c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
-
-
                 return await c.ExecuteNonQueryAsync();
             }
         }
- 
+
+
     }
 }
