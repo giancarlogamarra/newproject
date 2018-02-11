@@ -15,17 +15,22 @@ namespace Persistencia.Producto
        
         public ProductoCommandsHandler() { }
 
-        public async Task<IEnumerable<ProductoItem>> GET()
+        public async Task<IEnumerable<ProductoItem>> GET(string search)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
+                string whereclause = "";
+                if (search != "")
+                    whereclause = $@" AND [NOMBRE] like '%{search}%'";
+
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
-                                [CODIGO_PROVEEDOR],[ESTADO],[USUARIO_CREACION],
+                                [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],[USUARIO_CREACION],
                                 [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
                            FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
-                           WHERE [ESTADO]='1'";
+                           WHERE [ESTADO]='1' {whereclause}";
 
                 var listquery = await conn.QueryAsync<ProductoItem>(query);
+                conn.Close();
                 return listquery;
             }
         }
@@ -43,7 +48,10 @@ namespace Persistencia.Producto
                                 [CODIGO_PROVEEDOR],
                                 [ESTADO],
                                 [USUARIO_CREACION],
-                                [FECHA_CREACION])
+                                [FECHA_CREACION],
+                                [PROVEEDOR_ID],
+                                [PRECIO_VENTA],
+                                [DSCTO_MAX])
                                 VALUES
                                 (@ID
                                 ,@CODIGO
@@ -52,7 +60,10 @@ namespace Persistencia.Producto
                                 ,@CODIGO_PROVEEDOR
                                 ,@ESTADO
                                 ,@USUARIO_CREACION
-                                ,@FECHA_CREACION)";
+                                ,@FECHA_CREACION
+                                ,@PROVEEDOR_ID
+                                ,@PRECIO_VENTA
+                                ,@DSCTO_MAX)";
                 var c = new SqlCommand(query, conn);
                 c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
                 c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
@@ -62,6 +73,9 @@ namespace Persistencia.Producto
                 c.Parameters.Add("@ESTADO", SqlDbType.Bit).Value = product.ESTADO;
                 c.Parameters.Add("@USUARIO_CREACION", SqlDbType.VarChar, 50).Value = product.USUARIO_CREACION;
                 c.Parameters.Add("@FECHA_CREACION", SqlDbType.DateTime).Value = product.FECHA_CREACION;
+                c.Parameters.Add("@PROVEEDOR_ID", SqlDbType.UniqueIdentifier).Value = product.PROVEEDOR_ID;
+                c.Parameters.Add("@PRECIO_VENTA", SqlDbType.Decimal).Value = product.PRECIO_VENTA;
+                c.Parameters.Add("@DSCTO_MAX", SqlDbType.Decimal).Value = product.DSCTO_MAX;
 
                 return c.ExecuteNonQuery();
             }
@@ -77,6 +91,9 @@ namespace Persistencia.Producto
                               ,[NOMBRE] = @NOMBRE
                               ,[DESCRIPCION] = @DESCRIPCION
                               ,[CODIGO_PROVEEDOR] = @CODIGO_PROVEEDOR
+                              ,[PROVEEDOR_ID] = @PROVEEDOR_ID
+                              ,[PRECIO_VENTA]=@PRECIO_VENTA
+                              ,[DSCTO_MAX]=@DSCTO_MAX
                               ,[USUARIO_MODIFICACION] = @USUARIO_MODIFICACION
                               ,[FECHA_MODIFICACION] = @FECHA_MODIFICACION
                          WHERE [ID]='{product.ID}'";
@@ -86,6 +103,9 @@ namespace Persistencia.Producto
                     c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                     c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
                     c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
+                    c.Parameters.Add("@PROVEEDOR_ID", SqlDbType.UniqueIdentifier).Value = product.PROVEEDOR_ID;
+                    c.Parameters.Add("@PRECIO_VENTA", SqlDbType.Decimal).Value = product.PRECIO_VENTA;
+                    c.Parameters.Add("@DSCTO_MAX", SqlDbType.Decimal).Value = product.DSCTO_MAX;
                     c.Parameters.Add("@USUARIO_MODIFICACION", SqlDbType.VarChar, 50).Value = product.USUARIO_MODIFICACION;
                     c.Parameters.Add("@FECHA_MODIFICACION", SqlDbType.DateTime).Value = DateTime.Now;
 

@@ -28,19 +28,21 @@ namespace Presentacion.Producto
 
         private void frmAdminProducto_Load(object sender, EventArgs e)
         {
-            this.GetProductos();
+            this.GetProductos("");
             this.GetProveedores();
         }
-        public async void GetProductos()
+        public async void GetProductos(string search)
         {
            dgvProductos.AutoGenerateColumns = false;           
-           dgvProductos.DataSource= await _Productoscommands.GET();
+           dgvProductos.DataSource= await _Productoscommands.GET(search);
            dgvProductos.ClearSelection();
         }
 
         public void GetProveedores()
         {
             cboProveedores.DataSource = _Proveedorescommands.GET();
+            cboProveedores.SelectedItem = null;
+
         }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -57,38 +59,74 @@ namespace Presentacion.Producto
             dgvProductos.ClearSelection();
             cleanControls();
             InformacionGeneralPanel.Enabled = true;
+            cboProveedores.SelectedItem = null;
         }
 
         private void MenuItem_Save_Click(object sender, EventArgs e)
         {
-            ProductoItem p = new ProductoItem()
-            {
-                ID = Guid.NewGuid(),
-                CODIGO = txtCodigo.Text,
-                NOMBRE = txtNombre.Text.ToUpper(),
-                DESCRIPCION = txtDescripcion.Text,
-                CODIGO_PROVEEDOR = txtCodigoProveedor.Text,
-                FECHA_CREACION = DateTime.Now,
-                USUARIO_CREACION = "demo",
-                ESTADO=true
-            };
-            if (this.obj_Toupdate == null)
-            {
-                var result = this._Productoscommands.ADD(p);
-            }
-            else
-            {
-                p.ID = this.obj_Toupdate.ID;
-                p.USUARIO_MODIFICACION = "demo";
-                p.FECHA_MODIFICACION = DateTime.Now;
-                this._Productoscommands.UPDATE(p);
-            }
-           GetProductos();
-           cleanControls();
-           InformacionGeneralPanel.Enabled = false;
 
+            if (Validator())
+            {
+                ProductoItem p = new ProductoItem()
+                {
+                    ID = Guid.NewGuid(),
+                    CODIGO = txtCodigo.Text,
+                    NOMBRE = txtNombre.Text.ToUpper(),
+                    DESCRIPCION = txtDescripcion.Text,
+                    CODIGO_PROVEEDOR = txtCodigoProveedor.Text,
+                    PROVEEDOR_ID = (Guid)(cboProveedores.SelectedValue == null ? Guid.Parse("00000000-0000-0000-0000-000000000000") : cboProveedores.SelectedValue),
+                    PRECIO_VENTA = txtPVenta.Value,
+                    DSCTO_MAX = txtDsctoMax.Value,
+                    FECHA_CREACION = DateTime.Now,
+                    USUARIO_CREACION = "demo",
+                    ESTADO = true
+                };
+                if (this.obj_Toupdate == null)
+                {
+                    var result = this._Productoscommands.ADD(p);
+                }
+                else
+                {
+                    p.ID = this.obj_Toupdate.ID;
+                    p.USUARIO_MODIFICACION = "demo";
+                    p.FECHA_MODIFICACION = DateTime.Now;
+                    this._Productoscommands.UPDATE(p);
+                }
+                GetProductos("");
+                cleanControls();
+                InformacionGeneralPanel.Enabled = false;
+            }
         }
-
+        public bool Validator() {
+            errorProvider1.Clear();
+            bool Validated = true;
+            if (txtCodigo.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)txtCodigo, "El Codigo es Requerido");
+                Validated = false;
+            }
+            if (txtNombre.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)txtNombre, "El Nombre del Producto es requerido");
+                Validated = false;
+            }
+            if (txtDescripcion.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)txtDescripcion, "La Descripcion del Producto es requerido");
+                Validated = false;
+            }
+            if (txtPVenta.Text.Trim() == "" || txtPVenta.Value==0)
+            {
+                errorProvider1.SetError((Control)txtPVenta, "El Precio de venta del Producto es requerido");
+                Validated = false;
+            }
+            if (txtDsctoMax.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)txtDsctoMax, "El Descuento del Producto es requerido");
+                Validated = false;
+            }
+            return Validated;
+        }
         public void cleanControls() {
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
@@ -98,6 +136,9 @@ namespace Presentacion.Producto
             txtFechaCreacion.Text = string.Empty;
             txtUsuarioModificacion.Text = string.Empty;
             txtFechaModificacion.Text = string.Empty;
+            cboProveedores.SelectedItem = null;
+            txtPVenta.ResetText();
+            txtDsctoMax.ResetText();
         }
 
        
@@ -105,6 +146,9 @@ namespace Presentacion.Producto
         public void FillControls(ProductoItem p) {
             if (p != null)
             {
+                txtPVenta.Value = 0;
+                txtDsctoMax.Value = 0;
+
                 txtCodigo.Text = p.CODIGO;
                 txtNombre.Text = p.NOMBRE;
                 txtDescripcion.Text = p.DESCRIPCION;
@@ -114,6 +158,11 @@ namespace Presentacion.Producto
                 txtUsuarioCreacion.Text = p.USUARIO_CREACION;
                 txtFechaCreacion.Text = p.FECHA_CREACION.ToString();
                 txtUsuarioModificacion.Text = p.USUARIO_MODIFICACION;
+                cboProveedores.SelectedValue = p.PROVEEDOR_ID;
+                
+                txtPVenta.Value = p.PRECIO_VENTA;
+                txtDsctoMax.Value = p.DSCTO_MAX;
+                
                 if (p.FECHA_MODIFICACION != DateTime.MinValue)
                     txtFechaModificacion.Text = p.FECHA_MODIFICACION.ToString();
             }
@@ -171,8 +220,17 @@ namespace Presentacion.Producto
                 this.obj_Toupdate = null;
                 MenuItem_Save.Enabled = false;
                 MenuItem_Delete.Enabled = false;
-                this.GetProductos();
+                this.GetProductos("");
             }            
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearch.Text.Trim().Length>2)
+                this.GetProductos(txtSearch.Text.Trim());
+
+            if (txtSearch.Text.Trim()=="")
+                    this.GetProductos("");
         }
     }
 }

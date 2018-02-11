@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,7 @@
             this.CODPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +55,11 @@
             this.txtCodigoProveedor = new System.Windows.Forms.TextBox();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPVenta = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDsctoMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,6 +70,7 @@
             this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFechaModificacion = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -73,8 +80,12 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -152,7 +163,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgvProductos);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
             // 
             // splitContainer1.Panel2
             // 
@@ -210,14 +221,15 @@
             this.DESCRIPCION.Name = "DESCRIPCION";
             this.DESCRIPCION.ReadOnly = true;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 30);
-            this.textBox1.TabIndex = 0;
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(277, 30);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // tabControl1
             // 
@@ -258,17 +270,24 @@
             this.InformacionGeneralPanel.Controls.Add(this.txtCodigoProveedor, 1, 3);
             this.InformacionGeneralPanel.Controls.Add(this.cboProveedores, 1, 4);
             this.InformacionGeneralPanel.Controls.Add(this.label9, 0, 4);
+            this.InformacionGeneralPanel.Controls.Add(this.pictureBox1, 2, 0);
+            this.InformacionGeneralPanel.Controls.Add(this.label10, 0, 5);
+            this.InformacionGeneralPanel.Controls.Add(this.txtPVenta, 1, 5);
+            this.InformacionGeneralPanel.Controls.Add(this.label11, 0, 6);
+            this.InformacionGeneralPanel.Controls.Add(this.txtDsctoMax, 1, 6);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Enabled = false;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(3, 3);
             this.InformacionGeneralPanel.Name = "InformacionGeneralPanel";
-            this.InformacionGeneralPanel.RowCount = 6;
+            this.InformacionGeneralPanel.RowCount = 8;
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.InformacionGeneralPanel.Size = new System.Drawing.Size(571, 460);
             this.InformacionGeneralPanel.TabIndex = 0;
             // 
@@ -360,6 +379,7 @@
             // 
             this.cboProveedores.DisplayMember = "NOMBRE";
             this.cboProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProveedores.FormattingEnabled = true;
             this.cboProveedores.Location = new System.Drawing.Point(131, 163);
             this.cboProveedores.Name = "cboProveedores";
@@ -378,6 +398,54 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "PROVEEDOR:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Presentacion.Properties.Resources.barcode;
+            this.pictureBox1.Location = new System.Drawing.Point(349, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 40);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "PRECIO VENTA S/.:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtPVenta
+            // 
+            this.txtPVenta.Location = new System.Drawing.Point(131, 203);
+            this.txtPVenta.Name = "txtPVenta";
+            this.txtPVenta.Size = new System.Drawing.Size(134, 30);
+            this.txtPVenta.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 240);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 40);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "DESCUENTO MAXIMO S/.:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDsctoMax
+            // 
+            this.txtDsctoMax.Location = new System.Drawing.Point(131, 243);
+            this.txtDsctoMax.Name = "txtDsctoMax";
+            this.txtDsctoMax.Size = new System.Drawing.Size(134, 30);
+            this.txtDsctoMax.TabIndex = 16;
             // 
             // tabPage2
             // 
@@ -501,6 +569,10 @@
             this.txtFechaModificacion.Size = new System.Drawing.Size(212, 26);
             this.txtFechaModificacion.TabIndex = 9;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAdminProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -528,9 +600,13 @@
             this.tabPage1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
             this.InformacionGeneralPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,7 +620,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_New;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvProductos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -573,5 +649,11 @@
         private System.Windows.Forms.TextBox txtFechaModificacion;
         private System.Windows.Forms.ComboBox cboProveedores;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown txtPVenta;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown txtDsctoMax;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -10,7 +10,7 @@ namespace Persistencia.Producto
 {
     public interface IProductoCommandsHandler
     {
-        Task<IEnumerable<ProductoItem>> GET();
+        Task<IEnumerable<ProductoItem>> GET(string search);
         int UPDATE(ProductoItem product);
         int ADD(ProductoItem product);
         int DELETE(Guid ID);

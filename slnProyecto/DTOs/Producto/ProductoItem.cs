@@ -18,5 +18,9 @@ namespace DTOs.Producto
         public DateTime FECHA_CREACION { get; set; }
         public string USUARIO_MODIFICACION { get; set; }
         public DateTime FECHA_MODIFICACION { get; set; }
+        public Guid PROVEEDOR_ID { get; set; }
+        public decimal PRECIO_VENTA { get; set; }
+        public decimal DSCTO_MAX { get; set; }
+        
     }
 }
