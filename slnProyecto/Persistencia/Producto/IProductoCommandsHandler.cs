@@ -1,4 +1,5 @@
-﻿using DTOs.Proveedor;
+﻿using DTOs.Producto;
+using DTOs.Proveedor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Persistencia.Producto
 {
     public interface IProductoCommandsHandler
     {
-        IEnumerable<ProductoItem> GET();
-        Task<int> UPDATE(ProductoItem product);
-        Task<int> ADD(ProductoItem product);
-        Task<int> DELETE(Guid ID);
+        Task<IEnumerable<ProductoItem>> GET();
+        int UPDATE(ProductoItem product);
+        int ADD(ProductoItem product);
+        int DELETE(Guid ID);
     }
 }

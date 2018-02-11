@@ -36,23 +36,34 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtCodigoProveedor = new System.Windows.Forms.TextBox();
-            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboProveedores = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtUsuarioModificacion = new System.Windows.Forms.TextBox();
+            this.txtFechaCreacion = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtFechaModificacion = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -62,6 +73,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -169,6 +182,34 @@
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             this.dgvProductos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProductos_KeyDown);
             // 
+            // CODIGO
+            // 
+            this.CODIGO.DataPropertyName = "CODIGO";
+            this.CODIGO.HeaderText = "CODIGO";
+            this.CODIGO.Name = "CODIGO";
+            this.CODIGO.ReadOnly = true;
+            // 
+            // CODPROVEEDOR
+            // 
+            this.CODPROVEEDOR.DataPropertyName = "CODIGO_PROVEEDOR";
+            this.CODPROVEEDOR.HeaderText = "COD. PROVEEDOR";
+            this.CODPROVEEDOR.Name = "CODPROVEEDOR";
+            this.CODPROVEEDOR.ReadOnly = true;
+            // 
+            // NOMBRE
+            // 
+            this.NOMBRE.DataPropertyName = "NOMBRE";
+            this.NOMBRE.HeaderText = "NOMBRE";
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            // 
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -215,18 +256,33 @@
             this.InformacionGeneralPanel.Controls.Add(this.txtCodigo, 1, 0);
             this.InformacionGeneralPanel.Controls.Add(this.label1, 0, 0);
             this.InformacionGeneralPanel.Controls.Add(this.txtCodigoProveedor, 1, 3);
+            this.InformacionGeneralPanel.Controls.Add(this.cboProveedores, 1, 4);
+            this.InformacionGeneralPanel.Controls.Add(this.label9, 0, 4);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Enabled = false;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(3, 3);
             this.InformacionGeneralPanel.Name = "InformacionGeneralPanel";
-            this.InformacionGeneralPanel.RowCount = 5;
+            this.InformacionGeneralPanel.RowCount = 6;
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.InformacionGeneralPanel.Size = new System.Drawing.Size(571, 460);
             this.InformacionGeneralPanel.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 40);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "CODIGO PROVEEDOR:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtDescripcion
             // 
@@ -291,28 +347,6 @@
             this.label1.Text = "CODIGO:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(519, 466);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 40);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "CODIGO PROVEEDOR:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // txtCodigoProveedor
             // 
             this.txtCodigoProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -322,33 +356,150 @@
             this.txtCodigoProveedor.Size = new System.Drawing.Size(212, 26);
             this.txtCodigoProveedor.TabIndex = 9;
             // 
-            // CODIGO
+            // cboProveedores
             // 
-            this.CODIGO.DataPropertyName = "CODIGO";
-            this.CODIGO.HeaderText = "CODIGO";
-            this.CODIGO.Name = "CODIGO";
-            this.CODIGO.ReadOnly = true;
+            this.cboProveedores.DisplayMember = "NOMBRE";
+            this.cboProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboProveedores.FormattingEnabled = true;
+            this.cboProveedores.Location = new System.Drawing.Point(131, 163);
+            this.cboProveedores.Name = "cboProveedores";
+            this.cboProveedores.Size = new System.Drawing.Size(212, 33);
+            this.cboProveedores.TabIndex = 10;
+            this.cboProveedores.ValueMember = "ID";
             // 
-            // CODPROVEEDOR
+            // label9
             // 
-            this.CODPROVEEDOR.DataPropertyName = "CODIGO_PROVEEDOR";
-            this.CODPROVEEDOR.HeaderText = "COD. PROVEEDOR";
-            this.CODPROVEEDOR.Name = "CODPROVEEDOR";
-            this.CODPROVEEDOR.ReadOnly = true;
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 160);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 40);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "PROVEEDOR:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // NOMBRE
+            // tabPage2
             // 
-            this.NOMBRE.DataPropertyName = "NOMBRE";
-            this.NOMBRE.HeaderText = "NOMBRE";
-            this.NOMBRE.Name = "NOMBRE";
-            this.NOMBRE.ReadOnly = true;
+            this.tabPage2.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(577, 466);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Auditoria";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // DESCRIPCION
+            // tableLayoutPanel1
             // 
-            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
-            this.DESCRIPCION.HeaderText = "DESCRIPCION";
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtUsuarioModificacion, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtFechaCreacion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtUsuarioCreacion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtFechaModificacion, 1, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Enabled = false;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(571, 460);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 120);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 40);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "FECHA MODIFICACION:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtUsuarioModificacion
+            // 
+            this.txtUsuarioModificacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtUsuarioModificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioModificacion.Location = new System.Drawing.Point(131, 83);
+            this.txtUsuarioModificacion.Name = "txtUsuarioModificacion";
+            this.txtUsuarioModificacion.Size = new System.Drawing.Size(212, 26);
+            this.txtUsuarioModificacion.TabIndex = 7;
+            // 
+            // txtFechaCreacion
+            // 
+            this.txtFechaCreacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaCreacion.Location = new System.Drawing.Point(131, 43);
+            this.txtFechaCreacion.Name = "txtFechaCreacion";
+            this.txtFechaCreacion.Size = new System.Drawing.Size(212, 26);
+            this.txtFechaCreacion.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 40);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "USUARIO MODIFICACION:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 40);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "FECHA CREACION:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtUsuarioCreacion
+            // 
+            this.txtUsuarioCreacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtUsuarioCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioCreacion.Location = new System.Drawing.Point(131, 3);
+            this.txtUsuarioCreacion.Name = "txtUsuarioCreacion";
+            this.txtUsuarioCreacion.Size = new System.Drawing.Size(212, 26);
+            this.txtUsuarioCreacion.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 40);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "USUARIO CREACION:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtFechaModificacion
+            // 
+            this.txtFechaModificacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFechaModificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaModificacion.Location = new System.Drawing.Point(131, 123);
+            this.txtFechaModificacion.Name = "txtFechaModificacion";
+            this.txtFechaModificacion.Size = new System.Drawing.Size(212, 26);
+            this.txtFechaModificacion.TabIndex = 9;
             // 
             // frmAdminProducto
             // 
@@ -377,6 +528,9 @@
             this.tabPage1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
             this.InformacionGeneralPanel.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,5 +562,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CODPROVEEDOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtUsuarioModificacion;
+        private System.Windows.Forms.TextBox txtFechaCreacion;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtUsuarioCreacion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtFechaModificacion;
+        private System.Windows.Forms.ComboBox cboProveedores;
+        private System.Windows.Forms.Label label9;
     }
 }

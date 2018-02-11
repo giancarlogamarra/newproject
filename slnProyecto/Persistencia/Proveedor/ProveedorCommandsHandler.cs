@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using DTOs.Producto;
 using DTOs.Proveedor;
 using System;
 using System.Collections.Generic;
@@ -8,29 +7,37 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Persistencia.Producto
+namespace Persistencia.Proveedor
 {
-    public class ProductoCommandsHandler : IProductoCommandsHandler
+    public class ProveedorCommandsHandler : IProveedorCommandsHandler
     {
        
-        public ProductoCommandsHandler() { }
+        public ProveedorCommandsHandler() { }
 
-        public async Task<IEnumerable<ProductoItem>> GET()
+        public IEnumerable<ProveedorItem> GET()
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
-                var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
-                                [CODIGO_PROVEEDOR],[ESTADO],[USUARIO_CREACION],
-                                [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
-                           FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
+                var query = $@"SELECT [ID]
+                                      ,[NOMBRE]
+                                      ,[RAZON_SOCIAL]
+                                      ,[DIRECCION]
+                                      ,[TELEFONO_FIJO]
+                                      ,[TELEFONO_CELULAR]
+                                      ,[ESTADO]
+                                      ,[USUARIO_CREACION]
+                                      ,[FECHA_CREACION]
+                                      ,[USUARIO_MODIFICACION]
+                                      ,[FECHA_MODIFICACION]
+                                  FROM [solucionsmart_ggamarra].[sport.TPROVEEDORES]
                            WHERE [ESTADO]='1'";
 
-                var listquery = await conn.QueryAsync<ProductoItem>(query);
+                var listquery = conn.Query<ProveedorItem>(query);
                 return listquery;
             }
         }
 
-        public int ADD(ProductoItem product)
+        public int ADD(ProveedorItem product)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
@@ -54,20 +61,20 @@ namespace Persistencia.Producto
                                 ,@USUARIO_CREACION
                                 ,@FECHA_CREACION)";
                 var c = new SqlCommand(query, conn);
-                c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
+               /* c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
                 c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
                 c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                 c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
                 c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
                 c.Parameters.Add("@ESTADO", SqlDbType.Bit).Value = product.ESTADO;
                 c.Parameters.Add("@USUARIO_CREACION", SqlDbType.VarChar, 50).Value = product.USUARIO_CREACION;
-                c.Parameters.Add("@FECHA_CREACION", SqlDbType.DateTime).Value = product.FECHA_CREACION;
+                c.Parameters.Add("@FECHA_CREACION", SqlDbType.DateTime).Value = product.FECHA_CREACION;*/
 
                 return c.ExecuteNonQuery();
             }
         }
 
-        public int UPDATE(ProductoItem product)
+        public int UPDATE(ProveedorItem product)
         {
                   using (var conn = new SqlConnection(Connection.ConectionString))
                 {
@@ -82,12 +89,12 @@ namespace Persistencia.Producto
                          WHERE [ID]='{product.ID}'";
                     var c = new SqlCommand(query, conn);
 
-                    c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
+                   /* c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
                     c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                     c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
                     c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
                     c.Parameters.Add("@USUARIO_MODIFICACION", SqlDbType.VarChar, 50).Value = product.USUARIO_MODIFICACION;
-                    c.Parameters.Add("@FECHA_MODIFICACION", SqlDbType.DateTime).Value = DateTime.Now;
+                    c.Parameters.Add("@FECHA_MODIFICACION", SqlDbType.DateTime).Value = DateTime.Now;*/
 
                     return c.ExecuteNonQuery();
                 }

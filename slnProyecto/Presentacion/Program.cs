@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimpleInjector;
 using Persistencia.Producto;
+using Persistencia.Proveedor;
 
 namespace Presentacion
 {
@@ -30,6 +31,7 @@ namespace Presentacion
 
             // Register your types, for instance:
             container.Register<IProductoCommandsHandler, ProductoCommandsHandler>(Lifestyle.Singleton);
+            container.Register<IProveedorCommandsHandler, ProveedorCommandsHandler>(Lifestyle.Singleton);
             //container.Register<IProveedorQueryHandler, frm_AdminProveedor>();
             // container.Register<frm_AdminProveedor>();
 

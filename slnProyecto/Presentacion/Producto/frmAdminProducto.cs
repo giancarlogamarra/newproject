@@ -1,5 +1,7 @@
-﻿using DTOs.Proveedor;
+﻿using DTOs.Producto;
+using DTOs.Proveedor;
 using Persistencia.Producto;
+using Persistencia.Proveedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,26 +16,32 @@ namespace Presentacion.Producto
 {
     public partial class frmAdminProducto : Form
     {
-        IProductoCommandsHandler _commands;
-        ProductoItem obj_Toupdate=null;
-        public frmAdminProducto(IProductoCommandsHandler commands)
+        IProductoCommandsHandler _Productoscommands;
+        IProveedorCommandsHandler _Proveedorescommands;
+        ProductoItem obj_Toupdate =null;
+        public frmAdminProducto(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands)
         {
-            this._commands = commands;
+            this._Productoscommands = prodcommands;
+            this._Proveedorescommands = provcommands;
             InitializeComponent();
         }
 
         private void frmAdminProducto_Load(object sender, EventArgs e)
         {
             this.GetProductos();
+            this.GetProveedores();
         }
         public async void GetProductos()
         {
-           dgvProductos.AutoGenerateColumns = false;
-           dgvProductos.DataSource= _commands.GET();
+           dgvProductos.AutoGenerateColumns = false;           
+           dgvProductos.DataSource= await _Productoscommands.GET();
            dgvProductos.ClearSelection();
-
         }
 
+        public void GetProveedores()
+        {
+            cboProveedores.DataSource = _Proveedorescommands.GET();
+        }
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -58,21 +66,26 @@ namespace Presentacion.Producto
                 ID = Guid.NewGuid(),
                 CODIGO = txtCodigo.Text,
                 NOMBRE = txtNombre.Text.ToUpper(),
-                DESCRIPCION=txtDescripcion.Text,
-                CODIGO_PROVEEDOR=txtCodigoProveedor.Text
+                DESCRIPCION = txtDescripcion.Text,
+                CODIGO_PROVEEDOR = txtCodigoProveedor.Text,
+                FECHA_CREACION = DateTime.Now,
+                USUARIO_CREACION = "demo",
+                ESTADO=true
             };
             if (this.obj_Toupdate == null)
             {
-                var result = this._commands.ADD(p);
+                var result = this._Productoscommands.ADD(p);
             }
             else
             {
                 p.ID = this.obj_Toupdate.ID;
-                this._commands.UPDATE(p);
+                p.USUARIO_MODIFICACION = "demo";
+                p.FECHA_MODIFICACION = DateTime.Now;
+                this._Productoscommands.UPDATE(p);
             }
            GetProductos();
            cleanControls();
-            InformacionGeneralPanel.Enabled = false;
+           InformacionGeneralPanel.Enabled = false;
 
         }
 
@@ -81,16 +94,29 @@ namespace Presentacion.Producto
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
             txtCodigoProveedor.Text = string.Empty;
+            txtUsuarioCreacion.Text = string.Empty;
+            txtFechaCreacion.Text = string.Empty;
+            txtUsuarioModificacion.Text = string.Empty;
+            txtFechaModificacion.Text = string.Empty;
         }
 
        
 
         public void FillControls(ProductoItem p) {
-            txtCodigo.Text = p.CODIGO;
-            txtNombre.Text = p.NOMBRE;
-            txtDescripcion.Text = p.DESCRIPCION;
-            txtCodigoProveedor.Text = p.CODIGO_PROVEEDOR;
-            InformacionGeneralPanel.Enabled = true;
+            if (p != null)
+            {
+                txtCodigo.Text = p.CODIGO;
+                txtNombre.Text = p.NOMBRE;
+                txtDescripcion.Text = p.DESCRIPCION;
+                txtCodigoProveedor.Text = p.CODIGO_PROVEEDOR;
+                InformacionGeneralPanel.Enabled = true;
+                //tab auditoria
+                txtUsuarioCreacion.Text = p.USUARIO_CREACION;
+                txtFechaCreacion.Text = p.FECHA_CREACION.ToString();
+                txtUsuarioModificacion.Text = p.USUARIO_MODIFICACION;
+                if (p.FECHA_MODIFICACION != DateTime.MinValue)
+                    txtFechaModificacion.Text = p.FECHA_MODIFICACION.ToString();
+            }
         }
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -105,7 +131,7 @@ namespace Presentacion.Producto
         }
         private void dgvProductos_KeyDown(object sender, KeyEventArgs e)
         {
-            ProductoItem valor=null;
+            ProductoItem valor =null;
             if (e.KeyData == Keys.Down)
             {
                 if(dgvProductos.Rows.Count == dgvProductos.CurrentRow.Index + 1)
@@ -140,7 +166,7 @@ namespace Presentacion.Producto
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                this._commands.DELETE(this.obj_Toupdate.ID);
+                this._Productoscommands.DELETE(this.obj_Toupdate.ID);
                 this.cleanControls();
                 this.obj_Toupdate = null;
                 MenuItem_Save.Enabled = false;
