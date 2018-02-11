@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemProducto = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -40,13 +41,24 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemProducto});
+            this.MenuItemProducto,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MdiWindowListItem = this.MenuItemProducto;
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(115, 462);
+            this.menuStrip1.Size = new System.Drawing.Size(131, 462);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripMenuItem1.Image = global::Presentacion.Properties.Resources.proveedor;
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 72);
+            this.toolStripMenuItem1.Text = "PROVEEDORES";
+            this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // MenuItemProducto
             // 
@@ -54,7 +66,7 @@
             this.MenuItemProducto.Image = global::Presentacion.Properties.Resources.product;
             this.MenuItemProducto.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.MenuItemProducto.Name = "MenuItemProducto";
-            this.MenuItemProducto.Size = new System.Drawing.Size(102, 72);
+            this.MenuItemProducto.Size = new System.Drawing.Size(118, 72);
             this.MenuItemProducto.Text = "PRODUCTOS";
             this.MenuItemProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItemProducto.Click += new System.EventHandler(this.MenuItemProducto_Click);
@@ -84,6 +96,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MenuItemProducto;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
