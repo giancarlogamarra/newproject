@@ -21,6 +21,8 @@ namespace DTOs.Producto
         public Guid PROVEEDOR_ID { get; set; }
         public decimal PRECIO_VENTA { get; set; }
         public decimal DSCTO_MAX { get; set; }
-        
+        public int ALERTA_STOCK_MIN_TIENDA { get; set; }
+
+
     }
 }

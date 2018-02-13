@@ -79,7 +79,8 @@ namespace Presentacion.Producto
                     DSCTO_MAX = txtDsctoMax.Value,
                     FECHA_CREACION = DateTime.Now,
                     USUARIO_CREACION = "demo",
-                    ESTADO = true
+                    ESTADO = true,
+                    ALERTA_STOCK_MIN_TIENDA=(int)txtMinSctock.Value
                 };
                 if (this.obj_Toupdate == null)
                 {
@@ -139,6 +140,7 @@ namespace Presentacion.Producto
             cboProveedores.SelectedItem = null;
             txtPVenta.ResetText();
             txtDsctoMax.ResetText();
+            txtMinSctock.ResetText();
         }
 
        
@@ -162,7 +164,7 @@ namespace Presentacion.Producto
                 
                 txtPVenta.Value = p.PRECIO_VENTA;
                 txtDsctoMax.Value = p.DSCTO_MAX;
-                
+                txtMinSctock.Value = p.ALERTA_STOCK_MIN_TIENDA;
                 if (p.FECHA_MODIFICACION != DateTime.MinValue)
                     txtFechaModificacion.Text = p.FECHA_MODIFICACION.ToString();
             }

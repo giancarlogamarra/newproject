@@ -24,7 +24,8 @@ namespace Persistencia.Producto
                     whereclause = $@" AND [NOMBRE] like '%{search}%'";
 
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
-                                [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],[USUARIO_CREACION],
+                                [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
+                                [ALERTA_STOCK_MIN_TIENDA],[USUARIO_CREACION],
                                 [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
                            FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
                            WHERE [ESTADO]='1' {whereclause}";
@@ -51,7 +52,8 @@ namespace Persistencia.Producto
                                 [FECHA_CREACION],
                                 [PROVEEDOR_ID],
                                 [PRECIO_VENTA],
-                                [DSCTO_MAX])
+                                [DSCTO_MAX],
+                                [ALERTA_STOCK_MIN_TIENDA])
                                 VALUES
                                 (@ID
                                 ,@CODIGO
@@ -63,7 +65,8 @@ namespace Persistencia.Producto
                                 ,@FECHA_CREACION
                                 ,@PROVEEDOR_ID
                                 ,@PRECIO_VENTA
-                                ,@DSCTO_MAX)";
+                                ,@DSCTO_MAX
+                                ,@ALERTA_STOCK_MIN_TIENDA)";
                 var c = new SqlCommand(query, conn);
                 c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
                 c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
@@ -76,7 +79,7 @@ namespace Persistencia.Producto
                 c.Parameters.Add("@PROVEEDOR_ID", SqlDbType.UniqueIdentifier).Value = product.PROVEEDOR_ID;
                 c.Parameters.Add("@PRECIO_VENTA", SqlDbType.Decimal).Value = product.PRECIO_VENTA;
                 c.Parameters.Add("@DSCTO_MAX", SqlDbType.Decimal).Value = product.DSCTO_MAX;
-
+                c.Parameters.Add("@ALERTA_STOCK_MIN_TIENDA", SqlDbType.Int).Value = product.ALERTA_STOCK_MIN_TIENDA;
                 return c.ExecuteNonQuery();
             }
         }
@@ -94,6 +97,7 @@ namespace Persistencia.Producto
                               ,[PROVEEDOR_ID] = @PROVEEDOR_ID
                               ,[PRECIO_VENTA]=@PRECIO_VENTA
                               ,[DSCTO_MAX]=@DSCTO_MAX
+                              ,[ALERTA_STOCK_MIN_TIENDA]=@ALERTA_STOCK_MIN_TIENDA
                               ,[USUARIO_MODIFICACION] = @USUARIO_MODIFICACION
                               ,[FECHA_MODIFICACION] = @FECHA_MODIFICACION
                          WHERE [ID]='{product.ID}'";
@@ -108,7 +112,8 @@ namespace Persistencia.Producto
                     c.Parameters.Add("@DSCTO_MAX", SqlDbType.Decimal).Value = product.DSCTO_MAX;
                     c.Parameters.Add("@USUARIO_MODIFICACION", SqlDbType.VarChar, 50).Value = product.USUARIO_MODIFICACION;
                     c.Parameters.Add("@FECHA_MODIFICACION", SqlDbType.DateTime).Value = DateTime.Now;
-
+                    c.Parameters.Add("@ALERTA_STOCK_MIN_TIENDA", SqlDbType.Int).Value =product.ALERTA_STOCK_MIN_TIENDA;
+                
                     return c.ExecuteNonQuery();
                 }
  
