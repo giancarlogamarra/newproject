@@ -60,6 +60,8 @@
             this.txtPVenta = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDsctoMax = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtMinSctock = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,8 +73,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtFechaModificacion = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtMinSctock = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -85,10 +85,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -121,7 +121,7 @@
             // 
             this.MenuItem_Save.Enabled = false;
             this.MenuItem_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.save;
+            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.add1;
             this.MenuItem_Save.Name = "MenuItem_Save";
             this.MenuItem_Save.Size = new System.Drawing.Size(69, 54);
             this.MenuItem_Save.Text = "Grabar";
@@ -453,6 +453,25 @@
             this.txtDsctoMax.Size = new System.Drawing.Size(134, 30);
             this.txtDsctoMax.TabIndex = 16;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 280);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(122, 34);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "STOCK MIN EN TIENDA:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtMinSctock
+            // 
+            this.txtMinSctock.Location = new System.Drawing.Point(131, 283);
+            this.txtMinSctock.Name = "txtMinSctock";
+            this.txtMinSctock.Size = new System.Drawing.Size(134, 30);
+            this.txtMinSctock.TabIndex = 18;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel1);
@@ -579,25 +598,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 280);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(122, 34);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "STOCK MIN EN TIENDA:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtMinSctock
-            // 
-            this.txtMinSctock.Location = new System.Drawing.Point(131, 283);
-            this.txtMinSctock.Name = "txtMinSctock";
-            this.txtMinSctock.Size = new System.Drawing.Size(134, 30);
-            this.txtMinSctock.TabIndex = 18;
-            // 
             // frmAdminProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -628,11 +628,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

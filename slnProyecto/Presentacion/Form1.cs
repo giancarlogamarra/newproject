@@ -1,4 +1,5 @@
-﻿using Presentacion.Producto;
+﻿using Presentacion.Compras;
+using Presentacion.Producto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,14 @@ namespace Presentacion
         private void MenuItemProducto_Click(object sender, EventArgs e)
         {
             var BL = Program.container.GetInstance<frmAdminProducto>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
+
+        private void MenuItemCompras_Click(object sender, EventArgs e)
+        {
+            var BL = Program.container.GetInstance<frmCompras>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();

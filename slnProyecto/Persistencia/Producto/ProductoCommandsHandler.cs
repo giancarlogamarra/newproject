@@ -15,6 +15,27 @@ namespace Persistencia.Producto
        
         public ProductoCommandsHandler() { }
 
+
+        public async Task<ProductoItem> GETPRODUCTO(string CODIGO)
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                string whereclause = "";
+                whereclause = $@" AND [CODIGO] = '{CODIGO}'";
+
+                var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
+                                [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
+                                [ALERTA_STOCK_MIN_TIENDA],[USUARIO_CREACION],
+                                [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
+                           FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
+                           WHERE [ESTADO]='1' {whereclause}";
+
+                var product = await conn.QueryFirstOrDefaultAsync<ProductoItem>(query);
+                conn.Close();
+                return product;
+            }
+        }
+
         public async Task<IEnumerable<ProductoItem>> GET(string search)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
