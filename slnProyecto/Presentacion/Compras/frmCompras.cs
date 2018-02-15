@@ -1,4 +1,5 @@
 ﻿using DTOs.Producto;
+using Persistencia.Compras;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
 using System;
@@ -17,12 +18,15 @@ namespace Presentacion.Compras
     {
         IProductoCommandsHandler _Productoscommands;
         IProveedorCommandsHandler _Proveedorescommands;
+        IComprasCommandsHandler _Comprascommands;
+        
         ProductoItem productoAgregar;
         List<CompraItem> ListCompras = new List<CompraItem>();
-        public frmCompras(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands)
+        public frmCompras(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands, IComprasCommandsHandler comprascommands)
         {
             this._Productoscommands = prodcommands;
             this._Proveedorescommands = provcommands;
+            this._Comprascommands = comprascommands;
             InitializeComponent();
             this.dgvCompras.AutoGenerateColumns = false;
         }
@@ -77,7 +81,7 @@ namespace Presentacion.Compras
             if (Validator()) {
                 dgvCompras.DataSource = null;
                 CompraItem item = new CompraItem() {
-                    ID = this.productoAgregar.ID,
+                    PRODUCTO_ID = this.productoAgregar.ID,
                     CODIGO=this.productoAgregar.CODIGO,
                     NOMBRE=this.productoAgregar.NOMBRE,
                     DESCRIPCION=this.productoAgregar.DESCRIPCION,
@@ -91,6 +95,10 @@ namespace Presentacion.Compras
                 this.CleanControls();
                 this.CalcularTotal(this.ListCompras);
             }
+            if (this.ListCompras.Count > 0)
+                this.MenuItem_GrabarCompra.Enabled = true;
+            else
+                this.MenuItem_GrabarCompra.Enabled = false;
         }
         public void CalcularTotal(List<CompraItem> compras) {
             decimal total = 0;
@@ -133,6 +141,21 @@ namespace Presentacion.Compras
            
         }
 
-   
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MenuItem_GrabarCompra_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (txtNroComprobante.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)txtNroComprobante, "Debe ingresar un Nro de Comprobante");
+            }
+            else {
+                int result = this._Comprascommands.ADD(this.ListCompras, txtNroComprobante.Text);
+            }
+        }
     }
 }

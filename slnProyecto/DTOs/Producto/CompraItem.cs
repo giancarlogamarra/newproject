@@ -8,7 +8,7 @@ namespace DTOs.Producto
 {
     public class CompraItem
     {
-        public Guid ID { get; set; }
+        public Guid PRODUCTO_ID { get; set; }
         public string CODIGO { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }

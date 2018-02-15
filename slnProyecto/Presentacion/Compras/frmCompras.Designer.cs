@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_GrabarCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.NumericUpDown();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPCompra = new System.Windows.Forms.NumericUpDown();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +64,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNroComprobante = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,7 +91,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_New,
             this.MenuItem_AddItem,
-            this.MenuItem_Delete,
+            this.MenuItem_GrabarCompra,
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -117,15 +119,16 @@
             this.MenuItem_AddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItem_AddItem.Click += new System.EventHandler(this.MenuItem_AddItem_Click);
             // 
-            // MenuItem_Delete
+            // MenuItem_GrabarCompra
             // 
-            this.MenuItem_Delete.Enabled = false;
-            this.MenuItem_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Delete.Image = global::Presentacion.Properties.Resources.trash;
-            this.MenuItem_Delete.Name = "MenuItem_Delete";
-            this.MenuItem_Delete.Size = new System.Drawing.Size(66, 54);
-            this.MenuItem_Delete.Text = "Borrar";
-            this.MenuItem_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_GrabarCompra.Enabled = false;
+            this.MenuItem_GrabarCompra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_GrabarCompra.Image = global::Presentacion.Properties.Resources.save;
+            this.MenuItem_GrabarCompra.Name = "MenuItem_GrabarCompra";
+            this.MenuItem_GrabarCompra.Size = new System.Drawing.Size(128, 54);
+            this.MenuItem_GrabarCompra.Text = "Grabar Compra";
+            this.MenuItem_GrabarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_GrabarCompra.Click += new System.EventHandler(this.MenuItem_GrabarCompra_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -136,6 +139,7 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
             this.toolStripMenuItem2.Text = "Close";
             this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // splitContainer1
             // 
@@ -176,6 +180,8 @@
             this.InformacionGeneralPanel.Controls.Add(this.dtpFechaCompra, 3, 2);
             this.InformacionGeneralPanel.Controls.Add(this.label5, 2, 1);
             this.InformacionGeneralPanel.Controls.Add(this.txtDescripcion, 3, 1);
+            this.InformacionGeneralPanel.Controls.Add(this.label9, 2, 3);
+            this.InformacionGeneralPanel.Controls.Add(this.txtNroComprobante, 3, 3);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(0, 0);
             this.InformacionGeneralPanel.Name = "InformacionGeneralPanel";
@@ -213,27 +219,6 @@
             this.txtCodigo.TabIndex = 1;
             this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(557, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 40);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "FECHA DE COMPRA:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dtpFechaCompra
-            // 
-            this.dtpFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaCompra.Location = new System.Drawing.Point(685, 83);
-            this.dtpFechaCompra.Name = "dtpFechaCompra";
-            this.dtpFechaCompra.Size = new System.Drawing.Size(200, 30);
-            this.dtpFechaCompra.TabIndex = 10;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -248,34 +233,11 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.Location = new System.Drawing.Point(131, 43);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(420, 30);
+            this.txtCantidad.Size = new System.Drawing.Size(200, 30);
             this.txtCantidad.TabIndex = 14;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNombre.Enabled = false;
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(685, 3);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(420, 26);
-            this.txtNombre.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(557, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 40);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "NOMBRE:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -297,27 +259,6 @@
             this.txtPCompra.Name = "txtPCompra";
             this.txtPCompra.Size = new System.Drawing.Size(200, 30);
             this.txtPCompra.TabIndex = 16;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(685, 43);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(420, 26);
-            this.txtDescripcion.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(557, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 40);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "DESCRIPCION:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -343,6 +284,70 @@
             this.cboProveedores.Size = new System.Drawing.Size(420, 33);
             this.cboProveedores.TabIndex = 8;
             this.cboProveedores.ValueMember = "ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(557, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 40);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "NOMBRE:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(685, 3);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(420, 26);
+            this.txtNombre.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(557, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 40);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "FECHA DE COMPRA:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dtpFechaCompra
+            // 
+            this.dtpFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaCompra.Location = new System.Drawing.Point(685, 83);
+            this.dtpFechaCompra.Name = "dtpFechaCompra";
+            this.dtpFechaCompra.Size = new System.Drawing.Size(200, 30);
+            this.dtpFechaCompra.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(557, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 40);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "DESCRIPCION:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescripcion.Enabled = false;
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(685, 43);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(420, 26);
+            this.txtDescripcion.TabIndex = 12;
             // 
             // splitContainer2
             // 
@@ -377,9 +382,11 @@
             this.REMOVE});
             this.dgvCompras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCompras.Location = new System.Drawing.Point(0, 0);
+            this.dgvCompras.MultiSelect = false;
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowTemplate.Height = 24;
+            this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCompras.Size = new System.Drawing.Size(1108, 316);
             this.dgvCompras.TabIndex = 0;
             this.dgvCompras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompras_CellClick);
@@ -415,9 +422,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_COMPRA";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle2;
             this.FECHA_COMPRA.HeaderText = "FECHA_COMPRA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -491,6 +498,27 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(557, 120);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 40);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "NRO COMPROBANTE";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNroComprobante
+            // 
+            this.txtNroComprobante.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNroComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroComprobante.Location = new System.Drawing.Point(685, 123);
+            this.txtNroComprobante.Name = "txtNroComprobante";
+            this.txtNroComprobante.Size = new System.Drawing.Size(420, 26);
+            this.txtNroComprobante.TabIndex = 18;
+            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -530,7 +558,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_New;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_AddItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_Delete;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_GrabarCompra;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel InformacionGeneralPanel;
@@ -561,5 +589,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDAD;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRECIO_COMPRA;
         private System.Windows.Forms.DataGridViewButtonColumn REMOVE;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtNroComprobante;
     }
 }
