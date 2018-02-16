@@ -127,6 +127,8 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Proveedor\IProveedorCommandsHandler.cs" />
     <Compile Include="Proveedor\ProveedorCommandsHandler.cs" />
+    <Compile Include="Ventas\IVentasCommandsHandler.cs" />
+    <Compile Include="Ventas\VentasCommandsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTOs\DTOs.csproj">

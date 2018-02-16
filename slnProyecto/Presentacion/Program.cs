@@ -7,6 +7,7 @@ using SimpleInjector;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
 using Persistencia.Compras;
+using Persistencia.Ventas;
 
 namespace Presentacion
 {
@@ -34,6 +35,7 @@ namespace Presentacion
             container.Register<IProductoCommandsHandler, ProductoCommandsHandler>(Lifestyle.Singleton);
             container.Register<IProveedorCommandsHandler, ProveedorCommandsHandler>(Lifestyle.Singleton);
             container.Register<IComprasCommandsHandler, ComprasCommandsHandler>(Lifestyle.Singleton);
+            container.Register<IVentasCommandsHandler, VentasCommandsHandler>(Lifestyle.Singleton);
             //container.Register<IProveedorQueryHandler, frm_AdminProveedor>();
             // container.Register<frm_AdminProveedor>();
 

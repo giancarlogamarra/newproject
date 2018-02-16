@@ -1,5 +1,6 @@
 ﻿using Presentacion.Compras;
 using Presentacion.Producto;
+using Presentacion.Ventas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,11 @@ namespace Presentacion
 
         private void MenuItemProducto_Click(object sender, EventArgs e)
         {
+            foreach (var item in this.Container.Components)
+            {
+                var form = item;
+            }
+            
             var BL = Program.container.GetInstance<frmAdminProducto>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
@@ -37,6 +43,14 @@ namespace Presentacion
         private void MenuItemCompras_Click(object sender, EventArgs e)
         {
             var BL = Program.container.GetInstance<frmCompras>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
+
+        private void MenuItemVentas_Click(object sender, EventArgs e)
+        {
+            var BL = Program.container.GetInstance<frmVentas>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();

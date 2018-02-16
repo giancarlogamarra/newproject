@@ -33,7 +33,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemCompras = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +54,7 @@
             this.toolStripMenuItem2,
             this.toolStripMenuItem1,
             this.MenuItemCompras,
-            this.toolStripMenuItem4,
+            this.MenuItemVentas,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
             this.toolStripMenuItem8,
@@ -108,15 +108,16 @@
             this.MenuItemCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItemCompras.Click += new System.EventHandler(this.MenuItemCompras_Click);
             // 
-            // toolStripMenuItem4
+            // MenuItemVentas
             // 
-            this.toolStripMenuItem4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem4.Image = global::Presentacion.Properties.Resources.ventas;
-            this.toolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(121, 72);
-            this.toolStripMenuItem4.Text = "VENTAS";
-            this.toolStripMenuItem4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItemVentas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.MenuItemVentas.Image = global::Presentacion.Properties.Resources.ventas;
+            this.MenuItemVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.MenuItemVentas.Name = "MenuItemVentas";
+            this.MenuItemVentas.Size = new System.Drawing.Size(121, 72);
+            this.MenuItemVentas.Text = "VENTAS";
+            this.MenuItemVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItemVentas.Click += new System.EventHandler(this.MenuItemVentas_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -187,7 +188,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem MenuItemCompras;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemVentas;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
