@@ -11,6 +11,6 @@ namespace Persistencia.Compras
     public interface IComprasCommandsHandler
     {
         int ADD(List<CompraItem> compras,string nrocomprobante);
- 
+        bool COMPRA_EXISTE(string nrocomprobante);
     }
 }

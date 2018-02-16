@@ -68,6 +68,7 @@ namespace Presentacion.Compras
         }
         public void CleanControls( )
         {
+            txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
             txtPCompra.Value = 0;
@@ -94,6 +95,7 @@ namespace Presentacion.Compras
                 dgvCompras.DataSource=this.ListCompras;
                 this.CleanControls();
                 this.CalcularTotal(this.ListCompras);
+                txtCodigo.Focus();
             }
             if (this.ListCompras.Count > 0)
                 this.MenuItem_GrabarCompra.Enabled = true;
@@ -154,8 +156,25 @@ namespace Presentacion.Compras
                 errorProvider1.SetError((Control)txtNroComprobante, "Debe ingresar un Nro de Comprobante");
             }
             else {
-                int result = this._Comprascommands.ADD(this.ListCompras, txtNroComprobante.Text);
+                if (ValidarComprobanteExiste(txtNroComprobante.Text.Trim()))
+                {
+                    errorProvider1.SetError((Control)txtNroComprobante, "Numero de Comprobante ya esta registrado.");
+                }
+                else {
+                    int result = this._Comprascommands.ADD(this.ListCompras, txtNroComprobante.Text.Trim());
+                    this.CleanControls();
+                    this.ListCompras.Clear();
+                    dgvCompras.DataSource = null;
+                    txtNroComprobante.Text = string.Empty;
+                    txtCodigo.Text = string.Empty;
+                    this.MenuItem_GrabarCompra.Enabled = false;
+                    txtTotal.Text = "0.00";
+                }
             }
+        }
+        public bool ValidarComprobanteExiste(string nroComprobante){
+
+            return this._Comprascommands.COMPRA_EXISTE(nroComprobante);
         }
     }
 }

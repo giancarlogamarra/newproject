@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +51,8 @@
             this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNroComprobante = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,8 +66,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtNroComprobante = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -212,10 +212,10 @@
             // txtCodigo
             // 
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(131, 3);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(420, 26);
+            this.txtCodigo.Size = new System.Drawing.Size(420, 30);
             this.txtCodigo.TabIndex = 1;
             this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
@@ -301,10 +301,10 @@
             // 
             this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNombre.Enabled = false;
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(685, 3);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(420, 26);
+            this.txtNombre.Size = new System.Drawing.Size(420, 30);
             this.txtNombre.TabIndex = 6;
             // 
             // label4
@@ -343,11 +343,31 @@
             // 
             this.txtDescripcion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.Location = new System.Drawing.Point(685, 43);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(420, 26);
+            this.txtDescripcion.Size = new System.Drawing.Size(420, 30);
             this.txtDescripcion.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(557, 120);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 40);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "NRO COMPROBANTE";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNroComprobante
+            // 
+            this.txtNroComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroComprobante.Location = new System.Drawing.Point(685, 123);
+            this.txtNroComprobante.Name = "txtNroComprobante";
+            this.txtNroComprobante.Size = new System.Drawing.Size(200, 30);
+            this.txtNroComprobante.TabIndex = 18;
             // 
             // splitContainer2
             // 
@@ -422,9 +442,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_COMPRA";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle3;
             this.FECHA_COMPRA.HeaderText = "FECHA_COMPRA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -497,27 +517,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(557, 120);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(122, 40);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "NRO COMPROBANTE";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtNroComprobante
-            // 
-            this.txtNroComprobante.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNroComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroComprobante.Location = new System.Drawing.Point(685, 123);
-            this.txtNroComprobante.Name = "txtNroComprobante";
-            this.txtNroComprobante.Size = new System.Drawing.Size(420, 26);
-            this.txtNroComprobante.TabIndex = 18;
             // 
             // frmCompras
             // 

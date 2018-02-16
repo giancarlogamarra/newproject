@@ -64,7 +64,23 @@ namespace Persistencia.Compras
             }
         }
 
-      
+        public bool COMPRA_EXISTE(string nrocomprobante)
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                string whereclause = "";
+                whereclause = $@" AND [NRO_COMPROBANTE] = '{nrocomprobante}'";
+                var query = $@"SELECT count(*)
+                              FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TCOMPRAS]
+                            WHERE [ESTADO]='1' {whereclause}";
 
+                int existe= (int)conn.ExecuteScalar(query);
+                conn.Close();
+                if (existe > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }
