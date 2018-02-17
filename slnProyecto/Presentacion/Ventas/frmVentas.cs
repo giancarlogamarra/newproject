@@ -32,20 +32,7 @@ namespace Presentacion.Ventas
         }
 
 
-        private async void txtCodigo_TextChanged(object sender, EventArgs e)
-        {
-            ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
-            if (producto != null)
-            {
-                this.productoVender = producto;
-                FillControls(this.productoVender);
-            }
-            else
-            {
-                this.productoVender = null;
-                CleanControls();
-            }
-        }
+    
 
         public void FillControls(ProductoItem producto)
         {
@@ -60,6 +47,7 @@ namespace Presentacion.Ventas
         }
         public void CleanControls()
         {
+            txtPVenta.Minimum = 0;
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
@@ -67,6 +55,7 @@ namespace Presentacion.Ventas
             cboProveedores.SelectedValue = Guid.Parse("00000000-0000-0000-0000-000000000000");
             txtCantidad.Value = 0;
             MenuItem_AddItem.Enabled = false;
+            lbldscMax.Text = "0.00";
         }
 
         private void MenuItem_AddItem_Click(object sender, EventArgs e)
@@ -92,9 +81,9 @@ namespace Presentacion.Ventas
                 txtCodigo.Focus();
             }
             if (this.ListVentas.Count > 0)
-                this.MenuItem_GrabarCompra.Enabled = true;
+                this.MenuItem_GrabarVenta.Enabled = true;
             else
-                this.MenuItem_GrabarCompra.Enabled = false;
+                this.MenuItem_GrabarVenta.Enabled = false;
         }
 
         public bool Validator()
@@ -117,6 +106,12 @@ namespace Presentacion.Ventas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
+            GetProveedores();
+        }
+        public void GetProveedores()
+        {
+            cboProveedores.DataSource = _Proveedorescommands.GET();
+            cboProveedores.SelectedItem = null;
 
         }
         public void CalcularTotal(List<VentaItem> compras)
@@ -127,6 +122,40 @@ namespace Presentacion.Ventas
                 total += item.PRECIO_VENTA;
             }
             txtTotal.Text = total.ToString();
+        }
+
+        private async void txtCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
+                if (producto != null)
+                {
+                    this.productoVender = producto;
+                    FillControls(this.productoVender);
+                }
+                else
+                {
+                    this.productoVender = null;
+                    CleanControls();
+                }
+            }
+        }
+
+        private void MenuItem_GrabarVenta_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (MessageBox.Show("Esta seguro de registrar la venta?")==DialogResult.OK)
+            {
+             
+                  int result = this._Ventascommands.ADD(this.ListVentas);
+                  this.CleanControls();
+                  this.ListVentas.Clear();
+                  dgvCompras.DataSource = null;
+                  txtCodigo.Text = string.Empty;
+                  this.MenuItem_GrabarVenta.Enabled = false;
+                  txtTotal.Text = "0.00";
+            }
         }
     }
 }

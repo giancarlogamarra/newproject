@@ -610,7 +610,6 @@
             this.MinimizeBox = false;
             this.Name = "frmAdminProducto";
             this.Text = ".:: ADMINISTRACION DE PRODUCTOS ::.";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAdminProducto_Load);
             this.menuStrip1.ResumeLayout(false);

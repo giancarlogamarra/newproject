@@ -45,7 +45,7 @@ namespace Presentacion.Compras
         }
         private async void txtCodigo_TextChanged(object sender, EventArgs e)
         {
-            ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
+           /* ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
             if (producto != null)
             {
                 this.productoAgregar = producto;
@@ -54,7 +54,7 @@ namespace Presentacion.Compras
             else {
                 this.productoAgregar = null;
                 CleanControls();
-            }
+            }*/
 
         }
         public void FillControls(ProductoItem producto)
@@ -175,6 +175,23 @@ namespace Presentacion.Compras
         public bool ValidarComprobanteExiste(string nroComprobante){
 
             return this._Comprascommands.COMPRA_EXISTE(nroComprobante);
+        }
+
+        private async void txtCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
+                if (producto != null)
+                {
+                    this.productoAgregar = producto;
+                    FillControls(this.productoAgregar);
+                }
+                else
+                {
+                    this.productoAgregar = null;
+                    CleanControls();
+                }
+            }
         }
     }
 }

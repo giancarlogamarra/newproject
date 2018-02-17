@@ -28,10 +28,15 @@ namespace Presentacion
         }
 
         private void MenuItemProducto_Click(object sender, EventArgs e)
-        {
-            foreach (var item in this.Container.Components)
+        {   
+            foreach (Form form in this.MdiChildren)
             {
-                var form = item;
+                if (form.GetType() == typeof(frmAdminProducto)) {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
             }
             
             var BL = Program.container.GetInstance<frmAdminProducto>();
@@ -42,6 +47,17 @@ namespace Presentacion
 
         private void MenuItemCompras_Click(object sender, EventArgs e)
         {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmCompras))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
             var BL = Program.container.GetInstance<frmCompras>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
@@ -50,10 +66,23 @@ namespace Presentacion
 
         private void MenuItemVentas_Click(object sender, EventArgs e)
         {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmVentas))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
             var BL = Program.container.GetInstance<frmVentas>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();
         }
+
+        
     }
 }

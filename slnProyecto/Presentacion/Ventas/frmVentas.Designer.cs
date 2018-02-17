@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_GrabarCompra = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_GrabarVenta = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -55,10 +55,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +62,10 @@
             this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRECIO_COMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.REMOVE = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -91,7 +91,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_New,
             this.MenuItem_AddItem,
-            this.MenuItem_GrabarCompra,
+            this.MenuItem_GrabarVenta,
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -119,15 +119,16 @@
             this.MenuItem_AddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItem_AddItem.Click += new System.EventHandler(this.MenuItem_AddItem_Click);
             // 
-            // MenuItem_GrabarCompra
+            // MenuItem_GrabarVenta
             // 
-            this.MenuItem_GrabarCompra.Enabled = false;
-            this.MenuItem_GrabarCompra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_GrabarCompra.Image = global::Presentacion.Properties.Resources.save;
-            this.MenuItem_GrabarCompra.Name = "MenuItem_GrabarCompra";
-            this.MenuItem_GrabarCompra.Size = new System.Drawing.Size(113, 54);
-            this.MenuItem_GrabarCompra.Text = "Grabar Venta";
-            this.MenuItem_GrabarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_GrabarVenta.Enabled = false;
+            this.MenuItem_GrabarVenta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_GrabarVenta.Image = global::Presentacion.Properties.Resources.save;
+            this.MenuItem_GrabarVenta.Name = "MenuItem_GrabarVenta";
+            this.MenuItem_GrabarVenta.Size = new System.Drawing.Size(113, 54);
+            this.MenuItem_GrabarVenta.Text = "Grabar Venta";
+            this.MenuItem_GrabarVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_GrabarVenta.Click += new System.EventHandler(this.MenuItem_GrabarVenta_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -214,7 +215,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(465, 30);
             this.txtCodigo.TabIndex = 1;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyUp);
             // 
             // label6
             // 
@@ -413,6 +414,70 @@
             this.dgvCompras.Size = new System.Drawing.Size(1199, 452);
             this.dgvCompras.TabIndex = 0;
             // 
+            // CODIGO
+            // 
+            this.CODIGO.DataPropertyName = "CODIGO";
+            this.CODIGO.HeaderText = "CODIGO";
+            this.CODIGO.MinimumWidth = 200;
+            this.CODIGO.Name = "CODIGO";
+            this.CODIGO.ReadOnly = true;
+            this.CODIGO.Width = 200;
+            // 
+            // NOMBRE
+            // 
+            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NOMBRE.DataPropertyName = "NOMBRE";
+            this.NOMBRE.HeaderText = "NOMBRE";
+            this.NOMBRE.MinimumWidth = 200;
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
+            this.NOMBRE.Width = 200;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.MinimumWidth = 200;
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            this.DESCRIPCION.Width = 200;
+            // 
+            // FECHA_COMPRA
+            // 
+            this.FECHA_COMPRA.DataPropertyName = "FECHA_VENTA";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle2;
+            this.FECHA_COMPRA.HeaderText = "FECHA_VENTA";
+            this.FECHA_COMPRA.Name = "FECHA_COMPRA";
+            this.FECHA_COMPRA.ReadOnly = true;
+            this.FECHA_COMPRA.Width = 155;
+            // 
+            // CANTIDAD
+            // 
+            this.CANTIDAD.DataPropertyName = "CANTIDAD";
+            this.CANTIDAD.HeaderText = "CANTIDAD";
+            this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.ReadOnly = true;
+            this.CANTIDAD.Width = 155;
+            // 
+            // PRECIO_COMPRA
+            // 
+            this.PRECIO_COMPRA.DataPropertyName = "PRECIO_VENTA";
+            this.PRECIO_COMPRA.HeaderText = "PRECIO_VENTA";
+            this.PRECIO_COMPRA.Name = "PRECIO_COMPRA";
+            this.PRECIO_COMPRA.ReadOnly = true;
+            this.PRECIO_COMPRA.Width = 155;
+            // 
+            // REMOVE
+            // 
+            this.REMOVE.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.REMOVE.HeaderText = "REMOVE";
+            this.REMOVE.Name = "REMOVE";
+            this.REMOVE.ReadOnly = true;
+            this.REMOVE.Text = "REMOVE";
+            this.REMOVE.UseColumnTextForButtonValue = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -456,70 +521,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // CODIGO
-            // 
-            this.CODIGO.DataPropertyName = "CODIGO";
-            this.CODIGO.HeaderText = "CODIGO";
-            this.CODIGO.MinimumWidth = 200;
-            this.CODIGO.Name = "CODIGO";
-            this.CODIGO.ReadOnly = true;
-            this.CODIGO.Width = 200;
-            // 
-            // NOMBRE
-            // 
-            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.NOMBRE.DataPropertyName = "NOMBRE";
-            this.NOMBRE.HeaderText = "NOMBRE";
-            this.NOMBRE.MinimumWidth = 200;
-            this.NOMBRE.Name = "NOMBRE";
-            this.NOMBRE.ReadOnly = true;
-            this.NOMBRE.Width = 200;
-            // 
-            // DESCRIPCION
-            // 
-            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
-            this.DESCRIPCION.HeaderText = "DESCRIPCION";
-            this.DESCRIPCION.MinimumWidth = 200;
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
-            this.DESCRIPCION.Width = 200;
-            // 
-            // FECHA_COMPRA
-            // 
-            this.FECHA_COMPRA.DataPropertyName = "FECHA_VENTA";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
-            this.FECHA_COMPRA.HeaderText = "FECHA_VENTA";
-            this.FECHA_COMPRA.Name = "FECHA_COMPRA";
-            this.FECHA_COMPRA.ReadOnly = true;
-            this.FECHA_COMPRA.Width = 155;
-            // 
-            // CANTIDAD
-            // 
-            this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            this.CANTIDAD.HeaderText = "CANTIDAD";
-            this.CANTIDAD.Name = "CANTIDAD";
-            this.CANTIDAD.ReadOnly = true;
-            this.CANTIDAD.Width = 155;
-            // 
-            // PRECIO_COMPRA
-            // 
-            this.PRECIO_COMPRA.DataPropertyName = "PRECIO_VENTA";
-            this.PRECIO_COMPRA.HeaderText = "PRECIO_VENTA";
-            this.PRECIO_COMPRA.Name = "PRECIO_COMPRA";
-            this.PRECIO_COMPRA.ReadOnly = true;
-            this.PRECIO_COMPRA.Width = 155;
-            // 
-            // REMOVE
-            // 
-            this.REMOVE.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.REMOVE.HeaderText = "REMOVE";
-            this.REMOVE.Name = "REMOVE";
-            this.REMOVE.ReadOnly = true;
-            this.REMOVE.Text = "REMOVE";
-            this.REMOVE.UseColumnTextForButtonValue = true;
-            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -559,7 +560,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_New;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_AddItem;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_GrabarCompra;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_GrabarVenta;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel InformacionGeneralPanel;
