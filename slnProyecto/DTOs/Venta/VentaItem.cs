@@ -16,6 +16,10 @@ namespace DTOs.Venta
         public DateTime FECHA_VENTA { get; set; }
         public int CANTIDAD { get; set; }
         public decimal PRECIO_VENTA { get; set; }
+        public decimal PRECIO_VENTA_DSCTO { get; set; }
+        public decimal TOTAL { get; set; }
+        public decimal USUARIO_CREACION { get; set; }
+
 
     }
 }

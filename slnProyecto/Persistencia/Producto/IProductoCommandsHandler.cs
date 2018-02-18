@@ -15,5 +15,6 @@ namespace Persistencia.Producto
         int ADD(ProductoItem product);
         int DELETE(Guid ID);
         Task<ProductoItem> GETPRODUCTO(string CODIGO);
+        Task<int> GET_STOCK(Guid PRODUCTO_ID);
     }
 }

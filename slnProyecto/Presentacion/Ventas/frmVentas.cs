@@ -34,8 +34,9 @@ namespace Presentacion.Ventas
 
     
 
-        public void FillControls(ProductoItem producto)
+        public async void FillControls(ProductoItem producto)
         {
+            txtCantidad.Maximum = 0;
             txtNombre.Text = producto.NOMBRE;
             txtDescripcion.Text = producto.DESCRIPCION;
             txtPVenta.Value = producto.PRECIO_VENTA;
@@ -44,6 +45,14 @@ namespace Presentacion.Ventas
             cboProveedores.SelectedValue = producto.PROVEEDOR_ID;
 
             MenuItem_AddItem.Enabled = true;
+            int stockMAX= await  CalcularStockMaximo(producto.ID);
+            txtCantidad.Maximum = stockMAX;
+            lblStockMax.Text = stockMAX.ToString();
+        }
+
+        public Task<int> CalcularStockMaximo(Guid PRODUCTO_ID)
+        {
+           return  this._Productoscommands.GET_STOCK(PRODUCTO_ID);
         }
         public void CleanControls()
         {
@@ -72,7 +81,9 @@ namespace Presentacion.Ventas
                     PROVEEDOR_ID = (Guid)cboProveedores.SelectedValue,
                     FECHA_VENTA = dtpFechaCompra.Value,
                     CANTIDAD = (int)txtCantidad.Value,
-                    PRECIO_VENTA = txtPVenta.Value
+                    PRECIO_VENTA_DSCTO = this.productoVender.DSCTO_MAX,
+                    PRECIO_VENTA = txtPVenta.Value,
+                    TOTAL = txtPVenta.Value * txtCantidad.Value
                 };
                 this.ListVentas.Add(item);
                 dgvCompras.DataSource = this.ListVentas;
@@ -119,7 +130,7 @@ namespace Presentacion.Ventas
             decimal total = 0;
             foreach (var item in compras)
             {
-                total += item.PRECIO_VENTA;
+                total += item.TOTAL;
             }
             txtTotal.Text = total.ToString();
         }
@@ -157,5 +168,7 @@ namespace Presentacion.Ventas
                   txtTotal.Text = "0.00";
             }
         }
+
+       
     }
 }

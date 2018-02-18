@@ -13,43 +13,46 @@ namespace Persistencia.Ventas
     {
         public int ADD(List<VentaItem> ventas)
         {
+            Guid IDVenta=Guid.NewGuid();
+            DateTime fecha_venta = DateTime.Now;
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 conn.OpenAsync();
                 foreach (var item in ventas)
                 {
-                    var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.TCOMPRAS]
-                                           ([ID]
-                                           ,[NRO_COMPROBANTE]
-                                           ,[PRODUCTO_ID]
-                                           ,[PROVEEDOR_ID]
-                                           ,[CANTIDAD]
-                                           ,[PRECIO_COMPRA]
-                                           ,[FECHA_COMPRA]
-                                           ,[USUARIO_CREACION]
-                                           ,[FECHA_CREACION]
-                                           ,[ESTADO])
-                                     VALUES
-                                           (@ID
-                                           ,@NRO_COMPROBANTE
-                                           ,@PRODUCTO_ID
-                                           ,@PROVEEDOR_ID
-                                           ,@CANTIDAD
-                                           ,@PRECIO_COMPRA
-                                           ,@FECHA_COMPRA
-                                           ,@USUARIO_CREACION
-                                           ,@FECHA_CREACION
-                                           ,@ESTADO)";
+                    var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.VENTAS]
+                                   ([ID]
+                                   ,[PRODUCTO_ID]
+                                   ,[FECHA_VENTA]
+                                   ,[CANTIDAD]
+                                   ,[PRECIO_VENTA]
+                                   ,[PRECIO_VENTA_DSCTO]
+                                   ,[TOTAL]
+                                   ,[USUARIO_CREACION]
+                                   ,[FECHA_CREACION]
+                                   ,[ESTADO])
+                             VALUES
+                                   (@ID
+                                   ,@PRODUCTO_ID
+                                   ,@FECHA_VENTA
+                                   ,@CANTIDAD
+                                   ,@PRECIO_VENTA
+                                   ,@PRECIO_VENTA_DSCTO
+                                   ,@TOTAL
+                                   ,@USUARIO_CREACION
+                                   ,@FECHA_CREACION
+                                   ,@ESTADO)";
                     var c = new SqlCommand(query, conn);
-                    c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
+                    c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = IDVenta;
                     c.Parameters.Add("@PRODUCTO_ID", SqlDbType.UniqueIdentifier).Value = item.PRODUCTO_ID;
-                    c.Parameters.Add("@PROVEEDOR_ID", SqlDbType.UniqueIdentifier).Value = item.PROVEEDOR_ID;
+                    c.Parameters.Add("@FECHA_VENTA", SqlDbType.Date).Value = item.FECHA_VENTA;
                     c.Parameters.Add("@CANTIDAD", SqlDbType.Int).Value = item.CANTIDAD;
-                    c.Parameters.Add("@PRECIO_COMPRA", SqlDbType.Decimal).Value = item.PRECIO_VENTA;
-                    c.Parameters.Add("@FECHA_COMPRA", SqlDbType.Date).Value = item.FECHA_VENTA;
+                    c.Parameters.Add("@PRECIO_VENTA", SqlDbType.Decimal).Value = item.PRECIO_VENTA;
+                    c.Parameters.Add("@PRECIO_VENTA_DSCTO", SqlDbType.Decimal).Value = item.PRECIO_VENTA_DSCTO;
+                    c.Parameters.Add("@TOTAL", SqlDbType.Decimal).Value = item.TOTAL;
                     c.Parameters.Add("@USUARIO_CREACION", SqlDbType.VarChar, 50).Value = "usuario";
-                    c.Parameters.Add("@FECHA_CREACION", SqlDbType.DateTime).Value = DateTime.Now;
-                    c.Parameters.Add("@ESTADO", SqlDbType.Bit).Value = true;
+                    c.Parameters.Add("@FECHA_CREACION", SqlDbType.DateTime).Value = fecha_venta;
+                    c.Parameters.Add("@ESTADO", SqlDbType.Bit).Value = true;                    
                     c.ExecuteNonQuery();
 
                 }

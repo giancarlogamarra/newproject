@@ -158,5 +158,27 @@ namespace Persistencia.Producto
         }
 
 
+        public async Task<int> GET_STOCK(Guid PRODUCTO_ID)
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                var queryCompras = $@"SELECT ISNULL(sum([CANTIDAD]),0) CANTIDAD
+                          FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TCOMPRAS]
+                        where PRODUCTO_ID='{PRODUCTO_ID}' AND ESTADO='1'";
+
+                var queryVentas = $@"SELECT ISNULL(sum([CANTIDAD]),0) CANTIDAD
+                          FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.VENTAS]
+                        where PRODUCTO_ID='{PRODUCTO_ID}' AND ESTADO='1'";
+
+                int compras = await conn.QueryFirstAsync<int>(queryCompras);
+                int ventas = await conn.QueryFirstAsync<int>(queryVentas);
+
+                int STOCK = compras - ventas;
+                conn.Close();
+                return STOCK;
+            }
+        }
+
+
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,9 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtPVenta = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +51,12 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lbldscMax = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtCantidad = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblStockMax = new System.Windows.Forms.Label();
+            this.txtPVenta = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +65,7 @@
             this.FECHA_COMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRECIO_COMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.REMOVE = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,8 +77,10 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -155,7 +162,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1199, 818);
-            this.splitContainer1.SplitterDistance = 193;
+            this.splitContainer1.SplitterDistance = 163;
             this.splitContainer1.TabIndex = 6;
             // 
             // InformacionGeneralPanel
@@ -168,9 +175,7 @@
             this.InformacionGeneralPanel.Controls.Add(this.label1, 0, 0);
             this.InformacionGeneralPanel.Controls.Add(this.txtCodigo, 1, 0);
             this.InformacionGeneralPanel.Controls.Add(this.label6, 0, 1);
-            this.InformacionGeneralPanel.Controls.Add(this.txtCantidad, 1, 1);
             this.InformacionGeneralPanel.Controls.Add(this.label7, 0, 2);
-            this.InformacionGeneralPanel.Controls.Add(this.txtPVenta, 1, 2);
             this.InformacionGeneralPanel.Controls.Add(this.label3, 0, 3);
             this.InformacionGeneralPanel.Controls.Add(this.cboProveedores, 1, 3);
             this.InformacionGeneralPanel.Controls.Add(this.label2, 2, 0);
@@ -179,8 +184,8 @@
             this.InformacionGeneralPanel.Controls.Add(this.dtpFechaCompra, 3, 2);
             this.InformacionGeneralPanel.Controls.Add(this.label5, 2, 1);
             this.InformacionGeneralPanel.Controls.Add(this.txtDescripcion, 3, 1);
-            this.InformacionGeneralPanel.Controls.Add(this.lbldscMax, 1, 4);
-            this.InformacionGeneralPanel.Controls.Add(this.label11, 0, 4);
+            this.InformacionGeneralPanel.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.InformacionGeneralPanel.Controls.Add(this.tableLayoutPanel3, 1, 2);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(0, 0);
             this.InformacionGeneralPanel.Name = "InformacionGeneralPanel";
@@ -192,7 +197,7 @@
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.InformacionGeneralPanel.Size = new System.Drawing.Size(1199, 193);
+            this.InformacionGeneralPanel.Size = new System.Drawing.Size(1199, 163);
             this.InformacionGeneralPanel.TabIndex = 1;
             // 
             // label1
@@ -229,14 +234,6 @@
             this.label6.Text = "CANTIDAD:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(131, 43);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(200, 30);
-            this.txtCantidad.TabIndex = 14;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -248,15 +245,6 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "PRECIO VENTA:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtPVenta
-            // 
-            this.txtPVenta.DecimalPlaces = 2;
-            this.txtPVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPVenta.Location = new System.Drawing.Point(131, 83);
-            this.txtPVenta.Name = "txtPVenta";
-            this.txtPVenta.Size = new System.Drawing.Size(200, 30);
-            this.txtPVenta.TabIndex = 16;
             // 
             // label3
             // 
@@ -275,6 +263,7 @@
             this.cboProveedores.DisplayMember = "NOMBRE";
             this.cboProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProveedores.Enabled = false;
             this.cboProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProveedores.FormattingEnabled = true;
             this.cboProveedores.Location = new System.Drawing.Point(131, 123);
@@ -319,7 +308,6 @@
             // 
             // dtpFechaCompra
             // 
-            this.dtpFechaCompra.Enabled = false;
             this.dtpFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaCompra.Location = new System.Drawing.Point(730, 83);
@@ -354,9 +342,9 @@
             this.lbldscMax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbldscMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldscMax.ForeColor = System.Drawing.Color.Red;
-            this.lbldscMax.Location = new System.Drawing.Point(131, 160);
+            this.lbldscMax.Location = new System.Drawing.Point(296, 0);
             this.lbldscMax.Name = "lbldscMax";
-            this.lbldscMax.Size = new System.Drawing.Size(465, 40);
+            this.lbldscMax.Size = new System.Drawing.Size(166, 34);
             this.lbldscMax.TabIndex = 19;
             this.lbldscMax.Text = "0.00";
             this.lbldscMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -366,12 +354,88 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 160);
+            this.label11.Location = new System.Drawing.Point(171, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 40);
+            this.label11.Size = new System.Drawing.Size(119, 34);
             this.label11.TabIndex = 20;
             this.label11.Text = "DSCTO MAX:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.24138F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.75862F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
+            this.tableLayoutPanel2.Controls.Add(this.txtCantidad, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label9, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblStockMax, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(131, 43);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(465, 34);
+            this.tableLayoutPanel2.TabIndex = 21;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(3, 3);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(161, 30);
+            this.txtCantidad.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(170, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 34);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "STOCK MAX:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStockMax
+            // 
+            this.lblStockMax.AutoSize = true;
+            this.lblStockMax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStockMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockMax.Location = new System.Drawing.Point(295, 0);
+            this.lblStockMax.Name = "lblStockMax";
+            this.lblStockMax.Size = new System.Drawing.Size(167, 34);
+            this.lblStockMax.TabIndex = 16;
+            this.lblStockMax.Text = "0";
+            this.lblStockMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtPVenta
+            // 
+            this.txtPVenta.DecimalPlaces = 2;
+            this.txtPVenta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPVenta.Location = new System.Drawing.Point(3, 3);
+            this.txtPVenta.Name = "txtPVenta";
+            this.txtPVenta.Size = new System.Drawing.Size(162, 30);
+            this.txtPVenta.TabIndex = 16;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.33788F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.66212F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanel3.Controls.Add(this.txtPVenta, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label11, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lbldscMax, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(131, 83);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 34);
+            this.tableLayoutPanel3.TabIndex = 22;
             // 
             // splitContainer2
             // 
@@ -387,8 +451,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer2.Size = new System.Drawing.Size(1199, 621);
-            this.splitContainer2.SplitterDistance = 452;
+            this.splitContainer2.Size = new System.Drawing.Size(1199, 651);
+            this.splitContainer2.SplitterDistance = 473;
             this.splitContainer2.TabIndex = 0;
             // 
             // dgvCompras
@@ -403,6 +467,7 @@
             this.FECHA_COMPRA,
             this.CANTIDAD,
             this.PRECIO_COMPRA,
+            this.TOTAL,
             this.REMOVE});
             this.dgvCompras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCompras.Location = new System.Drawing.Point(0, 0);
@@ -411,7 +476,7 @@
             this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowTemplate.Height = 24;
             this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCompras.Size = new System.Drawing.Size(1199, 452);
+            this.dgvCompras.Size = new System.Drawing.Size(1199, 473);
             this.dgvCompras.TabIndex = 0;
             // 
             // CODIGO
@@ -445,9 +510,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_VENTA";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
             this.FECHA_COMPRA.HeaderText = "FECHA_VENTA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -464,10 +529,17 @@
             // PRECIO_COMPRA
             // 
             this.PRECIO_COMPRA.DataPropertyName = "PRECIO_VENTA";
-            this.PRECIO_COMPRA.HeaderText = "PRECIO_VENTA";
+            this.PRECIO_COMPRA.HeaderText = "PRECIO";
             this.PRECIO_COMPRA.Name = "PRECIO_COMPRA";
             this.PRECIO_COMPRA.ReadOnly = true;
             this.PRECIO_COMPRA.Width = 155;
+            // 
+            // TOTAL
+            // 
+            this.TOTAL.DataPropertyName = "TOTAL";
+            this.TOTAL.HeaderText = "TOTAL";
+            this.TOTAL.Name = "TOTAL";
+            this.TOTAL.ReadOnly = true;
             // 
             // REMOVE
             // 
@@ -493,7 +565,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1199, 165);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1199, 174);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label8
@@ -503,7 +575,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(927, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 82);
+            this.label8.Size = new System.Drawing.Size(111, 87);
             this.label8.TabIndex = 0;
             this.label8.Text = "TOTAL S/.:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -540,8 +612,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
             this.InformacionGeneralPanel.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -567,7 +643,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown txtPVenta;
         private System.Windows.Forms.Label label3;
@@ -592,6 +667,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA_COMPRA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDAD;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRECIO_COMPRA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
         private System.Windows.Forms.DataGridViewButtonColumn REMOVE;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.NumericUpDown txtCantidad;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblStockMax;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }
