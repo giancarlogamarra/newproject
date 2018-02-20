@@ -25,7 +25,7 @@ namespace Persistencia.Producto
 
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
                                 [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
-                                [ALERTA_STOCK_MIN_TIENDA],[USUARIO_CREACION],
+                                [ALERTA_STOCK_MIN_TIENDA],[STOCK_ACTUAL_TIENDA],[USUARIO_CREACION],
                                 [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
                            FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
                            WHERE [ESTADO]='1' {whereclause}";
@@ -42,11 +42,11 @@ namespace Persistencia.Producto
             {
                 string whereclause = "";
                 if (search != "")
-                    whereclause = $@" AND [NOMBRE] like '%{search}%'";
+                    whereclause = $@" AND [NOMBRE] like '%{search}%' or [CODIGO] like '%{search}%'";
 
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
                                 [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
-                                [ALERTA_STOCK_MIN_TIENDA],[USUARIO_CREACION],
+                                [ALERTA_STOCK_MIN_TIENDA],[STOCK_ACTUAL_TIENDA],[USUARIO_CREACION],
                                 [FECHA_CREACION],[USUARIO_MODIFICACION],[FECHA_MODIFICACION]
                            FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS] 
                            WHERE [ESTADO]='1' {whereclause}";
@@ -74,7 +74,8 @@ namespace Persistencia.Producto
                                 [PROVEEDOR_ID],
                                 [PRECIO_VENTA],
                                 [DSCTO_MAX],
-                                [ALERTA_STOCK_MIN_TIENDA])
+                                [ALERTA_STOCK_MIN_TIENDA],
+                                [STOCK_ACTUAL_TIENDA])
                                 VALUES
                                 (@ID
                                 ,@CODIGO
@@ -87,7 +88,8 @@ namespace Persistencia.Producto
                                 ,@PROVEEDOR_ID
                                 ,@PRECIO_VENTA
                                 ,@DSCTO_MAX
-                                ,@ALERTA_STOCK_MIN_TIENDA)";
+                                ,@ALERTA_STOCK_MIN_TIENDA
+                                ,@STOCK_ACTUAL_TIENDA)";
                 var c = new SqlCommand(query, conn);
                 c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
                 c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
@@ -101,6 +103,7 @@ namespace Persistencia.Producto
                 c.Parameters.Add("@PRECIO_VENTA", SqlDbType.Decimal).Value = product.PRECIO_VENTA;
                 c.Parameters.Add("@DSCTO_MAX", SqlDbType.Decimal).Value = product.DSCTO_MAX;
                 c.Parameters.Add("@ALERTA_STOCK_MIN_TIENDA", SqlDbType.Int).Value = product.ALERTA_STOCK_MIN_TIENDA;
+                c.Parameters.Add("@STOCK_ACTUAL_TIENDA", SqlDbType.Int).Value = 0;
                 return c.ExecuteNonQuery();
             }
         }

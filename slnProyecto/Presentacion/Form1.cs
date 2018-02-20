@@ -1,4 +1,5 @@
-﻿using Presentacion.Compras;
+﻿using Presentacion.Almacen;
+using Presentacion.Compras;
 using Presentacion.Producto;
 using Presentacion.Ventas;
 using System;
@@ -83,6 +84,23 @@ namespace Presentacion
             BL.Show();
         }
 
-        
+        private void MenuItemWarehouse_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmAlmacen))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            var BL = Program.container.GetInstance<frmAlmacen>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
     }
 }

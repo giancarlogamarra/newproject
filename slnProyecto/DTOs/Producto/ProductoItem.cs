@@ -22,7 +22,7 @@ namespace DTOs.Producto
         public decimal PRECIO_VENTA { get; set; }
         public decimal DSCTO_MAX { get; set; }
         public int ALERTA_STOCK_MIN_TIENDA { get; set; }
-
+        public int STOCK_ACTUAL_TIENDA { get; set; }
 
     }
 }

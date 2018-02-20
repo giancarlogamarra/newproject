@@ -234,5 +234,7 @@ namespace Presentacion.Producto
             if (txtSearch.Text.Trim()=="")
                     this.GetProductos("");
         }
+
+       
     }
 }

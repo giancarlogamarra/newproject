@@ -46,6 +46,13 @@ namespace Presentacion.Ventas
 
             MenuItem_AddItem.Enabled = true;
             int stockMAX= await  CalcularStockMaximo(producto.ID);
+            if (stockMAX == 0) {
+                MessageBox.Show("Este producto no contiene Stock actualmente",".:: Mensaje del Sistema ::.",MessageBoxButtons.OK,  MessageBoxIcon.Warning);
+                CleanControls();
+                this.productoVender = null;
+                return;
+            }
+
             txtCantidad.Maximum = stockMAX;
             lblStockMax.Text = stockMAX.ToString();
         }
@@ -64,6 +71,7 @@ namespace Presentacion.Ventas
             cboProveedores.SelectedValue = Guid.Parse("00000000-0000-0000-0000-000000000000");
             txtCantidad.Value = 0;
             MenuItem_AddItem.Enabled = false;
+            lblStockMax.Text = "0";
             lbldscMax.Text = "0.00";
         }
 
@@ -142,6 +150,7 @@ namespace Presentacion.Ventas
                 ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
                 if (producto != null)
                 {
+                    
                     this.productoVender = producto;
                     FillControls(this.productoVender);
                 }
