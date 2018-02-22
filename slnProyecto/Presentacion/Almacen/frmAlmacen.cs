@@ -1,4 +1,5 @@
 ﻿using DTOs.Producto;
+using Persistencia.Almacen;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
 using System;
@@ -17,11 +18,15 @@ namespace Presentacion.Almacen
     {
         IProductoCommandsHandler _Productoscommands;
         IProveedorCommandsHandler _Proveedorescommands;
+        IAlmacenCommandsHandler _Almacencommands;
+
         ProductoItem obj_Toupdate = null;
-        public frmAlmacen(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands)
+        public frmAlmacen(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands,
+                          IAlmacenCommandsHandler almacencommands)
         {
             this._Productoscommands = prodcommands;
             this._Proveedorescommands = provcommands;
+            this._Almacencommands = almacencommands;
             InitializeComponent();
         }
 
@@ -32,8 +37,6 @@ namespace Presentacion.Almacen
                 if (txtSearch.Text.Trim().Length > 2)
                     this.GetProductos(txtSearch.Text.Trim());
 
-                if (txtSearch.Text.Trim() == "")
-                    this.GetProductos("");
             }
         }
         public async void GetProductos(string search)
@@ -79,12 +82,20 @@ namespace Presentacion.Almacen
                 txtNombre.Text = p.NOMBRE;
                 txtDescripcion.Text = p.DESCRIPCION;
                 InformacionGeneralPanel.Enabled = true;
-                int StockTotal = await this._Productoscommands.GET_STOCK(p.ID);
+                int StockTotal = await this._Productoscommands.GET_STOCK_ALMACEN(p.ID);
                 int Almacen = StockTotal - p.STOCK_ACTUAL_TIENDA;
                 int Tienda =p.STOCK_ACTUAL_TIENDA;
-
+                if (Almacen ==0)
+                {
+                    btnSalidaAlmacen.Enabled = false;
+                    errorProvider1.SetError((Control)btnSalidaAlmacen, "No hay productos suficientes en Almacen");
+                }
+                else {
+                    btnSalidaAlmacen.Enabled = true;
+                }
                 lblNroAlmacen.Text = Almacen.ToString();
                 lblNroTienda.Text = Tienda.ToString();
+                this.obj_Toupdate = p;
             }
             else
             {
@@ -98,5 +109,10 @@ namespace Presentacion.Almacen
             txtDescripcion.Text = string.Empty;
         }
 
+        private void btnSalidaAlmacen_Click(object sender, EventArgs e)
+        {
+            this._Almacencommands.MOVER_ALMACEN_A_TIENDA(this.obj_Toupdate.ID, "user");
+            this.GetProductos(this.obj_Toupdate.CODIGO);
+        }
     }
 }

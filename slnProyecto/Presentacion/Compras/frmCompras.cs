@@ -36,6 +36,12 @@ namespace Presentacion.Compras
         private void frmCompras_Load(object sender, EventArgs e)
         {
             GetProveedores();
+            CalcularReposicionStock();
+        }
+        public async void CalcularReposicionStock()
+        {
+            int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+            toolTipAlertStockTienda.Text = nro_prod.ToString();
         }
         public void GetProveedores()
         {

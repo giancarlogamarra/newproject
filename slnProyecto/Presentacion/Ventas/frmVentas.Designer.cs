@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +48,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCantidad = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblStockMax = new System.Windows.Forms.Label();
+            this.lblStockAlmacen = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPVenta = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,10 +67,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblStockTienda = new System.Windows.Forms.Label();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_GrabarVenta = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -99,7 +102,8 @@
             this.MenuItem_New,
             this.MenuItem_AddItem,
             this.MenuItem_GrabarVenta,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem1,
+            this.toolTipAlertStockTienda});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1199, 58);
@@ -297,13 +301,17 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.24138F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.75862F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.20647F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.79352F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel2.Controls.Add(this.txtCantidad, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblStockMax, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblStockAlmacen, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblStockTienda, 4, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(131, 43);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -324,32 +332,31 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(168, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 34);
+            this.label9.Size = new System.Drawing.Size(73, 34);
             this.label9.TabIndex = 15;
-            this.label9.Text = "STOCK MAX:";
+            this.label9.Text = "STOCK ALMACEN:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblStockMax
+            // lblStockAlmacen
             // 
-            this.lblStockMax.AutoSize = true;
-            this.lblStockMax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStockMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMax.Location = new System.Drawing.Point(292, 0);
-            this.lblStockMax.Name = "lblStockMax";
-            this.lblStockMax.Size = new System.Drawing.Size(170, 34);
-            this.lblStockMax.TabIndex = 16;
-            this.lblStockMax.Text = "0";
-            this.lblStockMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStockAlmacen.AutoSize = true;
+            this.lblStockAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStockAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockAlmacen.Location = new System.Drawing.Point(248, 0);
+            this.lblStockAlmacen.Name = "lblStockAlmacen";
+            this.lblStockAlmacen.Size = new System.Drawing.Size(74, 34);
+            this.lblStockAlmacen.TabIndex = 16;
+            this.lblStockAlmacen.Text = "0";
+            this.lblStockAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.33788F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.66212F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
             this.tableLayoutPanel3.Controls.Add(this.txtPVenta, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.lbldscMax, 2, 0);
@@ -368,7 +375,7 @@
             this.txtPVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPVenta.Location = new System.Drawing.Point(3, 3);
             this.txtPVenta.Name = "txtPVenta";
-            this.txtPVenta.Size = new System.Drawing.Size(160, 30);
+            this.txtPVenta.Size = new System.Drawing.Size(159, 30);
             this.txtPVenta.TabIndex = 16;
             // 
             // label11
@@ -376,9 +383,9 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(169, 0);
+            this.label11.Location = new System.Drawing.Point(168, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 34);
+            this.label11.Size = new System.Drawing.Size(116, 34);
             this.label11.TabIndex = 20;
             this.label11.Text = "DSCTO MAX:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -389,9 +396,9 @@
             this.lbldscMax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbldscMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldscMax.ForeColor = System.Drawing.Color.Red;
-            this.lbldscMax.Location = new System.Drawing.Point(293, 0);
+            this.lbldscMax.Location = new System.Drawing.Point(290, 0);
             this.lbldscMax.Name = "lbldscMax";
-            this.lbldscMax.Size = new System.Drawing.Size(169, 34);
+            this.lbldscMax.Size = new System.Drawing.Size(172, 34);
             this.lbldscMax.TabIndex = 19;
             this.lbldscMax.Text = "0.00";
             this.lbldscMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -469,9 +476,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_VENTA";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle3;
             this.FECHA_COMPRA.HeaderText = "FECHA_VENTA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -552,6 +559,25 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(328, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 34);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "STOCK TIENDA:";
+            // 
+            // lblStockTienda
+            // 
+            this.lblStockTienda.AutoSize = true;
+            this.lblStockTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockTienda.Location = new System.Drawing.Point(398, 0);
+            this.lblStockTienda.Name = "lblStockTienda";
+            this.lblStockTienda.Size = new System.Drawing.Size(23, 25);
+            this.lblStockTienda.TabIndex = 18;
+            this.lblStockTienda.Text = "0";
+            // 
             // MenuItem_New
             // 
             this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -583,15 +609,24 @@
             this.MenuItem_GrabarVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItem_GrabarVenta.Click += new System.EventHandler(this.MenuItem_GrabarVenta_Click);
             // 
-            // toolStripMenuItem2
+            // toolStripMenuItem1
             // 
-            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
-            this.toolStripMenuItem2.Text = "Close";
-            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripMenuItem1.Image = global::Presentacion.Properties.Resources.close;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(58, 54);
+            this.toolStripMenuItem1.Text = "Close";
+            this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolTipAlertStockTienda
+            // 
+            this.toolTipAlertStockTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertStockTienda.Image = global::Presentacion.Properties.Resources.warning;
+            this.toolTipAlertStockTienda.Name = "toolTipAlertStockTienda";
+            this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertStockTienda.Text = "0";
+            this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // frmVentas
             // 
@@ -637,7 +672,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_New;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_AddItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_GrabarVenta;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel InformacionGeneralPanel;
         private System.Windows.Forms.Label label1;
@@ -672,7 +707,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.NumericUpDown txtCantidad;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblStockMax;
+        private System.Windows.Forms.Label lblStockAlmacen;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblStockTienda;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

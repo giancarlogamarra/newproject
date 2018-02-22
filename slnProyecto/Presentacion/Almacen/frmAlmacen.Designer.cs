@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +56,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblNroTienda = new System.Windows.Forms.Label();
             this.btnSalidaAlmacen = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,6 +66,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -373,6 +376,7 @@
             // 
             this.btnSalidaAlmacen.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSalidaAlmacen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSalidaAlmacen.Enabled = false;
             this.btnSalidaAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalidaAlmacen.ForeColor = System.Drawing.Color.White;
             this.btnSalidaAlmacen.Location = new System.Drawing.Point(131, 243);
@@ -381,6 +385,11 @@
             this.btnSalidaAlmacen.TabIndex = 12;
             this.btnSalidaAlmacen.Text = "SALIDA DE ALMACEN";
             this.btnSalidaAlmacen.UseVisualStyleBackColor = false;
+            this.btnSalidaAlmacen.Click += new System.EventHandler(this.btnSalidaAlmacen_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmAlmacen
             // 
@@ -405,6 +414,7 @@
             this.tabPage1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
             this.InformacionGeneralPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,5 +449,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblNroTienda;
         private System.Windows.Forms.Button btnSalidaAlmacen;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

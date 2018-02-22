@@ -139,6 +139,7 @@
             this.toolStripMenuItem6.Size = new System.Drawing.Size(167, 72);
             this.toolStripMenuItem6.Text = "SALIR";
             this.toolStripMenuItem6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem8
             // 

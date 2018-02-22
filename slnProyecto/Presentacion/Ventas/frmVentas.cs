@@ -45,22 +45,35 @@ namespace Presentacion.Ventas
             cboProveedores.SelectedValue = producto.PROVEEDOR_ID;
 
             MenuItem_AddItem.Enabled = true;
-            int stockMAX= await  CalcularStockMaximo(producto.ID);
-            if (stockMAX == 0) {
-                MessageBox.Show("Este producto no contiene Stock actualmente",".:: Mensaje del Sistema ::.",MessageBoxButtons.OK,  MessageBoxIcon.Warning);
+            int stockAlmacen= await  CalcularStockAlmacen(producto);
+            int stockTienda = await CalcularStockTienda(producto.ID);
+
+          
+            txtCantidad.Maximum = stockTienda;
+            lblStockAlmacen.Text = stockAlmacen.ToString();
+            lblStockTienda.Text = stockTienda.ToString();
+
+            if (stockTienda == 0)
+            {
+                MessageBox.Show("Este producto no contiene Stock en Tienda\n Existen " + stockAlmacen + " Productos en Almacen", ".:: Mensaje del Sistema ::.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CleanControls();
                 this.productoVender = null;
                 return;
             }
-
-            txtCantidad.Maximum = stockMAX;
-            lblStockMax.Text = stockMAX.ToString();
         }
 
-        public Task<int> CalcularStockMaximo(Guid PRODUCTO_ID)
+        public async Task<int> CalcularStockAlmacen(ProductoItem p)
         {
-           return  this._Productoscommands.GET_STOCK(PRODUCTO_ID);
+            int StockTotal = await this._Productoscommands.GET_STOCK_ALMACEN(p.ID);
+            int Almacen = StockTotal - p.STOCK_ACTUAL_TIENDA;
+            return Almacen;
         }
+        public Task<int> CalcularStockTienda(Guid PRODUCTO_ID)
+        {
+            return this._Productoscommands.GET_STOCK_TIENDA(PRODUCTO_ID);
+        }
+       
+
         public void CleanControls()
         {
             txtPVenta.Minimum = 0;
@@ -71,8 +84,10 @@ namespace Presentacion.Ventas
             cboProveedores.SelectedValue = Guid.Parse("00000000-0000-0000-0000-000000000000");
             txtCantidad.Value = 0;
             MenuItem_AddItem.Enabled = false;
-            lblStockMax.Text = "0";
+            lblStockAlmacen.Text = "0";
+            lblStockTienda.Text = "0";
             lbldscMax.Text = "0.00";
+            
         }
 
         private void MenuItem_AddItem_Click(object sender, EventArgs e)
@@ -126,7 +141,14 @@ namespace Presentacion.Ventas
         private void frmVentas_Load(object sender, EventArgs e)
         {
             GetProveedores();
+            CalcularReposicionStock();
         }
+        public async  void CalcularReposicionStock()
+        {
+            int nro_prod= await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+            toolTipAlertStockTienda.Text = nro_prod.ToString();
+        }
+
         public void GetProveedores()
         {
             cboProveedores.DataSource = _Proveedorescommands.GET();

@@ -1,4 +1,5 @@
-﻿using DTOs.Venta;
+﻿using Dapper;
+using DTOs.Venta;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,19 @@ namespace Persistencia.Ventas
                 conn.OpenAsync();
                 foreach (var item in ventas)
                 {
+
+                    var queryGetStockTienda = $@"SELECT STOCK_ACTUAL_TIENDA
+                              FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                            WHERE [ESTADO]='1'AND ID= '{item.PRODUCTO_ID}'";
+
+                    int nroTienda = (int)conn.ExecuteScalar(queryGetStockTienda);
+
+                    var updateStockTienda = $@"UPDATE [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                             SET  STOCK_ACTUAL_TIENDA  = {nroTienda - item.CANTIDAD}
+                            WHERE [ESTADO]='1'AND ID= '{item.PRODUCTO_ID}'";
+
+                    conn.ExecuteScalar(updateStockTienda);
+
                     var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.VENTAS]
                                    ([ID]
                                    ,[PRODUCTO_ID]

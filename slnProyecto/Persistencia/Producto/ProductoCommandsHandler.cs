@@ -161,7 +161,7 @@ namespace Persistencia.Producto
         }
 
 
-        public async Task<int> GET_STOCK(Guid PRODUCTO_ID)
+        public async Task<int> GET_STOCK_ALMACEN(Guid PRODUCTO_ID)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
@@ -181,7 +181,33 @@ namespace Persistencia.Producto
                 return STOCK;
             }
         }
+        public async Task<int> GET_VERIFICAR_STOCKS_TIENDA_ALARMA()
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                var queryStock = $@" SELECT 
+	                sum(IIF( [STOCK_ACTUAL_TIENDA] < [ALERTA_STOCK_MIN_TIENDA] , 1, 0) )
+		                 FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                where  ESTADO='1'";
 
+                int productos_con_alarma = await conn.QueryFirstAsync<int>(queryStock);
+                conn.Close();
+                return productos_con_alarma;
+            }
+        }
 
+        public async Task<int> GET_STOCK_TIENDA(Guid PRODUCTO_ID)
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                var query = $@" SELECT [STOCK_ACTUAL_TIENDA]  
+		                 FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                where ID='{PRODUCTO_ID}' AND ESTADO='1'";
+
+                int stock_tienda = await conn.QueryFirstAsync<int>(query);
+                conn.Close();
+                return stock_tienda;
+            }
+        }
     }
 }

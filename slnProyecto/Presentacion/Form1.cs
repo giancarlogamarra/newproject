@@ -102,5 +102,10 @@ namespace Presentacion
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();
         }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

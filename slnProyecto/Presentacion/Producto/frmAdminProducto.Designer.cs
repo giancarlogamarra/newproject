@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +50,6 @@
             this.txtCodigoProveedor = new System.Windows.Forms.TextBox();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPVenta = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -73,6 +67,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtFechaModificacion = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -82,13 +83,13 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -100,62 +101,13 @@
             this.MenuItem_New,
             this.MenuItem_Save,
             this.MenuItem_Delete,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.toolTipAlertStockTienda});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(866, 58);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // MenuItem_New
-            // 
-            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
-            this.MenuItem_New.Name = "MenuItem_New";
-            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
-            this.MenuItem_New.Text = "Nuevo";
-            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItem_New.Click += new System.EventHandler(this.MenuItem_New_Click);
-            // 
-            // MenuItem_Save
-            // 
-            this.MenuItem_Save.Enabled = false;
-            this.MenuItem_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.add1;
-            this.MenuItem_Save.Name = "MenuItem_Save";
-            this.MenuItem_Save.Size = new System.Drawing.Size(69, 54);
-            this.MenuItem_Save.Text = "Grabar";
-            this.MenuItem_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItem_Save.Click += new System.EventHandler(this.MenuItem_Save_Click);
-            // 
-            // MenuItem_Delete
-            // 
-            this.MenuItem_Delete.Enabled = false;
-            this.MenuItem_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Delete.Image = global::Presentacion.Properties.Resources.trash;
-            this.MenuItem_Delete.Name = "MenuItem_Delete";
-            this.MenuItem_Delete.Size = new System.Drawing.Size(66, 54);
-            this.MenuItem_Delete.Text = "Borrar";
-            this.MenuItem_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItem_Delete.Click += new System.EventHandler(this.MenuItem_Delete_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator2});
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
-            this.toolStripMenuItem2.Text = "Close";
-            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(63, 6);
             // 
             // splitContainer1
             // 
@@ -405,16 +357,6 @@
             this.label9.Text = "PROVEEDOR:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Presentacion.Properties.Resources.barcode;
-            this.pictureBox1.Location = new System.Drawing.Point(349, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -598,6 +540,75 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Presentacion.Properties.Resources.barcode;
+            this.pictureBox1.Location = new System.Drawing.Point(349, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // MenuItem_New
+            // 
+            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
+            this.MenuItem_New.Name = "MenuItem_New";
+            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
+            this.MenuItem_New.Text = "Nuevo";
+            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_New.Click += new System.EventHandler(this.MenuItem_New_Click);
+            // 
+            // MenuItem_Save
+            // 
+            this.MenuItem_Save.Enabled = false;
+            this.MenuItem_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.add1;
+            this.MenuItem_Save.Name = "MenuItem_Save";
+            this.MenuItem_Save.Size = new System.Drawing.Size(69, 54);
+            this.MenuItem_Save.Text = "Grabar";
+            this.MenuItem_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_Save.Click += new System.EventHandler(this.MenuItem_Save_Click);
+            // 
+            // MenuItem_Delete
+            // 
+            this.MenuItem_Delete.Enabled = false;
+            this.MenuItem_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_Delete.Image = global::Presentacion.Properties.Resources.trash;
+            this.MenuItem_Delete.Name = "MenuItem_Delete";
+            this.MenuItem_Delete.Size = new System.Drawing.Size(66, 54);
+            this.MenuItem_Delete.Text = "Borrar";
+            this.MenuItem_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_Delete.Click += new System.EventHandler(this.MenuItem_Delete_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2});
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
+            this.toolStripMenuItem2.Text = "Close";
+            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(63, 6);
+            // 
+            // toolTipAlertStockTienda
+            // 
+            this.toolTipAlertStockTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertStockTienda.Image = global::Presentacion.Properties.Resources.warning;
+            this.toolTipAlertStockTienda.Name = "toolTipAlertStockTienda";
+            this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertStockTienda.Text = "0";
+            this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // frmAdminProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -624,7 +635,6 @@
             this.tabPage1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
             this.InformacionGeneralPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).EndInit();
@@ -632,6 +642,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -682,5 +693,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown txtMinSctock;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
     }
 }
