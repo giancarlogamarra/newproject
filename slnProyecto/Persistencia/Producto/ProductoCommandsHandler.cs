@@ -42,7 +42,7 @@ namespace Persistencia.Producto
             {
                 string whereclause = "";
                 if (search != "")
-                    whereclause = $@" AND [NOMBRE] like '%{search}%' or [CODIGO] like '%{search}%'";
+                    whereclause = $@" AND ([NOMBRE] like '%{search}%' or [CODIGO] like '%{search}%')";
 
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
                                 [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],

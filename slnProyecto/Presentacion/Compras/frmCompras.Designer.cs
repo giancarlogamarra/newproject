@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -403,9 +403,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_COMPRA";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle3;
             this.FECHA_COMPRA.HeaderText = "FECHA_COMPRA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;

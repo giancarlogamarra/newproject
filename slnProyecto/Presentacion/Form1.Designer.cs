@@ -34,11 +34,11 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemCompras = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemWarehouse = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,16 +119,6 @@
             this.MenuItemVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItemVentas.Click += new System.EventHandler(this.MenuItemVentas_Click);
             // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem5.Image = global::Presentacion.Properties.Resources.incidente;
-            this.toolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(167, 72);
-            this.toolStripMenuItem5.Text = "INCIDENTES";
-            this.toolStripMenuItem5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -172,6 +162,16 @@
             this.MenuItemWarehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuItemWarehouse.Click += new System.EventHandler(this.MenuItemWarehouse_Click);
             // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripMenuItem5.Image = global::Presentacion.Properties.Resources.incidente;
+            this.toolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(167, 72);
+            this.toolStripMenuItem5.Text = "INCIDENTES";
+            this.toolStripMenuItem5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -201,11 +201,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem MenuItemCompras;
         private System.Windows.Forms.ToolStripMenuItem MenuItemVentas;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem MenuItemWarehouse;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }
 

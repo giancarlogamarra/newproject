@@ -32,7 +32,7 @@ namespace Persistencia.Proveedor
                                   FROM [solucionsmart_ggamarra].[sport.TPROVEEDORES]
                            WHERE [ESTADO]='1'";
 
-                var listquery = conn.Query<ProveedorItem>(query);
+                var listquery =  conn.Query<ProveedorItem>(query);
                 return listquery;
             }
         }

@@ -58,7 +58,18 @@ namespace Presentacion.Almacen
         }
         private void frmAlmacen_Load(object sender, EventArgs e)
         {
-
+            CalcularReposicionStock();
+        }
+        public async void CalcularReposicionStock()
+        {
+            int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+            if (nro_prod == 0)
+                toolTipAlertStockTienda.Visible = false;
+            else
+            {
+                toolTipAlertStockTienda.Visible = true;
+                toolTipAlertStockTienda.Text = nro_prod.ToString();
+            }
         }
 
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -82,6 +93,7 @@ namespace Presentacion.Almacen
                 txtNombre.Text = p.NOMBRE;
                 txtDescripcion.Text = p.DESCRIPCION;
                 InformacionGeneralPanel.Enabled = true;
+                lblStockMinTienda.Text = p.ALERTA_STOCK_MIN_TIENDA.ToString();
                 int StockTotal = await this._Productoscommands.GET_STOCK_ALMACEN(p.ID);
                 int Almacen = StockTotal - p.STOCK_ACTUAL_TIENDA;
                 int Tienda =p.STOCK_ACTUAL_TIENDA;
@@ -113,6 +125,11 @@ namespace Presentacion.Almacen
         {
             this._Almacencommands.MOVER_ALMACEN_A_TIENDA(this.obj_Toupdate.ID, "user");
             this.GetProductos(this.obj_Toupdate.CODIGO);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

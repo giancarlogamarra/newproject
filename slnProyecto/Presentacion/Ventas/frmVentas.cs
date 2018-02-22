@@ -145,8 +145,14 @@ namespace Presentacion.Ventas
         }
         public async  void CalcularReposicionStock()
         {
-            int nro_prod= await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
-            toolTipAlertStockTienda.Text = nro_prod.ToString();
+            int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+            if (nro_prod == 0)
+                toolTipAlertStockTienda.Visible = false;
+            else
+            {
+                toolTipAlertStockTienda.Visible = true;
+                toolTipAlertStockTienda.Text = nro_prod.ToString();
+            }
         }
 
         public void GetProveedores()
@@ -200,6 +206,9 @@ namespace Presentacion.Ventas
             }
         }
 
-       
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

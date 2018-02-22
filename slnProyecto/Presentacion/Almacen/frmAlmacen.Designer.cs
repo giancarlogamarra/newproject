@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +52,13 @@
             this.lblNroTienda = new System.Windows.Forms.Label();
             this.btnSalidaAlmacen = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblStockMinTienda = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,58 +80,13 @@
             this.MenuItem_New,
             this.MenuItem_Save,
             this.MenuItem_Delete,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.toolTipAlertStockTienda});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(891, 58);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // MenuItem_New
-            // 
-            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
-            this.MenuItem_New.Name = "MenuItem_New";
-            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
-            this.MenuItem_New.Text = "Nuevo";
-            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItem_Save
-            // 
-            this.MenuItem_Save.Enabled = false;
-            this.MenuItem_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.add1;
-            this.MenuItem_Save.Name = "MenuItem_Save";
-            this.MenuItem_Save.Size = new System.Drawing.Size(69, 54);
-            this.MenuItem_Save.Text = "Grabar";
-            this.MenuItem_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItem_Delete
-            // 
-            this.MenuItem_Delete.Enabled = false;
-            this.MenuItem_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_Delete.Image = global::Presentacion.Properties.Resources.trash;
-            this.MenuItem_Delete.Name = "MenuItem_Delete";
-            this.MenuItem_Delete.Size = new System.Drawing.Size(66, 54);
-            this.MenuItem_Delete.Text = "Borrar";
-            this.MenuItem_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator2});
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
-            this.toolStripMenuItem2.Text = "Close";
-            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(63, 6);
             // 
             // splitContainer1
             // 
@@ -245,13 +202,15 @@
             this.InformacionGeneralPanel.Controls.Add(this.label10, 0, 4);
             this.InformacionGeneralPanel.Controls.Add(this.lblNroTienda, 1, 4);
             this.InformacionGeneralPanel.Controls.Add(this.btnSalidaAlmacen, 1, 6);
+            this.InformacionGeneralPanel.Controls.Add(this.label5, 0, 5);
+            this.InformacionGeneralPanel.Controls.Add(this.lblStockMinTienda, 1, 5);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Enabled = false;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(3, 3);
             this.InformacionGeneralPanel.Name = "InformacionGeneralPanel";
             this.InformacionGeneralPanel.RowCount = 8;
-            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -274,7 +233,7 @@
             // 
             this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(131, 43);
+            this.txtNombre.Location = new System.Drawing.Point(131, 41);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(466, 26);
             this.txtNombre.TabIndex = 6;
@@ -296,9 +255,9 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 40);
+            this.label2.Location = new System.Drawing.Point(3, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 40);
+            this.label2.Size = new System.Drawing.Size(122, 42);
             this.label2.TabIndex = 4;
             this.label2.Text = "NOMBRE:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -319,7 +278,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 40);
+            this.label1.Size = new System.Drawing.Size(122, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "CODIGO:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -391,6 +350,77 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // MenuItem_New
+            // 
+            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
+            this.MenuItem_New.Name = "MenuItem_New";
+            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
+            this.MenuItem_New.Text = "Nuevo";
+            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // MenuItem_Save
+            // 
+            this.MenuItem_Save.Enabled = false;
+            this.MenuItem_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_Save.Image = global::Presentacion.Properties.Resources.add1;
+            this.MenuItem_Save.Name = "MenuItem_Save";
+            this.MenuItem_Save.Size = new System.Drawing.Size(69, 54);
+            this.MenuItem_Save.Text = "Grabar";
+            this.MenuItem_Save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // MenuItem_Delete
+            // 
+            this.MenuItem_Delete.Enabled = false;
+            this.MenuItem_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_Delete.Image = global::Presentacion.Properties.Resources.trash;
+            this.MenuItem_Delete.Name = "MenuItem_Delete";
+            this.MenuItem_Delete.Size = new System.Drawing.Size(66, 54);
+            this.MenuItem_Delete.Text = "Borrar";
+            this.MenuItem_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
+            this.toolStripMenuItem2.Text = "Close";
+            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolTipAlertStockTienda
+            // 
+            this.toolTipAlertStockTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertStockTienda.Image = global::Presentacion.Properties.Resources.warning;
+            this.toolTipAlertStockTienda.Name = "toolTipAlertStockTienda";
+            this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertStockTienda.Text = "0";
+            this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 40);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "STOCK MIN. TIENDA:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStockMinTienda
+            // 
+            this.lblStockMinTienda.AutoSize = true;
+            this.lblStockMinTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockMinTienda.Location = new System.Drawing.Point(131, 200);
+            this.lblStockMinTienda.Name = "lblStockMinTienda";
+            this.lblStockMinTienda.Size = new System.Drawing.Size(24, 25);
+            this.lblStockMinTienda.TabIndex = 14;
+            this.lblStockMinTienda.Text = "0";
+            // 
             // frmAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -427,7 +457,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Save;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Delete;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
@@ -450,5 +479,8 @@
         private System.Windows.Forms.Label lblNroTienda;
         private System.Windows.Forms.Button btnSalidaAlmacen;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblStockMinTienda;
     }
 }
