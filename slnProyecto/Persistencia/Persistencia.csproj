@@ -121,6 +121,8 @@
   <ItemGroup>
     <Compile Include="Almacen\AlmacenCommandsHandler.cs" />
     <Compile Include="Almacen\IAlmacenCommandsHandler.cs" />
+    <Compile Include="Caracteristica\CaracteristicaCommandsHandler.cs" />
+    <Compile Include="Caracteristica\ICaracteristicaCommandsHandler.cs" />
     <Compile Include="Compras\IComprasCommandsHandler.cs" />
     <Compile Include="Compras\ComprasCommandsHandler.cs" />
     <Compile Include="Producto\ProductoCommandsHandler.cs" />

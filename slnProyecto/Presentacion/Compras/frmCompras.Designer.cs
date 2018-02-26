@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_GrabarCompra = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,11 +67,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_GrabarCompra = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,6 +100,57 @@
             this.menuStrip1.Size = new System.Drawing.Size(1108, 58);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // MenuItem_New
+            // 
+            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
+            this.MenuItem_New.Name = "MenuItem_New";
+            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
+            this.MenuItem_New.Text = "Nuevo";
+            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // MenuItem_AddItem
+            // 
+            this.MenuItem_AddItem.Enabled = false;
+            this.MenuItem_AddItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_AddItem.Image = global::Presentacion.Properties.Resources.add;
+            this.MenuItem_AddItem.Name = "MenuItem_AddItem";
+            this.MenuItem_AddItem.Size = new System.Drawing.Size(78, 54);
+            this.MenuItem_AddItem.Text = "Agregar";
+            this.MenuItem_AddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_AddItem.Click += new System.EventHandler(this.MenuItem_AddItem_Click);
+            // 
+            // MenuItem_GrabarCompra
+            // 
+            this.MenuItem_GrabarCompra.Enabled = false;
+            this.MenuItem_GrabarCompra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuItem_GrabarCompra.Image = global::Presentacion.Properties.Resources.save;
+            this.MenuItem_GrabarCompra.Name = "MenuItem_GrabarCompra";
+            this.MenuItem_GrabarCompra.Size = new System.Drawing.Size(128, 54);
+            this.MenuItem_GrabarCompra.Text = "Grabar Compra";
+            this.MenuItem_GrabarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_GrabarCompra.Click += new System.EventHandler(this.MenuItem_GrabarCompra_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
+            this.toolStripMenuItem2.Text = "Close";
+            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolTipAlertStockTienda
+            // 
+            this.toolTipAlertStockTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertStockTienda.Image = global::Presentacion.Properties.Resources.warning;
+            this.toolTipAlertStockTienda.Name = "toolTipAlertStockTienda";
+            this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertStockTienda.Text = "0";
+            this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // splitContainer1
             // 
@@ -403,9 +454,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_COMPRA";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
             this.FECHA_COMPRA.HeaderText = "FECHA_COMPRA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -478,57 +529,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // MenuItem_New
-            // 
-            this.MenuItem_New.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_New.Image = global::Presentacion.Properties.Resources._new;
-            this.MenuItem_New.Name = "MenuItem_New";
-            this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
-            this.MenuItem_New.Text = "Nuevo";
-            this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItem_AddItem
-            // 
-            this.MenuItem_AddItem.Enabled = false;
-            this.MenuItem_AddItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_AddItem.Image = global::Presentacion.Properties.Resources.add;
-            this.MenuItem_AddItem.Name = "MenuItem_AddItem";
-            this.MenuItem_AddItem.Size = new System.Drawing.Size(78, 54);
-            this.MenuItem_AddItem.Text = "Agregar";
-            this.MenuItem_AddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItem_AddItem.Click += new System.EventHandler(this.MenuItem_AddItem_Click);
-            // 
-            // MenuItem_GrabarCompra
-            // 
-            this.MenuItem_GrabarCompra.Enabled = false;
-            this.MenuItem_GrabarCompra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MenuItem_GrabarCompra.Image = global::Presentacion.Properties.Resources.save;
-            this.MenuItem_GrabarCompra.Name = "MenuItem_GrabarCompra";
-            this.MenuItem_GrabarCompra.Size = new System.Drawing.Size(128, 54);
-            this.MenuItem_GrabarCompra.Text = "Grabar Compra";
-            this.MenuItem_GrabarCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItem_GrabarCompra.Click += new System.EventHandler(this.MenuItem_GrabarCompra_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
-            this.toolStripMenuItem2.Text = "Close";
-            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolTipAlertStockTienda
-            // 
-            this.toolTipAlertStockTienda.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolTipAlertStockTienda.Image = global::Presentacion.Properties.Resources.warning;
-            this.toolTipAlertStockTienda.Name = "toolTipAlertStockTienda";
-            this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
-            this.toolTipAlertStockTienda.Text = "0";
-            this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // frmCompras
             // 

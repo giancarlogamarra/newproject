@@ -82,6 +82,12 @@
     <Compile Include="Proveedor\frmAdminProveedor.Designer.cs">
       <DependentUpon>frmAdminProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\frmServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicios\frmServicios.Designer.cs">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Servicios\frmServicios.resx">
+      <DependentUpon>frmServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmVentas.resx">
       <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
