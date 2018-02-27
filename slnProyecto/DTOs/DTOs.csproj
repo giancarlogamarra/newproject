@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Producto\ProductoItem.cs" />
     <Compile Include="Proveedor\ProveedorItem.cs" />
+    <Compile Include="Servicio\ServicioItem.cs" />
     <Compile Include="Venta\VentaItem.cs" />
   </ItemGroup>
   <ItemGroup />
