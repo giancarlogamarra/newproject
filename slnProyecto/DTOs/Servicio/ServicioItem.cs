@@ -11,8 +11,11 @@ namespace DTOs.Servicio
 
 
         public Guid ID { get; set; }
+        public string CLIENTE_NOMBRE { get; set; }
+        public string CLIENTE_TELEFONO { get; set; }
         public string DESCRIPCION { get; set; }
         public Guid TIPO_ID { get; set; }
+        public string TIPOSERVICIO { get; set; }
         public DateTime FECHA_SOLICITUD { get; set; }
         public DateTime FECHA_ENTREGA { get; set; }
         public int CANTIDAD { get; set; }

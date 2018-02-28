@@ -15,10 +15,10 @@ namespace Presentacion.Servicios
 {
     public partial class frmServicios : Form
     {
-        
+
         ICaracteristicaCommandsHandler _Productoscommands;
         IServicioCommandsHandler _Servicioscommands;
-        ServicioItem obj_Toupdate ;
+        ServicioItem obj_Toupdate;
         public frmServicios(ICaracteristicaCommandsHandler _command, IServicioCommandsHandler _commandServicio)
         {
             InitializeComponent();
@@ -29,6 +29,14 @@ namespace Presentacion.Servicios
         private void frmServicios_Load(object sender, EventArgs e)
         {
             GetTipoServicios();
+            GetServicios("");
+        }
+        public async void GetServicios(string search)
+        {
+            dgvServicios.AutoGenerateColumns = false;
+            dgvServicios.DataSource = await _Servicioscommands.GET(search);
+            dgvServicios.ClearSelection();
+
         }
         public async void GetTipoServicios()
         {
@@ -56,8 +64,10 @@ namespace Presentacion.Servicios
                     CANTIDAD = (int)txtCantidad.Value,
                     COSTO_TOTAL = txtCostoTotal.Value,
                     ADELANTO = txtAdelanto.Value,
-                    CANCELADO = (rbYes.Checked?true:false),
-                    USUARIO = "user"
+                    CANCELADO = (rbYes.Checked ? true : false),
+                    USUARIO = "user",
+                    CLIENTE_NOMBRE=txtNombreCliente.Text.ToUpper(),
+                    CLIENTE_TELEFONO=txtTelefonoCliente.Text
                 };
                 if (this.obj_Toupdate == null)
                 {
@@ -68,9 +78,9 @@ namespace Presentacion.Servicios
                     s.ID = this.obj_Toupdate.ID;
                     //s.USUARIO_MODIFICACION = "demo";
                     //s.FECHA_MODIFICACION = DateTime.Now;
-                   // this._Productoscommands.UPDATE(p);
+                    this._Servicioscommands.UPDATE(s);
                 }
-               // GetProductos("");
+                 GetServicios("");
                 cleanControls();
                 InformacionGeneralPanel.Enabled = false;
             }
@@ -114,11 +124,49 @@ namespace Presentacion.Servicios
             txtDescripcion.Text = string.Empty;
             txtCantidad.Value = 0;
             txtCostoTotal.Value = 0;
-           // txtFechaCreacion.Text = string.Empty;
+            // txtFechaCreacion.Text = string.Empty;
             //txtUsuarioModificacion.Text = string.Empty;
             //txtFechaModificacion.Text = string.Empty;
             txtAdelanto.Value = 0;
             rbYes.Checked = true;
         }
+
+        private void InformacionGeneralPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvServicios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                ServicioItem valor = (ServicioItem)dgvServicios.Rows[e.RowIndex].DataBoundItem;
+                FillControls(valor);
+                this.obj_Toupdate = valor;
+            }
+            this.MenuItem_Delete.Enabled = true;
+            this.MenuItem_Save.Enabled = true;
+        }
+
+        public void FillControls(ServicioItem s)
+        {
+            if (s != null)
+            {
+                txtNombreCliente.Text = s.CLIENTE_NOMBRE;
+                txtTelefonoCliente.Text = s.CLIENTE_TELEFONO;
+                cboTipoServicio.SelectedValue = s.TIPO_ID;
+                txtDescripcion.Text = s.DESCRIPCION;
+                dtpFechaSolicitud.Value = s.FECHA_SOLICITUD;
+                dtpFechaEntrega.Value = s.FECHA_ENTREGA;
+                txtCantidad.Value = s.CANTIDAD;
+                txtCostoTotal.Value = s.COSTO_TOTAL;
+                txtAdelanto.Value = s.ADELANTO;
+                rbYes.Checked = (s.CANCELADO ? true : false);
+                rbNo.Checked = (s.CANCELADO ? false : true);
+                InformacionGeneralPanel.Enabled = true;
+
+            }
+        }
+
     }
 }

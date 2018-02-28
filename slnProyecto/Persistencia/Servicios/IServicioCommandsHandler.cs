@@ -9,7 +9,8 @@ namespace Persistencia.Servicios
 {
     public interface IServicioCommandsHandler
     {
-
+        Task<IEnumerable<ServicioItem>> GET(string search);
         int ADD(ServicioItem product);
+        int UPDATE(ServicioItem product);
     }
 }
