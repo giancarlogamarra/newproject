@@ -122,7 +122,7 @@
             // MenuItemServicios
             // 
             this.MenuItemServicios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemServicios.Image = global::Presentacion.Properties.Resources.incidente;
+            this.MenuItemServicios.Image = global::Presentacion.Properties.Resources.service;
             this.MenuItemServicios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.MenuItemServicios.Name = "MenuItemServicios";
             this.MenuItemServicios.Size = new System.Drawing.Size(167, 72);

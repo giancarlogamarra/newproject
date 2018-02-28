@@ -163,6 +163,16 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap process {
+            get {
+                object obj = ResourceManager.GetObject("process", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap product {
             get {
                 object obj = ResourceManager.GetObject("product", resourceCulture);
@@ -196,6 +206,16 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap service {
+            get {
+                object obj = ResourceManager.GetObject("service", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

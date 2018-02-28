@@ -9,7 +9,7 @@ namespace Persistencia.Proveedor
 {
     public interface IProveedorCommandsHandler
     {
-        IEnumerable<ProveedorItem> GET();
+        Task< IEnumerable<ProveedorItem>> GET();
         int UPDATE(ProveedorItem product);
         int ADD(ProveedorItem product);
         int DELETE(Guid ID);

@@ -2,6 +2,7 @@
 using DTOs.Proveedor;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
+using Persistencia.Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +19,14 @@ namespace Presentacion.Producto
     {
         IProductoCommandsHandler _Productoscommands;
         IProveedorCommandsHandler _Proveedorescommands;
+        IServicioCommandsHandler _Servicioscommands;
         ProductoItem obj_Toupdate =null;
-        public frmAdminProducto(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands)
+        public frmAdminProducto(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands, IServicioCommandsHandler serviciocommand)
         {
+            InitializeComponent();
             this._Productoscommands = prodcommands;
             this._Proveedorescommands = provcommands;
-            InitializeComponent();
+            this._Servicioscommands = serviciocommand;
         }
 
         private void frmAdminProducto_Load(object sender, EventArgs e)
@@ -31,6 +34,18 @@ namespace Presentacion.Producto
             this.GetProductos("");
             this.GetProveedores();
             CalcularReposicionStock();
+            CalcularServiciosEnProceso();
+        }
+        public async void CalcularServiciosEnProceso()
+        {
+            int nro_servicios = await _Servicioscommands.GET_SERVICIOS_EN_PROCESO();
+            if (nro_servicios == 0)
+                toolTipAlertProcesoServicios.Visible = false;
+            else
+            {
+                toolTipAlertProcesoServicios.Visible = true;
+                toolTipAlertProcesoServicios.Text = nro_servicios.ToString();
+            }
         }
         public async void CalcularReposicionStock()
         {
@@ -50,9 +65,9 @@ namespace Presentacion.Producto
            dgvProductos.ClearSelection();
         }
 
-        public void GetProveedores()
+        public async void GetProveedores()
         {
-            cboProveedores.DataSource = _Proveedorescommands.GET();
+            cboProveedores.DataSource = await _Proveedorescommands.GET();
             cboProveedores.SelectedItem = null;
 
         }

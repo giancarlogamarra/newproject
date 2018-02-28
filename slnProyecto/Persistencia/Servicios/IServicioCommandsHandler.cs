@@ -12,5 +12,7 @@ namespace Persistencia.Servicios
         Task<IEnumerable<ServicioItem>> GET(string search);
         int ADD(ServicioItem product);
         int UPDATE(ServicioItem product);
+        int DELETE(Guid ID);
+        Task<int> GET_SERVICIOS_EN_PROCESO();
     }
 }

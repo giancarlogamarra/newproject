@@ -12,6 +12,19 @@ namespace Persistencia.Servicios
 {
     public class ServicioCommandsHandler : IServicioCommandsHandler
     {
+        public async Task<int> GET_SERVICIOS_EN_PROCESO()
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                var queryStock = $@"SELECT count(*)
+                                        FROM [solucionsmart_ggamarra].[sport.TSERVICIOS] 
+                                    WHERE [ESTADO]='1' and [CANCELADO]=0";
+                int productos_con_alarma = await conn.QueryFirstAsync<int>(queryStock);
+                conn.Close();
+                return productos_con_alarma;
+            }
+        }
+
         public async Task<IEnumerable<ServicioItem>> GET(string search)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
@@ -136,6 +149,20 @@ namespace Persistencia.Servicios
 
         }
 
+        public int DELETE(Guid ID)
+        {
 
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                conn.OpenAsync();
+                var query = $@"UPDATE [solucionsmart_ggamarra].[sport.TSERVICIOS]
+                           SET [ESTADO] = '0'
+                         WHERE [ID]='{ID}'";
+                /*var query = $@"DELETE FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                                 WHERE ID = '{ID}'";*/
+                var c = new SqlCommand(query, conn);
+                return c.ExecuteNonQuery();
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Persistencia.Proveedor
        
         public ProveedorCommandsHandler() { }
 
-        public IEnumerable<ProveedorItem> GET()
+        public async Task<IEnumerable<ProveedorItem>> GET()
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
@@ -32,7 +32,7 @@ namespace Persistencia.Proveedor
                                   FROM [solucionsmart_ggamarra].[sport.TPROVEEDORES]
                            WHERE [ESTADO]='1'";
 
-                var listquery =  conn.Query<ProveedorItem>(query);
+                var listquery =  await conn.QueryAsync<ProveedorItem>(query);
                 return listquery;
             }
         }
