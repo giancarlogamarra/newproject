@@ -118,6 +118,7 @@
             this.MenuItem_New.Size = new System.Drawing.Size(67, 54);
             this.MenuItem_New.Text = "Nuevo";
             this.MenuItem_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuItem_New.Click += new System.EventHandler(this.MenuItem_New_Click);
             // 
             // MenuItem_AddItem
             // 
@@ -357,7 +358,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.46939F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.Controls.Add(this.txtCantidad, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblStockAlmacen, 2, 0);
@@ -377,13 +378,13 @@
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.Location = new System.Drawing.Point(3, 3);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(154, 30);
+            this.txtCantidad.Size = new System.Drawing.Size(153, 30);
             this.txtCantidad.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(163, 0);
+            this.label9.Location = new System.Drawing.Point(162, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 34);
             this.label9.TabIndex = 15;
@@ -395,7 +396,7 @@
             this.lblStockAlmacen.AutoSize = true;
             this.lblStockAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStockAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockAlmacen.Location = new System.Drawing.Point(243, 0);
+            this.lblStockAlmacen.Location = new System.Drawing.Point(242, 0);
             this.lblStockAlmacen.Name = "lblStockAlmacen";
             this.lblStockAlmacen.Size = new System.Drawing.Size(74, 34);
             this.lblStockAlmacen.TabIndex = 16;
@@ -405,7 +406,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(323, 0);
+            this.label10.Location = new System.Drawing.Point(322, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 34);
             this.label10.TabIndex = 17;
@@ -415,7 +416,7 @@
             // 
             this.lblStockTienda.AutoSize = true;
             this.lblStockTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockTienda.Location = new System.Drawing.Point(393, 0);
+            this.lblStockTienda.Location = new System.Drawing.Point(392, 0);
             this.lblStockTienda.Name = "lblStockTienda";
             this.lblStockTienda.Size = new System.Drawing.Size(23, 25);
             this.lblStockTienda.TabIndex = 18;
@@ -426,7 +427,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.33788F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.66212F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
             this.tableLayoutPanel3.Controls.Add(this.txtPVenta, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.lbldscMax, 2, 0);
@@ -455,7 +456,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(164, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(114, 34);
+            this.label11.Size = new System.Drawing.Size(113, 34);
             this.label11.TabIndex = 20;
             this.label11.Text = "DSCTO MAX:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -466,9 +467,9 @@
             this.lbldscMax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbldscMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldscMax.ForeColor = System.Drawing.Color.Red;
-            this.lbldscMax.Location = new System.Drawing.Point(284, 0);
+            this.lbldscMax.Location = new System.Drawing.Point(283, 0);
             this.lbldscMax.Name = "lbldscMax";
-            this.lbldscMax.Size = new System.Drawing.Size(178, 34);
+            this.lbldscMax.Size = new System.Drawing.Size(179, 34);
             this.lbldscMax.TabIndex = 19;
             this.lbldscMax.Text = "0.00";
             this.lbldscMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

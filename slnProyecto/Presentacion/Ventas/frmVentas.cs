@@ -155,9 +155,9 @@ namespace Presentacion.Ventas
             }
         }
 
-        public void GetProveedores()
+        public async void GetProveedores()
         {
-            cboProveedores.DataSource = _Proveedorescommands.GET();
+            cboProveedores.DataSource = await _Proveedorescommands.GET();
             cboProveedores.SelectedItem = null;
 
         }
@@ -209,6 +209,11 @@ namespace Presentacion.Ventas
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void MenuItem_New_Click(object sender, EventArgs e)
+        {
+            cboProveedores.Enabled = true;
         }
     }
 }

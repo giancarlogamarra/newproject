@@ -33,6 +33,7 @@ namespace Persistencia.Proveedor
                            WHERE [ESTADO]='1'";
 
                 var listquery =  await conn.QueryAsync<ProveedorItem>(query);
+                conn.Close();
                 return listquery;
             }
         }

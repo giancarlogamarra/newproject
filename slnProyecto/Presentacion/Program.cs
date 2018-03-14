@@ -11,6 +11,8 @@ using Persistencia.Ventas;
 using Persistencia.Almacen;
 using Persistencia.Caracteristica;
 using Persistencia.Servicios;
+using Persistencia.Usuario;
+using Persistencia.Reportes;
 
 namespace Presentacion
 {
@@ -42,6 +44,8 @@ namespace Presentacion
             container.Register<IAlmacenCommandsHandler, AlmacenCommandsHandler>(Lifestyle.Singleton);
             container.Register<ICaracteristicaCommandsHandler, CaracteristicaCommandsHandler>(Lifestyle.Singleton);
             container.Register<IServicioCommandsHandler, ServicioCommandsHandler>(Lifestyle.Singleton);
+            container.Register<IUsuarioCommandsHandler, UsuarioCommandsHandler>(Lifestyle.Singleton);
+            container.Register<IReportesCommandsHandler, ReportesCommandsHandler>(Lifestyle.Singleton);
             //container.Register<IProveedorQueryHandler, frm_AdminProveedor>();
             // container.Register<frm_AdminProveedor>();
 

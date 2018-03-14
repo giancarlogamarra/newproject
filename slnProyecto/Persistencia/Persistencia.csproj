@@ -131,8 +131,12 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Proveedor\IProveedorCommandsHandler.cs" />
     <Compile Include="Proveedor\ProveedorCommandsHandler.cs" />
+    <Compile Include="Reportes\IReportesCommandsHandler.cs" />
+    <Compile Include="Reportes\ReportesCommandsHandler.cs" />
     <Compile Include="Servicios\IServicioCommandsHandler.cs" />
     <Compile Include="Servicios\ServicioCommandsHandler.cs" />
+    <Compile Include="Usuario\IUsuarioCommandsHandler.cs" />
+    <Compile Include="Usuario\UsuarioCommandsHandler.cs" />
     <Compile Include="Ventas\IVentasCommandsHandler.cs" />
     <Compile Include="Ventas\VentasCommandsHandler.cs" />
   </ItemGroup>

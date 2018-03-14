@@ -1,6 +1,7 @@
 ﻿using Presentacion.Almacen;
 using Presentacion.Compras;
 using Presentacion.Producto;
+using Presentacion.Reportes;
 using Presentacion.Servicios;
 using Presentacion.Ventas;
 using System;
@@ -19,6 +20,8 @@ namespace Presentacion
     {
         public Form1()
         {
+            var BL = Program.container.GetInstance<frmLogin>();
+            BL.ShowDialog();
             InitializeComponent();
         }
 
@@ -123,6 +126,30 @@ namespace Presentacion
             }
 
             var BL = Program.container.GetInstance<frmServicios>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmReportes))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            var BL = Program.container.GetInstance<frmReportes>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();
