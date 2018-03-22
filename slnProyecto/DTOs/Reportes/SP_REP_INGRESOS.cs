@@ -8,11 +8,11 @@ namespace DTOs.Reportes
 {
     public class SP_REP_INGRESOS
     {
-        public string CODIGO { get; set; }
+        public string TIPO { get; set; }
         public string NOMBRE { get; set; }
-        public DateTime FECHA_VENTA { get; set; }
         public int CANTIDAD { get; set; }
-        public decimal PRECIO_VENTA_DSCTO { get; set; }
+        public decimal PRECIO_VENTA { get; set; }
+        public string FECHA_REPORTE { get; set; }
 
     }
 }

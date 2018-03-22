@@ -9,7 +9,8 @@ namespace Persistencia.Reportes
 {
     public interface IReportesCommandsHandler
     {
-        IEnumerable<SP_REP_INGRESOS> GET_REP_INGRESOS();
+        IEnumerable<SP_REP_INGRESOS> GET_REP_INGRESOS(int anio, int mes, string fecha_reporte);
+        IEnumerable<SP_REP_INGRESOS> GET_REP_INGRESOS_DIARIO(DateTime fecha, string fecha_reporte);
 
     }
 }

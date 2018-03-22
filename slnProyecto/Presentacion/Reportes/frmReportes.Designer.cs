@@ -28,170 +28,189 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuItemProducto = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemCompras = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemServicios = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemWarehouse = new System.Windows.Forms.ToolStripMenuItem();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.menuStrip1.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dtpVentas = new System.Windows.Forms.DateTimePicker();
+            this.btnGenerarVentas = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.dtpFechaDiario = new System.Windows.Forms.DateTimePicker();
+            this.btnGenerarVentasDiario = new System.Windows.Forms.Button();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemProducto,
-            this.toolStripMenuItem2,
-            this.MenuItemCompras,
-            this.MenuItemVentas,
-            this.MenuItemServicios,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem7,
-            this.MenuItemWarehouse});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MdiWindowListItem = this.MenuItemProducto;
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1097, 76);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // MenuItemProducto
-            // 
-            this.MenuItemProducto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemProducto.Image = global::Presentacion.Properties.Resources.product;
-            this.MenuItemProducto.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.MenuItemProducto.Name = "MenuItemProducto";
-            this.MenuItemProducto.Size = new System.Drawing.Size(109, 72);
-            this.MenuItemProducto.Text = "PRODUCTOS";
-            this.MenuItemProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.proveedor;
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(125, 72);
-            this.toolStripMenuItem2.Text = "PROVEEDORES";
-            this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItemCompras
-            // 
-            this.MenuItemCompras.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemCompras.Image = global::Presentacion.Properties.Resources.compras;
-            this.MenuItemCompras.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.MenuItemCompras.Name = "MenuItemCompras";
-            this.MenuItemCompras.Size = new System.Drawing.Size(93, 72);
-            this.MenuItemCompras.Text = "COMPRAS";
-            this.MenuItemCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItemVentas
-            // 
-            this.MenuItemVentas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemVentas.Image = global::Presentacion.Properties.Resources.ventas;
-            this.MenuItemVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.MenuItemVentas.Name = "MenuItemVentas";
-            this.MenuItemVentas.Size = new System.Drawing.Size(78, 72);
-            this.MenuItemVentas.Text = "VENTAS";
-            this.MenuItemVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuItemVentas.Click += new System.EventHandler(this.MenuItemVentas_Click);
-            // 
-            // MenuItemServicios
-            // 
-            this.MenuItemServicios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemServicios.Image = global::Presentacion.Properties.Resources.service;
-            this.MenuItemServicios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.MenuItemServicios.Name = "MenuItemServicios";
-            this.MenuItemServicios.Size = new System.Drawing.Size(95, 72);
-            this.MenuItemServicios.Text = "SERVICIOS";
-            this.MenuItemServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripMenuItem6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem6.Image = global::Presentacion.Properties.Resources.exit;
-            this.toolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(63, 72);
-            this.toolStripMenuItem6.Text = "SALIR";
-            this.toolStripMenuItem6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem8.Image = global::Presentacion.Properties.Resources.users;
-            this.toolStripMenuItem8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(96, 72);
-            this.toolStripMenuItem8.Text = "USUARIOS";
-            this.toolStripMenuItem8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripMenuItem7.Image = global::Presentacion.Properties.Resources.report;
-            this.toolStripMenuItem7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(94, 72);
-            this.toolStripMenuItem7.Text = "REPORTES";
-            this.toolStripMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // MenuItemWarehouse
-            // 
-            this.MenuItemWarehouse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MenuItemWarehouse.Image = global::Presentacion.Properties.Resources.warehouse;
-            this.MenuItemWarehouse.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.MenuItemWarehouse.Name = "MenuItemWarehouse";
-            this.MenuItemWarehouse.Size = new System.Drawing.Size(174, 72);
-            this.MenuItemWarehouse.Text = "MOVER DE ALMACEN";
-            this.MenuItemWarehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // reportViewer1
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(57, 104);
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(818, 336);
+            this.reportViewer1.Size = new System.Drawing.Size(1083, 512);
             this.reportViewer1.TabIndex = 2;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1097, 619);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1089, 586);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "VENTAS MENSUAL";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dtpVentas);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGenerarVentas);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.reportViewer1);
+            this.splitContainer1.Size = new System.Drawing.Size(1083, 580);
+            this.splitContainer1.SplitterDistance = 64;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // dtpVentas
+            // 
+            this.dtpVentas.Location = new System.Drawing.Point(21, 17);
+            this.dtpVentas.Name = "dtpVentas";
+            this.dtpVentas.Size = new System.Drawing.Size(200, 26);
+            this.dtpVentas.TabIndex = 5;
+            // 
+            // btnGenerarVentas
+            // 
+            this.btnGenerarVentas.Location = new System.Drawing.Point(247, 10);
+            this.btnGenerarVentas.Name = "btnGenerarVentas";
+            this.btnGenerarVentas.Size = new System.Drawing.Size(126, 44);
+            this.btnGenerarVentas.TabIndex = 0;
+            this.btnGenerarVentas.Text = "GENERAR";
+            this.btnGenerarVentas.UseVisualStyleBackColor = true;
+            this.btnGenerarVentas.Click += new System.EventHandler(this.btnGenerarVentas_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.splitContainer2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1089, 586);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "VENTAS DIARIO";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.dtpFechaDiario);
+            this.splitContainer2.Panel1.Controls.Add(this.btnGenerarVentasDiario);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.reportViewer2);
+            this.splitContainer2.Size = new System.Drawing.Size(1083, 580);
+            this.splitContainer2.SplitterDistance = 64;
+            this.splitContainer2.TabIndex = 4;
+            // 
+            // dtpFechaDiario
+            // 
+            this.dtpFechaDiario.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaDiario.Location = new System.Drawing.Point(21, 17);
+            this.dtpFechaDiario.Name = "dtpFechaDiario";
+            this.dtpFechaDiario.Size = new System.Drawing.Size(183, 26);
+            this.dtpFechaDiario.TabIndex = 5;
+            // 
+            // btnGenerarVentasDiario
+            // 
+            this.btnGenerarVentasDiario.Location = new System.Drawing.Point(247, 10);
+            this.btnGenerarVentasDiario.Name = "btnGenerarVentasDiario";
+            this.btnGenerarVentasDiario.Size = new System.Drawing.Size(126, 44);
+            this.btnGenerarVentasDiario.TabIndex = 0;
+            this.btnGenerarVentasDiario.Text = "GENERAR";
+            this.btnGenerarVentasDiario.UseVisualStyleBackColor = true;
+            this.btnGenerarVentasDiario.Click += new System.EventHandler(this.btnGenerarVentasDiario_Click);
+            // 
+            // reportViewer2
+            // 
+            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer2.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.Size = new System.Drawing.Size(1083, 512);
+            this.reportViewer2.TabIndex = 2;
             // 
             // frmReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 619);
-            this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tabControl1);
             this.Name = "frmReportes";
             this.Text = "frmReportes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportes_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemProducto;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemCompras;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemVentas;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemServicios;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemWarehouse;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnGenerarVentas;
+        private System.Windows.Forms.DateTimePicker dtpVentas;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.DateTimePicker dtpFechaDiario;
+        private System.Windows.Forms.Button btnGenerarVentasDiario;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
     }
 }

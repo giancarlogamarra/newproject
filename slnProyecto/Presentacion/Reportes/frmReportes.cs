@@ -26,19 +26,39 @@ namespace Presentacion.Reportes
         {
 
             this.reportViewer1.RefreshReport();
+            dtpVentas.Format = DateTimePickerFormat.Custom;
+            dtpVentas.CustomFormat = "MM/yyyy";
         }
 
-        private void MenuItemVentas_Click(object sender, EventArgs e)
+     
+
+        private void btnGenerarVentas_Click(object sender, EventArgs e)
         {
 
-            IEnumerable<SP_REP_INGRESOS> data= this._Commands.GET_REP_INGRESOS();
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            int anio = dtpVentas.Value.Year;
+            int mes = dtpVentas.Value.Month;
+            IEnumerable<SP_REP_INGRESOS> data = this._Commands.GET_REP_INGRESOS(anio, mes,dtpVentas.Text);
             this.reportViewer1.ProcessingMode = ProcessingMode.Local;
             reportViewer1.LocalReport.ReportEmbeddedResource = "Presentacion.Reportes.files.rep_Ingresos.rdlc";
             ReportDataSource rds = new ReportDataSource("DataSet1", data);
             reportViewer1.LocalReport.DataSources.Add(rds);
-            reportViewer1.LocalReport.Refresh();
 
             reportViewer1.RefreshReport();
+        }
+
+        private void btnGenerarVentasDiario_Click(object sender, EventArgs e)
+        {
+            this.reportViewer2.LocalReport.DataSources.Clear();
+ 
+            IEnumerable<SP_REP_INGRESOS> data = this._Commands.GET_REP_INGRESOS_DIARIO(dtpFechaDiario.Value, dtpFechaDiario.Text);
+            this.reportViewer2.ProcessingMode = ProcessingMode.Local;
+            reportViewer2.LocalReport.ReportEmbeddedResource = "Presentacion.Reportes.files.rep_Ingresos.rdlc";
+            ReportDataSource rds = new ReportDataSource("DataSet1", data);
+            reportViewer2.LocalReport.DataSources.Add(rds);
+
+            reportViewer2.RefreshReport();
+
         }
     }
 }

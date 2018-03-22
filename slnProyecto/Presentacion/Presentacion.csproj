@@ -145,6 +145,7 @@
       <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DTOs.Reportes.SP_REP_INGRESOS.datasource" />
     <None Include="Properties\DataSources\Persistencia.Reportes.SP_REP_INGRESOS.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
