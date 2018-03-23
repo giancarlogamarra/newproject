@@ -234,5 +234,10 @@ namespace Presentacion.Servicios
             if (txtSearch.Text.Trim() == "")
                 this.GetServicios("");
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

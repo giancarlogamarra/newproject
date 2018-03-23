@@ -86,6 +86,7 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(167, 72);
             this.toolStripMenuItem2.Text = "PROVEEDORES";
             this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem1
             // 

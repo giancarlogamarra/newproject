@@ -134,6 +134,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Proveedor\frmAdminProveedor.resx">
+      <DependentUpon>frmAdminProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\files\rep_Ingresos.rdlc" />
     <EmbeddedResource Include="Reportes\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>

@@ -49,9 +49,9 @@ namespace Presentacion.Compras
                 toolTipAlertStockTienda.Text = nro_prod.ToString();
             }
         }
-        public void GetProveedores()
+        public async void GetProveedores()
         {
-            cboProveedores.DataSource = _Proveedorescommands.GET();
+            cboProveedores.DataSource = await _Proveedorescommands.GET("");
             cboProveedores.SelectedItem = null;
 
         }

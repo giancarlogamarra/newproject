@@ -159,7 +159,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(63, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
             // 
             // toolTipAlertStockTienda
             // 

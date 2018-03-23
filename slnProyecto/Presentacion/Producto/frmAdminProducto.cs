@@ -67,7 +67,7 @@ namespace Presentacion.Producto
 
         public async void GetProveedores()
         {
-            cboProveedores.DataSource = await _Proveedorescommands.GET();
+            cboProveedores.DataSource = await _Proveedorescommands.GET("");
             cboProveedores.SelectedItem = null;
 
         }

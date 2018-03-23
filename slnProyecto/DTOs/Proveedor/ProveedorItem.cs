@@ -11,9 +11,11 @@ namespace DTOs.Proveedor
         public Guid ID { get; set; }
         public string NOMBRE { get; set; }
         public string RAZON_SOCIAL { get; set; }
+        public string RUC { get; set; }
         public string DIRECCION { get; set; }
         public string TELEFONO_FIJO { get; set; }
         public string TELEFONO_CELULAR { get; set; }
+        public string EMAIL { get; set; }
         public bool  ESTADO { get; set; }
         public string USUARIO_CREACION { get; set; }
         public DateTime FECHA_CREACION { get; set; }
