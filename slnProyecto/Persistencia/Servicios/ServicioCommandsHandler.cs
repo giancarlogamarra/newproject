@@ -50,7 +50,7 @@ namespace Persistencia.Servicios
                                   ,s.[FECHA_CREACION]
                               FROM [solucionsmart_ggamarra].[sport.TSERVICIOS] s
                               INNER JOIN  [solucionsmart_ggamarra].[sport.CARACTERISTICAS] c ON s.[TIPO_ID]=c.[ID]
-                           WHERE [ESTADO]='1' {whereclause}";
+                           WHERE s.[ESTADO]='1' {whereclause}";
 
                 var listquery = await conn.QueryAsync<ServicioItem>(query);
                 conn.Close();

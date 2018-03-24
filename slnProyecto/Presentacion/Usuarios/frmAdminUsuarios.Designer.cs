@@ -1,6 +1,6 @@
-﻿namespace Presentacion.Proveedor
+﻿namespace Presentacion.Usuarios
 {
-    partial class frmAdminProveedor
+    partial class frmAdminUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -34,38 +34,35 @@
             this.MenuItem_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipAlertProcesoServicios = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgvProveedores = new System.Windows.Forms.DataGridView();
-            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtRuc = new System.Windows.Forms.TextBox();
-            this.txtRazonSocial = new System.Windows.Forms.TextBox();
+            this.txtRepetirPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtTelFijo = new System.Windows.Forms.TextBox();
-            this.txtTelCel = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboRoles = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.InformacionGeneralPanel.SuspendLayout();
@@ -86,7 +83,7 @@
             this.toolTipAlertProcesoServicios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(933, 58);
+            this.menuStrip1.Size = new System.Drawing.Size(1043, 58);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,13 +122,19 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2});
             this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.toolStripMenuItem2.Image = global::Presentacion.Properties.Resources.close;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(58, 54);
             this.toolStripMenuItem2.Text = "Close";
             this.toolStripMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(63, 6);
             // 
             // toolTipAlertStockTienda
             // 
@@ -160,55 +163,34 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvProveedores);
+            this.splitContainer1.Panel1.Controls.Add(this.dgvUsuarios);
             this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(933, 499);
-            this.splitContainer1.SplitterDistance = 298;
+            this.splitContainer1.Size = new System.Drawing.Size(1043, 598);
+            this.splitContainer1.SplitterDistance = 333;
             this.splitContainer1.TabIndex = 5;
             // 
-            // dgvProveedores
+            // dgvUsuarios
             // 
-            this.dgvProveedores.AllowUserToAddRows = false;
-            this.dgvProveedores.AllowUserToDeleteRows = false;
-            this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGO,
             this.CODPROVEEDOR,
             this.NOMBRE});
-            this.dgvProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProveedores.Location = new System.Drawing.Point(0, 30);
-            this.dgvProveedores.Name = "dgvProveedores";
-            this.dgvProveedores.ReadOnly = true;
-            this.dgvProveedores.RowTemplate.Height = 24;
-            this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedores.Size = new System.Drawing.Size(298, 469);
-            this.dgvProveedores.TabIndex = 1;
-            this.dgvProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProveedores_CellClick);
-            // 
-            // CODIGO
-            // 
-            this.CODIGO.DataPropertyName = "NOMBRE";
-            this.CODIGO.HeaderText = "NOMBRE";
-            this.CODIGO.Name = "CODIGO";
-            this.CODIGO.ReadOnly = true;
-            // 
-            // CODPROVEEDOR
-            // 
-            this.CODPROVEEDOR.DataPropertyName = "RAZON_SOCIAL";
-            this.CODPROVEEDOR.HeaderText = "RAZON_SOCIAL";
-            this.CODPROVEEDOR.Name = "CODPROVEEDOR";
-            this.CODPROVEEDOR.ReadOnly = true;
-            // 
-            // NOMBRE
-            // 
-            this.NOMBRE.DataPropertyName = "RUC";
-            this.NOMBRE.HeaderText = "RUC";
-            this.NOMBRE.Name = "NOMBRE";
-            this.NOMBRE.ReadOnly = true;
+            this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsuarios.Location = new System.Drawing.Point(0, 30);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
+            this.dgvUsuarios.RowTemplate.Height = 24;
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsuarios.Size = new System.Drawing.Size(333, 568);
+            this.dgvUsuarios.TabIndex = 1;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // txtSearch
             // 
@@ -216,7 +198,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(0, 0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(298, 30);
+            this.txtSearch.Size = new System.Drawing.Size(333, 30);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -228,7 +210,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(631, 499);
+            this.tabControl1.Size = new System.Drawing.Size(706, 598);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -237,7 +219,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(623, 461);
+            this.tabPage1.Size = new System.Drawing.Size(698, 560);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Informacion General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -249,19 +231,15 @@
             this.InformacionGeneralPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.InformacionGeneralPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.InformacionGeneralPanel.Controls.Add(this.label4, 0, 3);
-            this.InformacionGeneralPanel.Controls.Add(this.txtRuc, 1, 2);
-            this.InformacionGeneralPanel.Controls.Add(this.txtRazonSocial, 1, 1);
+            this.InformacionGeneralPanel.Controls.Add(this.txtRepetirPassword, 1, 2);
+            this.InformacionGeneralPanel.Controls.Add(this.txtPassword, 1, 1);
             this.InformacionGeneralPanel.Controls.Add(this.label3, 0, 2);
             this.InformacionGeneralPanel.Controls.Add(this.label2, 0, 1);
-            this.InformacionGeneralPanel.Controls.Add(this.txtNombre, 1, 0);
+            this.InformacionGeneralPanel.Controls.Add(this.txtUsuario, 1, 0);
             this.InformacionGeneralPanel.Controls.Add(this.label1, 0, 0);
-            this.InformacionGeneralPanel.Controls.Add(this.txtDireccion, 1, 3);
+            this.InformacionGeneralPanel.Controls.Add(this.txtNombreCompleto, 1, 3);
             this.InformacionGeneralPanel.Controls.Add(this.label9, 0, 4);
-            this.InformacionGeneralPanel.Controls.Add(this.label10, 0, 5);
-            this.InformacionGeneralPanel.Controls.Add(this.label11, 0, 6);
-            this.InformacionGeneralPanel.Controls.Add(this.txtTelFijo, 1, 4);
-            this.InformacionGeneralPanel.Controls.Add(this.txtTelCel, 1, 5);
-            this.InformacionGeneralPanel.Controls.Add(this.txtEmail, 1, 6);
+            this.InformacionGeneralPanel.Controls.Add(this.cboRoles, 1, 4);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Enabled = false;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(3, 3);
@@ -276,7 +254,7 @@
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.InformacionGeneralPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.InformacionGeneralPanel.Size = new System.Drawing.Size(617, 455);
+            this.InformacionGeneralPanel.Size = new System.Drawing.Size(692, 554);
             this.InformacionGeneralPanel.TabIndex = 0;
             // 
             // label4
@@ -288,26 +266,26 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 40);
             this.label4.TabIndex = 8;
-            this.label4.Text = "DIRECCION:";
+            this.label4.Text = "NOMBRE COMPLETO:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtRuc
+            // txtRepetirPassword
             // 
-            this.txtRuc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRuc.Location = new System.Drawing.Point(131, 83);
-            this.txtRuc.Name = "txtRuc";
-            this.txtRuc.Size = new System.Drawing.Size(258, 26);
-            this.txtRuc.TabIndex = 7;
+            this.txtRepetirPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRepetirPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRepetirPassword.Location = new System.Drawing.Point(131, 83);
+            this.txtRepetirPassword.Name = "txtRepetirPassword";
+            this.txtRepetirPassword.Size = new System.Drawing.Size(333, 26);
+            this.txtRepetirPassword.TabIndex = 7;
             // 
-            // txtRazonSocial
+            // txtPassword
             // 
-            this.txtRazonSocial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRazonSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazonSocial.Location = new System.Drawing.Point(131, 43);
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(258, 26);
-            this.txtRazonSocial.TabIndex = 6;
+            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(131, 43);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(333, 26);
+            this.txtPassword.TabIndex = 6;
             // 
             // label3
             // 
@@ -318,7 +296,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 40);
             this.label3.TabIndex = 5;
-            this.label3.Text = "RUC:";
+            this.label3.Text = "REPETIR PASSWORD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
@@ -330,17 +308,17 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 40);
             this.label2.TabIndex = 4;
-            this.label2.Text = "RAZON SOCIAL:";
+            this.label2.Text = "PASSWORD:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtNombre
+            // txtUsuario
             // 
-            this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(131, 3);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(258, 26);
-            this.txtNombre.TabIndex = 1;
+            this.txtUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(131, 3);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(333, 26);
+            this.txtUsuario.TabIndex = 1;
             // 
             // label1
             // 
@@ -351,17 +329,17 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 40);
             this.label1.TabIndex = 0;
-            this.label1.Text = "NOMBRE:";
+            this.label1.Text = "USUARIO:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtDireccion
+            // txtNombreCompleto
             // 
-            this.txtDireccion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.Location = new System.Drawing.Point(131, 123);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(258, 26);
-            this.txtDireccion.TabIndex = 9;
+            this.txtNombreCompleto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreCompleto.Location = new System.Drawing.Point(131, 123);
+            this.txtNombreCompleto.Name = "txtNombreCompleto";
+            this.txtNombreCompleto.Size = new System.Drawing.Size(333, 26);
+            this.txtNombreCompleto.TabIndex = 9;
             // 
             // label9
             // 
@@ -372,72 +350,60 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 40);
             this.label9.TabIndex = 11;
-            this.label9.Text = "TEL. FIJO:";
+            this.label9.Text = "ROL:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label10
+            // CODIGO
             // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 200);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(122, 40);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "TEL. CEL:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CODIGO.DataPropertyName = "USUARIO";
+            this.CODIGO.HeaderText = "USUARIO";
+            this.CODIGO.Name = "CODIGO";
+            this.CODIGO.ReadOnly = true;
             // 
-            // label11
+            // CODPROVEEDOR
             // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 240);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 40);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "EMAIL:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CODPROVEEDOR.DataPropertyName = "NOMBRE_COMPLETO";
+            this.CODPROVEEDOR.HeaderText = "NOMBRE_COMPLETO";
+            this.CODPROVEEDOR.Name = "CODPROVEEDOR";
+            this.CODPROVEEDOR.ReadOnly = true;
             // 
-            // txtTelFijo
+            // NOMBRE
             // 
-            this.txtTelFijo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTelFijo.Location = new System.Drawing.Point(131, 163);
-            this.txtTelFijo.Name = "txtTelFijo";
-            this.txtTelFijo.Size = new System.Drawing.Size(258, 30);
-            this.txtTelFijo.TabIndex = 16;
+            this.NOMBRE.DataPropertyName = "ROL";
+            this.NOMBRE.HeaderText = "ROL";
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
             // 
-            // txtTelCel
+            // cboRoles
             // 
-            this.txtTelCel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTelCel.Location = new System.Drawing.Point(131, 203);
-            this.txtTelCel.Name = "txtTelCel";
-            this.txtTelCel.Size = new System.Drawing.Size(258, 30);
-            this.txtTelCel.TabIndex = 17;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmail.Location = new System.Drawing.Point(131, 243);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(258, 30);
-            this.txtEmail.TabIndex = 18;
+            this.cboRoles.DisplayMember = "NOMBRE";
+            this.cboRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoles.FormattingEnabled = true;
+            this.cboRoles.Items.AddRange(new object[] {
+            "user",
+            "admin"});
+            this.cboRoles.Location = new System.Drawing.Point(131, 163);
+            this.cboRoles.Name = "cboRoles";
+            this.cboRoles.Size = new System.Drawing.Size(333, 33);
+            this.cboRoles.TabIndex = 14;
+            this.cboRoles.ValueMember = "ID";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmAdminProveedor
+            // frmAdminUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 557);
+            this.ClientSize = new System.Drawing.Size(1043, 656);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "frmAdminProveedor";
-            this.Text = ".:: PROVEEDORES ::.";
+            this.Name = "frmAdminUsuarios";
+            this.Text = ".:: ADMINISTRACION DE USUARIOS ::.";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmAdminProveedor_Load);
+            this.Load += new System.EventHandler(this.frmAdminUsuarios_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -445,7 +411,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.InformacionGeneralPanel.ResumeLayout(false);
@@ -463,31 +429,28 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Save;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Delete;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertProcesoServicios;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dgvProveedores;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel InformacionGeneralPanel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtRuc;
-        private System.Windows.Forms.TextBox txtRazonSocial;
+        private System.Windows.Forms.TextBox txtRepetirPassword;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtNombreCompleto;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtTelFijo;
-        private System.Windows.Forms.TextBox txtTelCel;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODPROVEEDOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
+        private System.Windows.Forms.ComboBox cboRoles;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

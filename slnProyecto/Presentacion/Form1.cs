@@ -1,9 +1,11 @@
 ﻿using Presentacion.Almacen;
+using Presentacion.Caracteristicas;
 using Presentacion.Compras;
 using Presentacion.Producto;
 using Presentacion.Proveedor;
 using Presentacion.Reportes;
 using Presentacion.Servicios;
+using Presentacion.Usuarios;
 using Presentacion.Ventas;
 using System;
 using System.Collections.Generic;
@@ -170,6 +172,44 @@ namespace Presentacion
             }
 
             var BL = Program.container.GetInstance<frmAdminProveedor>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmAdminCaracteristicas))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            var BL = Program.container.GetInstance<frmAdminCaracteristicas>();
+            BL.MdiParent = this;
+            BL.StartPosition = FormStartPosition.CenterScreen;
+            BL.Show();
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == typeof(frmAdminUsuarios))
+                {
+                    form.Activate();
+                    form.BringToFront();
+                    form.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            var BL = Program.container.GetInstance<frmAdminUsuarios>();
             BL.MdiParent = this;
             BL.StartPosition = FormStartPosition.CenterScreen;
             BL.Show();

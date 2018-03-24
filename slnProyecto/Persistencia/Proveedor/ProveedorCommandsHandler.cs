@@ -32,6 +32,7 @@ namespace Persistencia.Proveedor
                                       ,[TELEFONO_FIJO]
                                       ,[TELEFONO_CELULAR]
                                       ,[ESTADO]
+                                      ,[EMAIL]
                                       ,[USUARIO_CREACION]
                                       ,[FECHA_CREACION]
                                       ,[USUARIO_MODIFICACION]
@@ -50,7 +51,7 @@ namespace Persistencia.Proveedor
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 conn.OpenAsync();
-                var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.TPROVEEDORES]
                                ([ID]
                                ,[NOMBRE]
                                ,[RAZON_SOCIAL]

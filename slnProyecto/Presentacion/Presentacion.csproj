@@ -59,6 +59,12 @@
     <Compile Include="Almacen\frmAlmacen.Designer.cs">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Caracteristicas\frmAdminCaracteristicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caracteristicas\frmAdminCaracteristicas.Designer.cs">
+      <DependentUpon>frmAdminCaracteristicas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compras\frmCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="Servicios\frmServicios.Designer.cs">
       <DependentUpon>frmServicios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\frmAdminUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmAdminUsuarios.Designer.cs">
+      <DependentUpon>frmAdminUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +123,9 @@
     </Compile>
     <EmbeddedResource Include="Almacen\frmAlmacen.resx">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caracteristicas\frmAdminCaracteristicas.resx">
+      <DependentUpon>frmAdminCaracteristicas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compras\frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
@@ -143,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Servicios\frmServicios.resx">
       <DependentUpon>frmServicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmAdminUsuarios.resx">
+      <DependentUpon>frmAdminUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmVentas.resx">
       <DependentUpon>frmVentas.cs</DependentUpon>

@@ -1,6 +1,6 @@
-﻿using DTOs.Proveedor;
+﻿using DTOs.Caracteristicas;
+using Persistencia.Caracteristica;
 using Persistencia.Producto;
-using Persistencia.Proveedor;
 using Persistencia.Servicios;
 using System;
 using System.Collections.Generic;
@@ -12,41 +12,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Presentacion.Proveedor
+namespace Presentacion.Caracteristicas
 {
-    public partial class frmAdminProveedor : Form
+    public partial class frmAdminCaracteristicas : Form
     {
-        IProveedorCommandsHandler _Proveedorcommands;
-        IServicioCommandsHandler _Servicioscommands;
+        ICaracteristicaCommandsHandler _CommandCaracteristicas;
         IProductoCommandsHandler _Productoscommands;
-        ProveedorItem obj_Toupdate = null;
+        IServicioCommandsHandler _Servicioscommands;
+        CaracteristicaItem obj_Toupdate = null;
 
-        public frmAdminProveedor(IProveedorCommandsHandler commands, IServicioCommandsHandler servicioCommands, IProductoCommandsHandler productoCommands)
+        public frmAdminCaracteristicas(ICaracteristicaCommandsHandler commandCaracteristicas,
+            IProductoCommandsHandler prodcommands,IServicioCommandsHandler serviciocommand)
         {
             InitializeComponent();
-            this._Proveedorcommands = commands;
-            this._Servicioscommands = servicioCommands;
-            this._Productoscommands = productoCommands;
+            this._CommandCaracteristicas = commandCaracteristicas;
+            this._Productoscommands = prodcommands;
+            this._Servicioscommands = serviciocommand;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             if (txtSearch.Text.Trim().Length > 2)
-                this.GetProveedores(txtSearch.Text.Trim());
+                this.GetCaracteristicas(txtSearch.Text.Trim());
 
             if (txtSearch.Text.Trim() == "")
-                this.GetProveedores("");
-        }
-        public async void GetProveedores(string search)
-        {
-            dgvProveedores.AutoGenerateColumns = false;
-            dgvProveedores.DataSource = await _Proveedorcommands.GET(search);
-            dgvProveedores.ClearSelection();
+                this.GetCaracteristicas("");
         }
 
-        private void frmAdminProveedor_Load(object sender, EventArgs e)
+        public async void GetCaracteristicas(string search)
         {
-            this.GetProveedores("");
+            dgvCaracteristicas.AutoGenerateColumns = false;
+            dgvCaracteristicas.DataSource = await _CommandCaracteristicas.GET(search);
+            dgvCaracteristicas.ClearSelection();
+        }
+
+        private void frmAdminCaracteristicas_Load(object sender, EventArgs e)
+        {
+            GetCaracteristicas("");
             CalcularServiciosEnProceso();
             CalcularReposicionStock();
         }
@@ -72,59 +74,51 @@ namespace Presentacion.Proveedor
                 toolTipAlertStockTienda.Text = nro_prod.ToString();
             }
         }
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void MenuItem_New_Click(object sender, EventArgs e)
         {
             InformacionGeneralPanel.Enabled = true;
             this.MenuItem_Save.Enabled = true;
             this.MenuItem_Delete.Enabled = false;
-            txtNombre.Focus();
+            txtValor.Focus();
             this.obj_Toupdate = null;
-            dgvProveedores.ClearSelection();
+            dgvCaracteristicas.ClearSelection();
             cleanControls();
             InformacionGeneralPanel.Enabled = true;
+            cbCaracteristica.SelectedItem = null;
         }
+
         public void cleanControls()
         {
-            txtNombre.Text = string.Empty;
-            txtRazonSocial.Text = string.Empty;
-            txtRuc.Text = string.Empty;
-            txtDireccion.Text = string.Empty;
-            txtTelFijo.Text = string.Empty;
-            txtTelCel.Text = string.Empty;
-            txtEmail.Text = string.Empty;
+            cbCaracteristica.Text = string.Empty;
+            txtValor.Text = string.Empty; 
         }
 
         private void MenuItem_Save_Click(object sender, EventArgs e)
         {
             if (Validator())
             {
-                ProveedorItem p = new ProveedorItem()
+                CaracteristicaItem p = new CaracteristicaItem()
                 {
                     ID = Guid.NewGuid(),
-                    NOMBRE= txtNombre.Text.ToUpper(),
-                    RAZON_SOCIAL = txtRazonSocial.Text,
-                    RUC = txtRuc.Text,
-                    DIRECCION = txtDireccion.Text,
-                    TELEFONO_FIJO = txtTelFijo.Text,
-                    TELEFONO_CELULAR= txtTelCel.Text,
-                    EMAIL  = txtEmail.Text,
-                    FECHA_CREACION = DateTime.Now,
-                    USUARIO_CREACION = "demo",
+                    CARACTERISTICA = cbCaracteristica.Text,
+                    VALOR = txtValor.Text.ToUpper(),
                     ESTADO = true
                 };
                 if (this.obj_Toupdate == null)
                 {
-                    var result = this._Proveedorcommands.ADD(p);
+                    var result = this._CommandCaracteristicas.ADD(p);
                 }
                 else
                 {
                     p.ID = this.obj_Toupdate.ID;
-                    p.USUARIO_MODIFICACION = "demo";
-                    p.FECHA_MODIFICACION = DateTime.Now;
-                    this._Proveedorcommands.UPDATE(p);
+                    this._CommandCaracteristicas.UPDATE(p);
                 }
-                GetProveedores("");
+                GetCaracteristicas("");
                 cleanControls();
                 InformacionGeneralPanel.Enabled = false;
             }
@@ -134,35 +128,41 @@ namespace Presentacion.Proveedor
         {
             errorProvider1.Clear();
             bool Validated = true;
-            if (txtNombre.Text.Trim() == "")
+            if (txtValor.Text.Trim() == "")
             {
-                errorProvider1.SetError((Control)txtNombre, "Ingrese Nombre del Proveedor");
+                errorProvider1.SetError((Control)txtValor, "Ingrese el Valor para la Caracteristica");
                 Validated = false;
             }
+            if (cbCaracteristica.Text.Trim() == "")
+            {
+                errorProvider1.SetError((Control)cbCaracteristica, "Seleccione una Caracteristica");
+                Validated = false;
+            }
+            
             return Validated;
         }
 
         private void MenuItem_Delete_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("¿Estas seguro de eliminar este proveedor?",
-                                     ".:: Mensaje del Sistema ::.",
-                                     MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("¿Estas seguro de eliminar esta caracteristica?",
+                                    ".:: Mensaje del Sistema ::.",
+                                    MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                this._Proveedorcommands.DELETE(this.obj_Toupdate.ID);
+                this._CommandCaracteristicas.DELETE(this.obj_Toupdate.ID);
                 this.cleanControls();
                 this.obj_Toupdate = null;
                 MenuItem_Save.Enabled = false;
                 MenuItem_Delete.Enabled = false;
-                this.GetProveedores("");
+                this.GetCaracteristicas("");
             }
         }
 
-        private void dgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCaracteristicas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
-                ProveedorItem valor = (ProveedorItem)dgvProveedores.Rows[e.RowIndex].DataBoundItem;
+                CaracteristicaItem valor = (CaracteristicaItem)dgvCaracteristicas.Rows[e.RowIndex].DataBoundItem;
                 FillControls(valor);
                 this.obj_Toupdate = valor;
             }
@@ -170,25 +170,17 @@ namespace Presentacion.Proveedor
             this.MenuItem_Save.Enabled = true;
         }
 
-        public void FillControls(ProveedorItem p)
+        public void FillControls(CaracteristicaItem p)
         {
             if (p != null)
             {
-                txtNombre.Text = p.NOMBRE;
-                txtRazonSocial.Text = p.RAZON_SOCIAL;
-                txtRuc.Text = p.RUC;
-                txtDireccion.Text = p.DIRECCION;
-                txtTelFijo.Text = p.TELEFONO_FIJO;
-                txtTelCel.Text = p.TELEFONO_CELULAR;
-                txtEmail.Text = p.EMAIL;
+                
                 InformacionGeneralPanel.Enabled = true;
-              
+                //tab auditoria
+                txtValor.Text = p.VALOR;
+                cbCaracteristica.Text = p.CARACTERISTICA;
             }
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

@@ -95,8 +95,9 @@
             this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(167, 72);
-            this.toolStripMenuItem1.Text = "CATEGORIAS";
+            this.toolStripMenuItem1.Text = "CARACTERISTICAS";
             this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // MenuItemCompras
             // 
@@ -152,6 +153,7 @@
             this.toolStripMenuItem8.Size = new System.Drawing.Size(167, 72);
             this.toolStripMenuItem8.Text = "USUARIOS";
             this.toolStripMenuItem8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripMenuItem7
             // 

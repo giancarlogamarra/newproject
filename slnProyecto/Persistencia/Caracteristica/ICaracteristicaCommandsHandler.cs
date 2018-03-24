@@ -9,6 +9,9 @@ namespace Persistencia.Caracteristica
 {
     public interface ICaracteristicaCommandsHandler
     {
-        Task<IEnumerable<CaracteristicaItem>> GET(string CARACTERISTICA);
+        Task<IEnumerable<CaracteristicaItem>> GET(string search);
+        int UPDATE(CaracteristicaItem caracteristica);
+        int ADD(CaracteristicaItem caracteristica);
+        int DELETE(Guid ID);
     }
 }

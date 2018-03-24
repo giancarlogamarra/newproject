@@ -12,5 +12,6 @@ namespace DTOs.Caracteristicas
         public string CARACTERISTICA { get; set; }
         public string VALOR { get; set; }
 
+        public bool ESTADO { get; set; }
     }
 }
