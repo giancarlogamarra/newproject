@@ -20,7 +20,7 @@ namespace Presentacion.Producto
         IProductoCommandsHandler _Productoscommands;
         IProveedorCommandsHandler _Proveedorescommands;
         IServicioCommandsHandler _Servicioscommands;
-        ProductoItem obj_Toupdate =null;
+        ProductoItem obj_Toupdate = null;
         public frmAdminProducto(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands, IServicioCommandsHandler serviciocommand)
         {
             InitializeComponent();
@@ -60,9 +60,9 @@ namespace Presentacion.Producto
         }
         public async void GetProductos(string search)
         {
-           dgvProductos.AutoGenerateColumns = false;           
-           dgvProductos.DataSource= await _Productoscommands.GET(search);
-           dgvProductos.ClearSelection();
+            dgvProductos.AutoGenerateColumns = false;
+            dgvProductos.DataSource = await _Productoscommands.GET(search);
+            dgvProductos.ClearSelection();
         }
 
         public async void GetProveedores()
@@ -87,17 +87,17 @@ namespace Presentacion.Producto
             cleanControls();
             InformacionGeneralPanel.Enabled = true;
             cboProveedores.SelectedItem = null;
+            btnGenerarCodigo.Visible = true;
         }
 
         private void MenuItem_Save_Click(object sender, EventArgs e)
         {
-
             if (Validator())
             {
                 ProductoItem p = new ProductoItem()
                 {
                     ID = Guid.NewGuid(),
-                    CODIGO = txtCodigo.Text,
+                    CODIGO = Convert.ToInt32(txtCodigo.Text),
                     NOMBRE = txtNombre.Text.ToUpper(),
                     DESCRIPCION = txtDescripcion.Text,
                     CODIGO_PROVEEDOR = txtCodigoProveedor.Text,
@@ -107,7 +107,7 @@ namespace Presentacion.Producto
                     FECHA_CREACION = DateTime.Now,
                     USUARIO_CREACION = "demo",
                     ESTADO = true,
-                    ALERTA_STOCK_MIN_TIENDA=(int)txtMinSctock.Value
+                    ALERTA_STOCK_MIN_TIENDA = (int)txtMinSctock.Value
                 };
                 if (this.obj_Toupdate == null)
                 {
@@ -143,7 +143,7 @@ namespace Presentacion.Producto
                 errorProvider1.SetError((Control)txtDescripcion, "La Descripcion del Producto es requerido");
                 Validated = false;
             }
-            if (txtPVenta.Text.Trim() == "" || txtPVenta.Value==0)
+            if (txtPVenta.Text.Trim() == "" || txtPVenta.Value == 0)
             {
                 errorProvider1.SetError((Control)txtPVenta, "El Precio de venta del Producto es requerido");
                 Validated = false;
@@ -170,7 +170,7 @@ namespace Presentacion.Producto
             txtMinSctock.ResetText();
         }
 
-       
+
 
         public void FillControls(ProductoItem p) {
             if (p != null)
@@ -178,7 +178,7 @@ namespace Presentacion.Producto
                 txtPVenta.Value = 0;
                 txtDsctoMax.Value = 0;
 
-                txtCodigo.Text = p.CODIGO;
+                txtCodigo.Text = p.CODIGO.ToString().PadLeft(7, '0');
                 txtNombre.Text = p.NOMBRE;
                 txtDescripcion.Text = p.DESCRIPCION;
                 txtCodigoProveedor.Text = p.CODIGO_PROVEEDOR;
@@ -188,7 +188,7 @@ namespace Presentacion.Producto
                 txtFechaCreacion.Text = p.FECHA_CREACION.ToString();
                 txtUsuarioModificacion.Text = p.USUARIO_MODIFICACION;
                 cboProveedores.SelectedValue = p.PROVEEDOR_ID;
-                
+
                 txtPVenta.Value = p.PRECIO_VENTA;
                 txtDsctoMax.Value = p.DSCTO_MAX;
                 txtMinSctock.Value = p.ALERTA_STOCK_MIN_TIENDA;
@@ -203,17 +203,18 @@ namespace Presentacion.Producto
                 ProductoItem valor = (ProductoItem)dgvProductos.Rows[e.RowIndex].DataBoundItem;
                 FillControls(valor);
                 this.obj_Toupdate = valor;
+                btnGenerarCodigo.Visible = false;
             }
             this.MenuItem_Delete.Enabled = true;
             this.MenuItem_Save.Enabled = true;
         }
         private void dgvProductos_KeyDown(object sender, KeyEventArgs e)
         {
-            ProductoItem valor =null;
+            ProductoItem valor = null;
             if (e.KeyData == Keys.Down)
             {
-                if(dgvProductos.Rows.Count == dgvProductos.CurrentRow.Index + 1)
-                    valor = (ProductoItem)dgvProductos.Rows[dgvProductos.CurrentRow.Index ].DataBoundItem;
+                if (dgvProductos.Rows.Count == dgvProductos.CurrentRow.Index + 1)
+                    valor = (ProductoItem)dgvProductos.Rows[dgvProductos.CurrentRow.Index].DataBoundItem;
                 else
                     valor = (ProductoItem)dgvProductos.Rows[dgvProductos.CurrentRow.Index + 1].DataBoundItem;
             }
@@ -250,18 +251,33 @@ namespace Presentacion.Producto
                 MenuItem_Save.Enabled = false;
                 MenuItem_Delete.Enabled = false;
                 this.GetProductos("");
-            }            
+            }
+        }
+
+       
+
+        private async void btnGenerarCodigo_Click(object sender, EventArgs e)
+        {
+            int ultimo_codigo = _Productoscommands.GENERAR_CODIGO();
+            string codigo = (ultimo_codigo + 1).ToString();
+            txtCodigo.Text = codigo.PadLeft(7, '0');
+        }
+
+        private async void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.GetProductos(txtSearch.Text.Trim());
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if(txtSearch.Text.Trim().Length>2)
-                this.GetProductos(txtSearch.Text.Trim());
+            // if(txtSearch.Text.Trim().Length>2)
+            this.GetProductos(txtSearch.Text.Trim());
 
-            if (txtSearch.Text.Trim()=="")
-                    this.GetProductos("");
+            /*if (txtSearch.Text.Trim()=="")
+                    this.GetProductos("");*/
         }
-
-       
     }
 }

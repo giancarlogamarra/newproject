@@ -95,7 +95,7 @@ namespace Presentacion.Compras
                 dgvCompras.DataSource = null;
                 CompraItem item = new CompraItem() {
                     PRODUCTO_ID = this.productoAgregar.ID,
-                    CODIGO=this.productoAgregar.CODIGO,
+                    CODIGO=this.productoAgregar.CODIGO.ToString(),
                     NOMBRE=this.productoAgregar.NOMBRE,
                     DESCRIPCION=this.productoAgregar.DESCRIPCION,
                     PROVEEDOR_ID = (Guid)cboProveedores.SelectedValue,

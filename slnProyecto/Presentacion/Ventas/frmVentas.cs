@@ -98,7 +98,7 @@ namespace Presentacion.Ventas
                 VentaItem item = new VentaItem()
                 {
                     PRODUCTO_ID = this.productoVender.ID,
-                    CODIGO = this.productoVender.CODIGO,
+                    CODIGO = this.productoVender.CODIGO.ToString(),
                     NOMBRE = this.productoVender.NOMBRE,
                     DESCRIPCION = this.productoVender.DESCRIPCION,
                     PROVEEDOR_ID = (Guid)cboProveedores.SelectedValue,

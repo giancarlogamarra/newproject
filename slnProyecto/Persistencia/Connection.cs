@@ -8,6 +8,6 @@ namespace Persistencia
 {
     static class Connection 
     {
-        public static string ConectionString = "Data Source=SQL2012.dbsqlserver.com,1288;Persist Security Info=True;Initial Catalog=solucionsmart_solucionsmart2;User ID=solucionsmart_ggamarra;Password=Uarr711!";
+        public static string ConectionString = "Data Source=SQL2012.dbsqlserver.com,1288;Persist Security Info=True;Initial Catalog=solucionsmart_solucionsmart2;User ID=solucionsmart_ggamarra;Password=S0luci0nes";
     }
 }

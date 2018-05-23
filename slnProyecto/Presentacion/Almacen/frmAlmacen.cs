@@ -89,7 +89,7 @@ namespace Presentacion.Almacen
             if (p != null)
             {
 
-                txtCodigo.Text = p.CODIGO;
+                txtCodigo.Text = p.CODIGO.ToString();
                 txtNombre.Text = p.NOMBRE;
                 txtDescripcion.Text = p.DESCRIPCION;
                 InformacionGeneralPanel.Enabled = true;
@@ -124,7 +124,7 @@ namespace Presentacion.Almacen
         private void btnSalidaAlmacen_Click(object sender, EventArgs e)
         {
             this._Almacencommands.MOVER_ALMACEN_A_TIENDA(this.obj_Toupdate.ID, "user");
-            this.GetProductos(this.obj_Toupdate.CODIGO);
+            this.GetProductos(txtSearch.Text);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace Persistencia.Producto
         Task<int> GET_STOCK_ALMACEN(Guid PRODUCTO_ID);
         Task<int> GET_STOCK_TIENDA(Guid PRODUCTO_ID);
         Task<int> GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+        int GENERAR_CODIGO();
  
     }
 }

@@ -52,7 +52,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigoProveedor = new System.Windows.Forms.TextBox();
             this.cboProveedores = new System.Windows.Forms.ComboBox();
@@ -64,6 +63,9 @@
             this.txtDsctoMax = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.txtMinSctock = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.btnGenerarCodigo = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
@@ -88,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -256,6 +259,7 @@
             this.txtSearch.Size = new System.Drawing.Size(277, 30);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
             // 
             // tabControl1
             // 
@@ -291,7 +295,6 @@
             this.InformacionGeneralPanel.Controls.Add(this.txtNombre, 1, 1);
             this.InformacionGeneralPanel.Controls.Add(this.label3, 0, 2);
             this.InformacionGeneralPanel.Controls.Add(this.label2, 0, 1);
-            this.InformacionGeneralPanel.Controls.Add(this.txtCodigo, 1, 0);
             this.InformacionGeneralPanel.Controls.Add(this.label1, 0, 0);
             this.InformacionGeneralPanel.Controls.Add(this.txtCodigoProveedor, 1, 3);
             this.InformacionGeneralPanel.Controls.Add(this.cboProveedores, 1, 4);
@@ -303,6 +306,7 @@
             this.InformacionGeneralPanel.Controls.Add(this.txtDsctoMax, 1, 6);
             this.InformacionGeneralPanel.Controls.Add(this.label12, 0, 7);
             this.InformacionGeneralPanel.Controls.Add(this.txtMinSctock, 1, 7);
+            this.InformacionGeneralPanel.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.InformacionGeneralPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InformacionGeneralPanel.Enabled = false;
             this.InformacionGeneralPanel.Location = new System.Drawing.Point(3, 3);
@@ -373,15 +377,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "NOMBRE:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(131, 3);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(212, 26);
-            this.txtCodigo.TabIndex = 1;
             // 
             // label1
             // 
@@ -494,6 +489,43 @@
             this.txtMinSctock.Name = "txtMinSctock";
             this.txtMinSctock.Size = new System.Drawing.Size(134, 30);
             this.txtMinSctock.TabIndex = 18;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.52831F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.4717F));
+            this.tableLayoutPanel2.Controls.Add(this.txtCodigo, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGenerarCodigo, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(131, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 34);
+            this.tableLayoutPanel2.TabIndex = 19;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(3, 3);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(151, 26);
+            this.txtCodigo.TabIndex = 1;
+            // 
+            // btnGenerarCodigo
+            // 
+            this.btnGenerarCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGenerarCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarCodigo.Location = new System.Drawing.Point(160, 3);
+            this.btnGenerarCodigo.Name = "btnGenerarCodigo";
+            this.btnGenerarCodigo.Size = new System.Drawing.Size(49, 28);
+            this.btnGenerarCodigo.TabIndex = 2;
+            this.btnGenerarCodigo.Text = "Generar codigo";
+            this.btnGenerarCodigo.UseVisualStyleBackColor = true;
+            this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
             // tabPage2
             // 
@@ -651,6 +683,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDsctoMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMinSctock)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -707,5 +741,7 @@
         private System.Windows.Forms.NumericUpDown txtMinSctock;
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertProcesoServicios;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnGenerarCodigo;
     }
 }

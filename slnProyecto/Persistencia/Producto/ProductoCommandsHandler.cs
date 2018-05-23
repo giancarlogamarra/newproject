@@ -21,7 +21,15 @@ namespace Persistencia.Producto
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 string whereclause = "";
-                whereclause = $@" AND [CODIGO] = '{CODIGO}'";
+                if (IsNumeric(CODIGO))
+                {
+                    string codigo = CODIGO.Substring(0, CODIGO.Length - 1);
+                    whereclause = $@" AND ([CODIGO] = '{int.Parse(codigo)}')";
+                }
+                else
+                {
+                    whereclause = $@" AND [CODIGO] = '{CODIGO}'";
+                }
 
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
                                 [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
@@ -41,9 +49,15 @@ namespace Persistencia.Producto
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 string whereclause = "";
-                if (search != "")
+                if (IsNumeric(search))
+                {
+                    string codigo = search.Substring(0, search.Length - 1);
+                    whereclause = $@" AND ([CODIGO] = '{int.Parse(codigo)}')";
+                }
+                else
+                {
                     whereclause = $@" AND ([NOMBRE] like '%{search}%' or [CODIGO] like '%{search}%')";
-
+                }
                 var query = $@"SELECT [ID] ,[CODIGO],[NOMBRE] ,[DESCRIPCION],
                                 [CODIGO_PROVEEDOR],[PROVEEDOR_ID],[PRECIO_VENTA],[DSCTO_MAX],[ESTADO],
                                 [ALERTA_STOCK_MIN_TIENDA],[STOCK_ACTUAL_TIENDA],[USUARIO_CREACION],
@@ -56,6 +70,15 @@ namespace Persistencia.Producto
                 return listquery;
             }
         }
+
+        public static bool IsNumeric(object Expression)
+        {
+            double retNum;
+
+            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
+
 
         public int ADD(ProductoItem product)
         {
@@ -92,7 +115,7 @@ namespace Persistencia.Producto
                                 ,@STOCK_ACTUAL_TIENDA)";
                 var c = new SqlCommand(query, conn);
                 c.Parameters.Add("@ID", SqlDbType.UniqueIdentifier).Value = product.ID;
-                c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
+                c.Parameters.Add("@CODIGO", SqlDbType.Int).Value = product.CODIGO;
                 c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                 c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
                 c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
@@ -127,7 +150,7 @@ namespace Persistencia.Producto
                          WHERE [ID]='{product.ID}'";
                     var c = new SqlCommand(query, conn);
 
-                    c.Parameters.Add("@CODIGO", SqlDbType.VarChar, 200).Value = product.CODIGO;
+                    c.Parameters.Add("@CODIGO", SqlDbType.Int).Value = product.CODIGO;
                     c.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 500).Value = product.NOMBRE;
                     c.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar, 500).Value = product.DESCRIPCION;
                     c.Parameters.Add("@CODIGO_PROVEEDOR", SqlDbType.VarChar, 200).Value = product.CODIGO_PROVEEDOR;
@@ -159,8 +182,7 @@ namespace Persistencia.Producto
                 return c.ExecuteNonQuery();
             }
         }
-
-
+       
         public async Task<int> GET_STOCK_ALMACEN(Guid PRODUCTO_ID)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
@@ -209,5 +231,20 @@ namespace Persistencia.Producto
                 return stock_tienda;
             }
         }
+
+        public int GENERAR_CODIGO()
+        {
+
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                conn.OpenAsync();
+                var query = $@"SELECT MAX(codigo) from [solucionsmart_ggamarra].[sport.TPRODUCTOS]";
+                /*var query = $@"DELETE FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                                 WHERE ID = '{ID}'";*/
+                var c = new SqlCommand(query, conn);
+                return  Convert.ToInt32(c.ExecuteScalar());
+            }
+        }
+ 
     }
 }
