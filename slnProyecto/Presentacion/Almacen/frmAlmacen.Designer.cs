@@ -59,6 +59,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblStockMinTienda = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTipAlertProcesoServicios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -81,7 +82,8 @@
             this.MenuItem_Save,
             this.MenuItem_Delete,
             this.toolStripMenuItem2,
-            this.toolTipAlertStockTienda});
+            this.toolTipAlertStockTienda,
+            this.toolTipAlertProcesoServicios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(891, 58);
@@ -136,6 +138,7 @@
             this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
             this.toolTipAlertStockTienda.Text = "0";
             this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertStockTienda.Click += new System.EventHandler(this.toolTipAlertStockTienda_Click);
             // 
             // splitContainer1
             // 
@@ -208,6 +211,7 @@
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.MaxLength = 8;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(273, 34);
             this.txtSearch.TabIndex = 0;
@@ -421,6 +425,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // toolTipAlertProcesoServicios
+            // 
+            this.toolTipAlertProcesoServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertProcesoServicios.Image = global::Presentacion.Properties.Resources.process;
+            this.toolTipAlertProcesoServicios.Name = "toolTipAlertProcesoServicios";
+            this.toolTipAlertProcesoServicios.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertProcesoServicios.Text = "0";
+            this.toolTipAlertProcesoServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertProcesoServicios.ToolTipText = "Nro de Servicios en Proceso";
+            this.toolTipAlertProcesoServicios.Click += new System.EventHandler(this.toolTipAlertProcesoServicios_Click);
+            // 
             // frmAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -482,5 +497,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblStockMinTienda;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertProcesoServicios;
     }
 }

@@ -26,6 +26,14 @@ namespace Presentacion
             var BL = Program.container.GetInstance<frmLogin>();
             BL.ShowDialog();
             InitializeComponent();
+            if (BL.usuario.ROL == "user")
+            {
+                MenuItemProducto.Visible = false;// PRODUCTOS
+                toolStripMenuItem2.Visible = false; //PROVEEDORES
+                toolStripMenuItem8.Visible = false; //USUARIOS
+                toolStripMenuItem1.Visible = false; // CARACTERISTICAS
+                toolStripMenuItem7.Visible = false; // REPORTES
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

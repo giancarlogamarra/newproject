@@ -36,6 +36,7 @@
             this.MenuItem_GrabarVenta = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipAlertProcesoServicios = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -103,7 +104,8 @@
             this.MenuItem_AddItem,
             this.MenuItem_GrabarVenta,
             this.toolStripMenuItem1,
-            this.toolTipAlertStockTienda});
+            this.toolTipAlertStockTienda,
+            this.toolTipAlertProcesoServicios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1199, 58);
@@ -161,6 +163,18 @@
             this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
             this.toolTipAlertStockTienda.Text = "0";
             this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertStockTienda.Click += new System.EventHandler(this.toolTipAlertStockTienda_Click);
+            // 
+            // toolTipAlertProcesoServicios
+            // 
+            this.toolTipAlertProcesoServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertProcesoServicios.Image = global::Presentacion.Properties.Resources.process;
+            this.toolTipAlertProcesoServicios.Name = "toolTipAlertProcesoServicios";
+            this.toolTipAlertProcesoServicios.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertProcesoServicios.Text = "0";
+            this.toolTipAlertProcesoServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertProcesoServicios.ToolTipText = "Nro de Servicios en Proceso";
+            this.toolTipAlertProcesoServicios.Click += new System.EventHandler(this.toolTipAlertProcesoServicios_Click);
             // 
             // splitContainer1
             // 
@@ -232,6 +246,7 @@
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(131, 3);
+            this.txtCodigo.MaxLength = 8;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(465, 30);
             this.txtCodigo.TabIndex = 1;
@@ -358,7 +373,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.46939F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel2.Controls.Add(this.txtCantidad, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblStockAlmacen, 2, 0);
@@ -378,15 +393,15 @@
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.Location = new System.Drawing.Point(3, 3);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(153, 30);
+            this.txtCantidad.Size = new System.Drawing.Size(151, 30);
             this.txtCantidad.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(162, 0);
+            this.label9.Location = new System.Drawing.Point(160, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 34);
+            this.label9.Size = new System.Drawing.Size(63, 34);
             this.label9.TabIndex = 15;
             this.label9.Text = "STOCK ALMACEN:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -396,7 +411,7 @@
             this.lblStockAlmacen.AutoSize = true;
             this.lblStockAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblStockAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockAlmacen.Location = new System.Drawing.Point(241, 0);
+            this.lblStockAlmacen.Location = new System.Drawing.Point(238, 0);
             this.lblStockAlmacen.Name = "lblStockAlmacen";
             this.lblStockAlmacen.Size = new System.Drawing.Size(74, 34);
             this.lblStockAlmacen.TabIndex = 16;
@@ -406,7 +421,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(321, 0);
+            this.label10.Location = new System.Drawing.Point(318, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 34);
             this.label10.TabIndex = 17;
@@ -416,7 +431,7 @@
             // 
             this.lblStockTienda.AutoSize = true;
             this.lblStockTienda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockTienda.Location = new System.Drawing.Point(391, 0);
+            this.lblStockTienda.Location = new System.Drawing.Point(388, 0);
             this.lblStockTienda.Name = "lblStockTienda";
             this.lblStockTienda.Size = new System.Drawing.Size(23, 25);
             this.lblStockTienda.TabIndex = 18;
@@ -427,7 +442,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.33788F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.66212F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel3.Controls.Add(this.txtPVenta, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.lbldscMax, 2, 0);
@@ -445,8 +460,13 @@
             this.txtPVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPVenta.Location = new System.Drawing.Point(3, 3);
+            this.txtPVenta.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.txtPVenta.Name = "txtPVenta";
-            this.txtPVenta.Size = new System.Drawing.Size(154, 30);
+            this.txtPVenta.Size = new System.Drawing.Size(152, 30);
             this.txtPVenta.TabIndex = 16;
             // 
             // label11
@@ -454,9 +474,9 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(163, 0);
+            this.label11.Location = new System.Drawing.Point(161, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 34);
+            this.label11.Size = new System.Drawing.Size(112, 34);
             this.label11.TabIndex = 20;
             this.label11.Text = "DSCTO MAX:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -467,9 +487,9 @@
             this.lbldscMax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbldscMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldscMax.ForeColor = System.Drawing.Color.Red;
-            this.lbldscMax.Location = new System.Drawing.Point(282, 0);
+            this.lbldscMax.Location = new System.Drawing.Point(279, 0);
             this.lbldscMax.Name = "lbldscMax";
-            this.lbldscMax.Size = new System.Drawing.Size(180, 34);
+            this.lbldscMax.Size = new System.Drawing.Size(183, 34);
             this.lbldscMax.TabIndex = 19;
             this.lbldscMax.Text = "0.00";
             this.lbldscMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -515,6 +535,7 @@
             this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCompras.Size = new System.Drawing.Size(1199, 473);
             this.dgvCompras.TabIndex = 0;
+            this.dgvCompras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompras_CellClick);
             // 
             // CODIGO
             // 
@@ -714,5 +735,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblStockTienda;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertProcesoServicios;
     }
 }

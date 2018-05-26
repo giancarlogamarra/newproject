@@ -8,6 +8,6 @@ namespace Persistencia.Almacen
 {
     public  interface IAlmacenCommandsHandler
     {
-        Task<int>  MOVER_ALMACEN_A_TIENDA(Guid ID_PRODUCTO,string USUARIO);
+        int MOVER_ALMACEN_A_TIENDA(Guid ID_PRODUCTO,string USUARIO);
     }
 }

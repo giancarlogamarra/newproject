@@ -2,6 +2,7 @@
 using Persistencia.Compras;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
+using Persistencia.Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,14 +20,18 @@ namespace Presentacion.Compras
         IProductoCommandsHandler _Productoscommands;
         IProveedorCommandsHandler _Proveedorescommands;
         IComprasCommandsHandler _Comprascommands;
-        
+        IServicioCommandsHandler _Servicioscommands;
+
         ProductoItem productoAgregar;
         List<CompraItem> ListCompras = new List<CompraItem>();
-        public frmCompras(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands, IComprasCommandsHandler comprascommands)
+        public frmCompras(IProductoCommandsHandler prodcommands,
+           IServicioCommandsHandler serviciocommand,
+            IProveedorCommandsHandler provcommands, IComprasCommandsHandler comprascommands)
         {
             this._Productoscommands = prodcommands;
             this._Proveedorescommands = provcommands;
             this._Comprascommands = comprascommands;
+            this._Servicioscommands = serviciocommand;
             InitializeComponent();
             this.dgvCompras.AutoGenerateColumns = false;
         }
@@ -37,6 +42,18 @@ namespace Presentacion.Compras
         {
             GetProveedores();
             CalcularReposicionStock();
+            CalcularServiciosEnProceso();
+        }
+        public async void CalcularServiciosEnProceso()
+        {
+            int nro_servicios = await _Servicioscommands.GET_SERVICIOS_EN_PROCESO();
+            if (nro_servicios == 0)
+                toolTipAlertProcesoServicios.Visible = false;
+            else
+            {
+                toolTipAlertProcesoServicios.Visible = true;
+                toolTipAlertProcesoServicios.Text = nro_servicios.ToString();
+            }
         }
         public async void CalcularReposicionStock()
         {
@@ -204,6 +221,16 @@ namespace Presentacion.Compras
                     CleanControls();
                 }
             }
+        }
+
+        private void toolTipAlertStockTienda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertStockTienda.Text + " PRODUCTOS CON STOCK MENOS DEL MINIMO EN TIENDA");
+        }
+
+        private void toolTipAlertProcesoServicios_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertProcesoServicios.Text + " SERVICIOS EN PROCESO");
         }
     }
 }

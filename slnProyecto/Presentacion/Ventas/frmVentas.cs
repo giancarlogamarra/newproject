@@ -2,6 +2,7 @@
 using DTOs.Venta;
 using Persistencia.Producto;
 using Persistencia.Proveedor;
+using Persistencia.Servicios;
 using Persistencia.Ventas;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,12 @@ namespace Presentacion.Ventas
         IVentasCommandsHandler _Ventascommands;
         ProductoItem productoVender;
         List<VentaItem> ListVentas = new List<VentaItem>();
-        public frmVentas(IProductoCommandsHandler prodcommands, IProveedorCommandsHandler provcommands, IVentasCommandsHandler ventascommands)
+        IServicioCommandsHandler _Servicioscommands;
+        public frmVentas(IProductoCommandsHandler prodcommands, IServicioCommandsHandler serviciocommand,
+            IProveedorCommandsHandler provcommands, IVentasCommandsHandler ventascommands)
         {
             this._Productoscommands = prodcommands;
+            this._Servicioscommands = serviciocommand;
             this._Proveedorescommands = provcommands;
             this._Ventascommands = ventascommands;
             InitializeComponent();
@@ -36,6 +40,15 @@ namespace Presentacion.Ventas
 
         public async void FillControls(ProductoItem producto)
         {
+            int stockyaagregado = producto.STOCK_ACTUAL_TIENDA;
+            if (this.ListVentas.Count > 0) {
+                foreach (var p in this.ListVentas) {
+                    if (producto.ID == p.PRODUCTO_ID)
+                    {
+                        producto.STOCK_ACTUAL_TIENDA = producto.STOCK_ACTUAL_TIENDA - p.CANTIDAD;
+                    }
+               }
+            }
             txtCantidad.Maximum = 0;
             txtNombre.Text = producto.NOMBRE;
             txtDescripcion.Text = producto.DESCRIPCION;
@@ -49,11 +62,11 @@ namespace Presentacion.Ventas
             int stockTienda = await CalcularStockTienda(producto.ID);
 
           
-            txtCantidad.Maximum = stockTienda;
+            txtCantidad.Maximum = producto.STOCK_ACTUAL_TIENDA;
             lblStockAlmacen.Text = stockAlmacen.ToString();
-            lblStockTienda.Text = stockTienda.ToString();
+            lblStockTienda.Text = producto.STOCK_ACTUAL_TIENDA.ToString();
 
-            if (stockTienda == 0)
+            if (producto.STOCK_ACTUAL_TIENDA == 0)
             {
                 MessageBox.Show("Este producto no contiene Stock en Tienda\n Existen " + stockAlmacen + " Productos en Almacen", ".:: Mensaje del Sistema ::.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CleanControls();
@@ -94,7 +107,6 @@ namespace Presentacion.Ventas
         {
             if (Validator())
             {
-                dgvCompras.DataSource = null;
                 VentaItem item = new VentaItem()
                 {
                     PRODUCTO_ID = this.productoVender.ID,
@@ -108,6 +120,14 @@ namespace Presentacion.Ventas
                     PRECIO_VENTA = txtPVenta.Value,
                     TOTAL = txtPVenta.Value * txtCantidad.Value
                 };
+                foreach (var p in this.ListVentas) {
+                    if (p.PRODUCTO_ID == item.PRODUCTO_ID)
+                    {
+                        MessageBox.Show("Este producto ya fue agregado, retirarlo y volverlo a agregar" ,".:Mensaje del Sistema::.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+                dgvCompras.DataSource = null;
                 this.ListVentas.Add(item);
                 dgvCompras.DataSource = this.ListVentas;
                 this.CleanControls();
@@ -142,7 +162,22 @@ namespace Presentacion.Ventas
         {
             GetProveedores();
             CalcularReposicionStock();
+            CalcularServiciosEnProceso();
         }
+
+        public async void CalcularServiciosEnProceso()
+        {
+            int nro_servicios = await _Servicioscommands.GET_SERVICIOS_EN_PROCESO();
+            if (nro_servicios == 0)
+                toolTipAlertProcesoServicios.Visible = false;
+            else
+            {
+                toolTipAlertProcesoServicios.Visible = true;
+                toolTipAlertProcesoServicios.Text = nro_servicios.ToString();
+            }
+        }
+
+
         public async  void CalcularReposicionStock()
         {
             int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
@@ -175,6 +210,19 @@ namespace Presentacion.Ventas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (IsNumeric(txtCodigo.Text))
+                {
+                    string codigo = txtCodigo.Text.Substring(0, txtCodigo.Text.Length - 1);
+                    int CODIGO = Convert.ToInt32(codigo);
+                    foreach (var item in this.ListVentas) {
+                        if (item.CODIGO == CODIGO.ToString()) {
+                            MessageBox.Show("Este producto ya fue agregado, retirarlo y volverlo a agregar", ".:Mensaje del Sistema::.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return;
+                        }
+                    }
+                }
+
+
                 ProductoItem producto = await this._Productoscommands.GETPRODUCTO(txtCodigo.Text.ToString());
                 if (producto != null)
                 {
@@ -190,10 +238,19 @@ namespace Presentacion.Ventas
             }
         }
 
+        public static bool IsNumeric(object Expression)
+        {
+            double retNum;
+
+            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
+
+
         private void MenuItem_GrabarVenta_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            if (MessageBox.Show("Esta seguro de registrar la venta?")==DialogResult.OK)
+            if (MessageBox.Show("Esta seguro de registrar la venta?" , ".::Mensaje del Sistema::.",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
             {
              
                   int result = this._Ventascommands.ADD(this.ListVentas);
@@ -215,5 +272,31 @@ namespace Presentacion.Ventas
         {
             cboProveedores.Enabled = true;
         }
+
+        private void toolTipAlertStockTienda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertStockTienda.Text + " PRODUCTOS CON STOCK MENOS DEL MINIMO EN TIENDA");
+        }
+
+        private void toolTipAlertProcesoServicios_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertProcesoServicios.Text + " SERVICIOS EN PROCESO");
+
+        }
+
+        private void dgvCompras_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7 && e.RowIndex > -1)
+            {
+
+                VentaItem item = (VentaItem)dgvCompras.Rows[e.RowIndex].DataBoundItem;
+                dgvCompras.DataSource = null;
+                this.ListVentas.Remove(item);
+                dgvCompras.DataSource = this.ListVentas;
+                this.CalcularTotal(this.ListVentas);
+            }
+        }
+
+      
     }
 }

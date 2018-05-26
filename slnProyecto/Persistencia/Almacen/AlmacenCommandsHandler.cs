@@ -10,7 +10,27 @@ namespace Persistencia.Almacen
 {
     public class AlmacenCommandsHandler : IAlmacenCommandsHandler
     {
-        async Task<int> IAlmacenCommandsHandler.MOVER_ALMACEN_A_TIENDA(Guid ID_PRODUCTO, string USUARIO)
+        public int MOVER_ALMACEN_A_TIENDA(Guid ID_PRODUCTO, string USUARIO)
+        {
+            using (var conn = new SqlConnection(Connection.ConectionString))
+            {
+                conn.Open();
+                var query = $@"UPDATE [solucionsmart_ggamarra].[sport.TPRODUCTOS]
+                           SET [STOCK_ACTUAL_TIENDA] = [STOCK_ACTUAL_TIENDA]+1
+                              ,[USUARIO_MODIFICACION] = @USUARIO_MODIFICACION
+                              ,[FECHA_MODIFICACION] = @FECHA_MODIFICACION
+                         WHERE [ID]='{ID_PRODUCTO}'";
+                var c = new SqlCommand(query, conn);
+                c.Parameters.Add("@USUARIO_MODIFICACION", SqlDbType.VarChar, 500).Value = USUARIO;
+                c.Parameters.Add("@FECHA_MODIFICACION", SqlDbType.DateTime).Value = DateTime.Now;
+
+
+                return c.ExecuteNonQuery();
+
+            }
+        }
+
+      /*  async Task<int> IAlmacenCommandsHandler.MOVER_ALMACEN_A_TIENDA(Guid ID_PRODUCTO, string USUARIO)
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
@@ -28,6 +48,6 @@ namespace Persistencia.Almacen
                 return await c.ExecuteNonQueryAsync();
  
             }
-        }
+        }*/
     }
 }

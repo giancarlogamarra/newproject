@@ -190,5 +190,15 @@ namespace Presentacion.Proveedor
         {
             this.Close();
         }
+
+        private void toolTipAlertStockTienda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertStockTienda.Text + " PRODUCTOS CON STOCK MENOS DEL MINIMO EN TIENDA");
+        }
+
+        private void toolTipAlertProcesoServicios_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertProcesoServicios.Text + " SERVICIOS EN PROCESO");
+        }
     }
 }

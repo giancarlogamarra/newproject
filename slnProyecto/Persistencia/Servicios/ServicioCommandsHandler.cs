@@ -62,7 +62,7 @@ namespace Persistencia.Servicios
         {
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
-                conn.OpenAsync();
+                conn.Open();
                 var query = $@"INSERT INTO [solucionsmart_ggamarra].[sport.TSERVICIOS]
                                ([ID]
                                ,[CLIENTE_NOMBRE]

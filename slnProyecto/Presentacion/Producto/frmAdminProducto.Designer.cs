@@ -113,6 +113,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(866, 58);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // MenuItem_New
             // 
@@ -172,6 +173,7 @@
             this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
             this.toolTipAlertStockTienda.Text = "0";
             this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertStockTienda.Click += new System.EventHandler(this.toolTipAlertStockTienda_Click);
             // 
             // toolTipAlertProcesoServicios
             // 
@@ -182,6 +184,7 @@
             this.toolTipAlertProcesoServicios.Text = "0";
             this.toolTipAlertProcesoServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTipAlertProcesoServicios.ToolTipText = "Nro de Servicios en Proceso";
+            this.toolTipAlertProcesoServicios.Click += new System.EventHandler(this.toolTipAlertProcesoServicios_Click);
             // 
             // splitContainer1
             // 
@@ -255,6 +258,7 @@
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.MaxLength = 8;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(277, 30);
             this.txtSearch.TabIndex = 0;
@@ -447,10 +451,12 @@
             // 
             // txtPVenta
             // 
+            this.txtPVenta.DecimalPlaces = 2;
             this.txtPVenta.Location = new System.Drawing.Point(131, 203);
             this.txtPVenta.Name = "txtPVenta";
             this.txtPVenta.Size = new System.Drawing.Size(134, 30);
             this.txtPVenta.TabIndex = 14;
+            this.txtPVenta.ValueChanged += new System.EventHandler(this.txtPVenta_ValueChanged);
             // 
             // label11
             // 
@@ -466,10 +472,12 @@
             // 
             // txtDsctoMax
             // 
+            this.txtDsctoMax.DecimalPlaces = 2;
             this.txtDsctoMax.Location = new System.Drawing.Point(131, 243);
             this.txtDsctoMax.Name = "txtDsctoMax";
             this.txtDsctoMax.Size = new System.Drawing.Size(134, 30);
             this.txtDsctoMax.TabIndex = 16;
+            this.txtDsctoMax.ValueChanged += new System.EventHandler(this.txtDsctoMax_ValueChanged);
             // 
             // label12
             // 
@@ -489,6 +497,11 @@
             this.txtMinSctock.Name = "txtMinSctock";
             this.txtMinSctock.Size = new System.Drawing.Size(134, 30);
             this.txtMinSctock.TabIndex = 18;
+            this.txtMinSctock.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // tableLayoutPanel2
             // 
@@ -508,10 +521,10 @@
             // txtCodigo
             // 
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(3, 3);
             this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(151, 26);
             this.txtCodigo.TabIndex = 1;
             // 

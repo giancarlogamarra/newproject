@@ -15,6 +15,7 @@ namespace Presentacion
     public partial class frmLogin : Form
     {
         IUsuarioCommandsHandler Usuario_Command;
+        public UsuarioItem usuario;
         public frmLogin(IUsuarioCommandsHandler command_usuario)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Presentacion
         {
             this.btnAcceder.Enabled = false;
             UsuarioItem usuario = await Usuario_Command.VALIDAR_ACCESO(txtUsuario.Text.Trim(), txtPassword.Text.Trim());
+            this.usuario = usuario;
             if (usuario != null)
             {
                 this.Close();

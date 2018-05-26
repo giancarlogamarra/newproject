@@ -36,28 +36,8 @@ namespace Presentacion.Producto
             CalcularReposicionStock();
             CalcularServiciosEnProceso();
         }
-        public async void CalcularServiciosEnProceso()
-        {
-            int nro_servicios = await _Servicioscommands.GET_SERVICIOS_EN_PROCESO();
-            if (nro_servicios == 0)
-                toolTipAlertProcesoServicios.Visible = false;
-            else
-            {
-                toolTipAlertProcesoServicios.Visible = true;
-                toolTipAlertProcesoServicios.Text = nro_servicios.ToString();
-            }
-        }
-        public async void CalcularReposicionStock()
-        {
-            int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
-            if (nro_prod == 0)
-                toolTipAlertStockTienda.Visible = false;
-            else
-            {
-                toolTipAlertStockTienda.Visible = true;
-                toolTipAlertStockTienda.Text = nro_prod.ToString();
-            }
-        }
+        
+       
         public async void GetProductos(string search)
         {
             dgvProductos.AutoGenerateColumns = false;
@@ -167,7 +147,7 @@ namespace Presentacion.Producto
             cboProveedores.SelectedItem = null;
             txtPVenta.ResetText();
             txtDsctoMax.ResetText();
-            txtMinSctock.ResetText();
+            txtMinSctock.Value = 2;
         }
 
 
@@ -278,6 +258,52 @@ namespace Presentacion.Producto
 
             /*if (txtSearch.Text.Trim()=="")
                     this.GetProductos("");*/
+        }
+
+        private void txtDsctoMax_ValueChanged(object sender, EventArgs e)
+        {
+            txtDsctoMax.Maximum = txtPVenta.Value;
+        }
+
+        private void txtPVenta_ValueChanged(object sender, EventArgs e)
+        {
+            txtDsctoMax.Maximum = txtPVenta.Value;
+        }
+        public async void CalcularReposicionStock()
+        {
+            int nro_prod = await _Productoscommands.GET_VERIFICAR_STOCKS_TIENDA_ALARMA();
+            if (nro_prod == 0)
+                toolTipAlertStockTienda.Visible = false;
+            else
+            {
+                toolTipAlertStockTienda.Visible = true;
+                toolTipAlertStockTienda.Text = nro_prod.ToString();
+            }
+        }
+        public async void CalcularServiciosEnProceso()
+        {
+            int nro_servicios = await _Servicioscommands.GET_SERVICIOS_EN_PROCESO();
+            if (nro_servicios == 0)
+                toolTipAlertProcesoServicios.Visible = false;
+            else
+            {
+                toolTipAlertProcesoServicios.Visible = true;
+                toolTipAlertProcesoServicios.Text = nro_servicios.ToString();
+            }
+        }
+        private void toolTipAlertStockTienda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertStockTienda.Text + " PRODUCTOS CON STOCK MENOS DEL MINIMO EN TIENDA");
+        }
+
+        private void toolTipAlertProcesoServicios_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolTipAlertProcesoServicios.Text + " SERVICIOS EN PROCESO");
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

@@ -208,7 +208,7 @@ namespace Persistencia.Producto
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 var queryStock = $@" SELECT 
-	                sum(IIF( [STOCK_ACTUAL_TIENDA] < [ALERTA_STOCK_MIN_TIENDA] , 1, 0) )
+	                 ISNULL(sum(IIF( [STOCK_ACTUAL_TIENDA] < [ALERTA_STOCK_MIN_TIENDA] , 1, 0) ),0)
 		                 FROM [solucionsmart_solucionsmart2].[solucionsmart_ggamarra].[sport.TPRODUCTOS]
                 where  ESTADO='1'";
 
@@ -238,7 +238,7 @@ namespace Persistencia.Producto
             using (var conn = new SqlConnection(Connection.ConectionString))
             {
                 conn.OpenAsync();
-                var query = $@"SELECT MAX(codigo) from [solucionsmart_ggamarra].[sport.TPRODUCTOS]";
+                var query = $@"	SELECT ISNULL(MAX(codigo),0) from [solucionsmart_ggamarra].[sport.TPRODUCTOS]";
                 /*var query = $@"DELETE FROM [solucionsmart_ggamarra].[sport.TPRODUCTOS]
                                  WHERE ID = '{ID}'";*/
                 var c = new SqlCommand(query, conn);

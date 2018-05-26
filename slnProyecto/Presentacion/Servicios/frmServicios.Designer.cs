@@ -154,6 +154,7 @@
             this.toolTipAlertStockTienda.Text = "0";
             this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTipAlertStockTienda.ToolTipText = "Nro de Productos insuficientes en Tienda";
+            this.toolTipAlertStockTienda.Click += new System.EventHandler(this.toolTipAlertStockTienda_Click);
             // 
             // toolTipAlertProcesoServicios
             // 
@@ -164,6 +165,7 @@
             this.toolTipAlertProcesoServicios.Text = "0";
             this.toolTipAlertProcesoServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTipAlertProcesoServicios.ToolTipText = "Nro de Servicios en Proceso";
+            this.toolTipAlertProcesoServicios.Click += new System.EventHandler(this.toolTipAlertProcesoServicios_Click);
             // 
             // splitContainer1
             // 

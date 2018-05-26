@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItem_New = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_AddItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_GrabarCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipAlertStockTienda = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipAlertProcesoServicios = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.InformacionGeneralPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -94,7 +95,8 @@
             this.MenuItem_AddItem,
             this.MenuItem_GrabarCompra,
             this.toolStripMenuItem2,
-            this.toolTipAlertStockTienda});
+            this.toolTipAlertStockTienda,
+            this.toolTipAlertProcesoServicios});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1108, 58);
@@ -151,6 +153,18 @@
             this.toolTipAlertStockTienda.Size = new System.Drawing.Size(42, 54);
             this.toolTipAlertStockTienda.Text = "0";
             this.toolTipAlertStockTienda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertStockTienda.Click += new System.EventHandler(this.toolTipAlertStockTienda_Click);
+            // 
+            // toolTipAlertProcesoServicios
+            // 
+            this.toolTipAlertProcesoServicios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolTipAlertProcesoServicios.Image = global::Presentacion.Properties.Resources.process;
+            this.toolTipAlertProcesoServicios.Name = "toolTipAlertProcesoServicios";
+            this.toolTipAlertProcesoServicios.Size = new System.Drawing.Size(42, 54);
+            this.toolTipAlertProcesoServicios.Text = "0";
+            this.toolTipAlertProcesoServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipAlertProcesoServicios.ToolTipText = "Nro de Servicios en Proceso";
+            this.toolTipAlertProcesoServicios.Click += new System.EventHandler(this.toolTipAlertProcesoServicios_Click);
             // 
             // splitContainer1
             // 
@@ -225,6 +239,7 @@
             this.txtCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(131, 3);
+            this.txtCodigo.MaxLength = 8;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(420, 30);
             this.txtCodigo.TabIndex = 1;
@@ -454,9 +469,9 @@
             // FECHA_COMPRA
             // 
             this.FECHA_COMPRA.DataPropertyName = "FECHA_COMPRA";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.FECHA_COMPRA.DefaultCellStyle = dataGridViewCellStyle1;
             this.FECHA_COMPRA.HeaderText = "FECHA_COMPRA";
             this.FECHA_COMPRA.Name = "FECHA_COMPRA";
             this.FECHA_COMPRA.ReadOnly = true;
@@ -603,5 +618,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNroComprobante;
         private System.Windows.Forms.ToolStripMenuItem toolTipAlertStockTienda;
+        private System.Windows.Forms.ToolStripMenuItem toolTipAlertProcesoServicios;
     }
 }
